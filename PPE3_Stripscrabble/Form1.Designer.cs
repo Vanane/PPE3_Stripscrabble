@@ -28,13 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.test1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // test1
+            // 
+            this.test1.Location = new System.Drawing.Point(264, 298);
+            this.test1.Name = "test1";
+            this.test1.Size = new System.Drawing.Size(117, 28);
+            this.test1.TabIndex = 0;
+            this.test1.Text = "OK";
+            this.test1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.test1);
             this.Name = "Form1";
             this.Text = "Form";
             this.ResumeLayout(false);
@@ -42,6 +53,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button test1;
     }
 }
 
