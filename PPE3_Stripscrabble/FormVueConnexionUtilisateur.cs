@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PPE3_Stripscrabble
 {
-    public partial class Form1 : Form
+    public partial class FormVueConnexionUtilisateur : Form
     {
-        public Form1()
+        public FormVueConnexionUtilisateur()
         {
             InitializeComponent();
+        }
+
+        private void buttonConnexion_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

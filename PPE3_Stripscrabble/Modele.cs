@@ -31,6 +31,14 @@ namespace PPE3_Stripscrabble
         public static string getPassword() { return visiteurConnnecte.password; }
 
 
+
+        public static bool verifierConnexion()
+        {
+            bool reponse;
+
+
+            return reponse;
+        }
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE
         
         public static List<VILLE> listeVilles()
