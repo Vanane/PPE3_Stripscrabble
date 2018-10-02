@@ -40,18 +40,20 @@
             // labelMDP
             // 
             this.labelMDP.AutoSize = true;
-            this.labelMDP.Location = new System.Drawing.Point(96, 231);
+            this.labelMDP.Font = new System.Drawing.Font("Calibri", 10F);
+            this.labelMDP.Location = new System.Drawing.Point(86, 230);
             this.labelMDP.Name = "labelMDP";
-            this.labelMDP.Size = new System.Drawing.Size(80, 13);
+            this.labelMDP.Size = new System.Drawing.Size(90, 17);
             this.labelMDP.TabIndex = 0;
-            this.labelMDP.Text = "Mot de passe : ";
+            this.labelMDP.Text = "Mot de passe :";
             // 
             // labelIdentifiant
             // 
             this.labelIdentifiant.AutoSize = true;
-            this.labelIdentifiant.Location = new System.Drawing.Point(96, 193);
+            this.labelIdentifiant.Font = new System.Drawing.Font("Calibri", 10F);
+            this.labelIdentifiant.Location = new System.Drawing.Point(102, 192);
             this.labelIdentifiant.Name = "labelIdentifiant";
-            this.labelIdentifiant.Size = new System.Drawing.Size(59, 13);
+            this.labelIdentifiant.Size = new System.Drawing.Size(74, 17);
             this.labelIdentifiant.TabIndex = 1;
             this.labelIdentifiant.Text = "Identifiant :";
             // 
@@ -81,6 +83,7 @@
             // 
             // buttonConnexion
             // 
+            this.buttonConnexion.Font = new System.Drawing.Font("Calibri", 10F);
             this.buttonConnexion.Location = new System.Drawing.Point(200, 264);
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(100, 30);
@@ -93,6 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(484, 312);
             this.Controls.Add(this.buttonConnexion);
             this.Controls.Add(this.pictureBoxLogo);
@@ -101,7 +105,7 @@
             this.Controls.Add(this.labelIdentifiant);
             this.Controls.Add(this.labelMDP);
             this.Name = "FormVueConnexionUtilisateur";
-            this.Padding = new System.Windows.Forms.Padding(27);
+            this.Padding = new System.Windows.Forms.Padding(27, 27, 27, 27);
             this.Text = "Se connecter à l\'application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
