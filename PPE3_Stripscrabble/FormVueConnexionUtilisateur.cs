@@ -24,16 +24,26 @@ namespace PPE3_Stripscrabble
             {
                 Console.WriteLine("Utilisateur Connecté");
                 MessageBox.Show(("Vous êtes connnecté ! Bienvenue, " + Modele.getIdentifiant() + " !"), "Connexion Établie", MessageBoxButtons.OK);
-                FormVueMenu FVM = new FormVueMenu();
-                FVM.Show();
 
+                //On crée un nouveau thread pour lancer le menu, avant de fermer ce thread-ci.
+                System.Threading.Thread t = new System.Threading.Thread(
+                        new System.Threading.ThreadStart(ThreadMenu));
+                t.Start();
+
+                this.Close();
             }
             else
             {
-                //Sinon les valeurs sont nulles.
+                //Sinon, si les valeurs sont nulles....
                 MessageBox.Show("L'identifiant ou le mot de passe est incorrect.", "   Erreur de saisie   ", MessageBoxButtons.OK);
-            }
-             
+            }             
         }
+
+        public static void ThreadMenu()
+        {
+            Application.Run(new FormVueMenu());
+        }
+
+
     }
 }

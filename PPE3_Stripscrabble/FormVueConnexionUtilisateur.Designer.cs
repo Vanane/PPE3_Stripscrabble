@@ -30,8 +30,8 @@
         {
             this.labelMDP = new System.Windows.Forms.Label();
             this.labelIdentifiant = new System.Windows.Forms.Label();
-            this.textBoxMDP = new System.Windows.Forms.TextBox();
             this.textBoxIdentifiant = new System.Windows.Forms.TextBox();
+            this.textBoxMDP = new System.Windows.Forms.TextBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonConnexion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();

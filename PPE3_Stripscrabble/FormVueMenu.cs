@@ -21,5 +21,20 @@ namespace PPE3_Stripscrabble
         {
             lblTest.Text = string.Format("Bienvenue sur l'application GSB, {0} {1}", Modele.getPrenom(), Modele.getNom());
         }
+
+        private void buttonDeconnexion_Click(object sender, EventArgs e)
+        {
+            Modele.resetConnexion();
+            //On crée un nouveau thread pour lancer la form Connexion, avant de fermer ce thread-ci.
+            System.Threading.Thread t = new System.Threading.Thread(
+                    new System.Threading.ThreadStart(ThreadConnexion));
+            t.Start();
+            this.Close();
+        }
+        public static void ThreadConnexion()
+        {
+            Application.Run(new FormVueConnexionUtilisateur());
+        }
+
     }
 }

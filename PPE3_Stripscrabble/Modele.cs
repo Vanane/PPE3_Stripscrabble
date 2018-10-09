@@ -20,12 +20,6 @@ namespace PPE3_Stripscrabble
             visiteurConnnecte = new Visiteur();
         }
 
-        public static void init(Visiteur v)
-        {
-            connexion = new PPE3_StripscrabbleEntities();
-            visiteurConnnecte = new Visiteur();
-        }
-
         #region Getters/Setters
         //Liste des getters et setters de visiteurConnecté, mis en région pour masquer le bloc
         public static string getIdVisiteur() { return visiteurConnnecte.idVisiteur; }
@@ -74,12 +68,10 @@ namespace PPE3_Stripscrabble
         }
 
 
-        private static Visiteur VisiteurParSesId(string id, string mdp)
+        public static void resetConnexion()
         {
-            //Retourne le premier visiteur, s'il y en a plusieurs, qui comporte un couple id/password.
-            return connexion.Visiteur.Where(x => (x.identifiant == id) && (x.password == mdp)).First();
+            init();
         }
-
 
         private static string GetMd5Hash(string PasswdSaisi)         
         {
@@ -92,6 +84,12 @@ namespace PPE3_Stripscrabble
                 sb.Append(hash[i].ToString("x2"));
             }
             return sb.ToString();
+        }
+
+        private static Visiteur VisiteurParSesId(string id, string mdp)
+        {
+            //Retourne le premier visiteur, s'il y en a plusieurs, qui comporte un couple id/password.
+            return connexion.Visiteur.Where(x => (x.identifiant == id) && (x.password == mdp)).First();
         }
 
 
