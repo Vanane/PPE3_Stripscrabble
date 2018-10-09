@@ -19,28 +19,21 @@ namespace PPE3_Stripscrabble
 
         private void buttonConnexion_Click(object sender, EventArgs e)
         {
-            if (saisieValide()) //Si le login et le mot de passe sont entrés
+            if (textBoxIdentifiant.Text != "" && textBoxMDP.Text != "" &&
+                Modele.verifierConnexion(textBoxIdentifiant.Text, textBoxMDP.Text)) //Si les données sont valides
             {
-                if (Modele.verifierConnexion(textBoxIdentifiant.Text, textBoxMDP.Text)) //Si les données sont valides
-                {
-                    //Faire Se Connecter
-                }
+                Console.WriteLine("Utilisateur Connecté");
+                MessageBox.Show(("Vous êtes connnecté ! Bienvenue, " + Modele.getIdentifiant() + " !"), "Connexion Établie", MessageBoxButtons.OK);
+                FormVueMenu FVM = new FormVueMenu();
+                FVM.Show();
+
             }
             else
             {
                 //Sinon les valeurs sont nulles.
                 MessageBox.Show("L'identifiant ou le mot de passe est incorrect.", "   Erreur de saisie   ", MessageBoxButtons.OK);
-
             }
              
-        }
-
-        private bool saisieValide()
-        {
-            if (textBoxIdentifiant.Text != "" && textBoxMDP.Text != "")
-                return true;
-            else
-                return false;
         }
     }
 }

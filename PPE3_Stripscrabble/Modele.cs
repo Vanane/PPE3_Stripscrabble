@@ -20,6 +20,14 @@ namespace PPE3_Stripscrabble
             visiteurConnnecte = new Visiteur();
         }
 
+        public static void init(Visiteur v)
+        {
+            connexion = new PPE3_StripscrabbleEntities();
+            visiteurConnnecte = new Visiteur();
+        }
+
+        #region Getters/Setters
+        //Liste des getters et setters de visiteurConnecté, mis en région pour masquer le bloc
         public static string getIdVisiteur() { return visiteurConnnecte.idVisiteur; }
         public static int getIdLabo() { return visiteurConnnecte.idLabo; }
         public static string getNom() { return visiteurConnnecte.nom; }
@@ -31,36 +39,51 @@ namespace PPE3_Stripscrabble
         public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
         public static string getPassword() { return visiteurConnnecte.password; }
 
-        private static List<Visiteur> listeVisiteur()
-        {
-            return connexion.Visiteur.ToList();
-        }
+        public static void setIdVisiteur(string p) { visiteurConnnecte.idVisiteur = p; }
+        public static void setIdLabo(int p) { visiteurConnnecte.idLabo = p; }
+        public static void setNom(string p) { visiteurConnnecte.nom = p; }
+        public static void setPrenom(string p) { visiteurConnnecte.prenom = p; }
+        public static void setRue(string p) { visiteurConnnecte.rue = p; }
+        public static void setCp(string p) { visiteurConnnecte.cp = p; }
+        public static void setVille(string p) { visiteurConnnecte.ville = p; }
+        public static void setDateEmbauche(string p) { visiteurConnnecte.dateEmbauche = p; }
+        public static void setIdentifiant(string p) { visiteurConnnecte.identifiant = p; }
+        public static void setPassword(string p) { visiteurConnnecte.password = p; }
+        #endregion
+
 
         public static bool verifierConnexion(string id, string mdp)
         {
-            //permet de vérifier si le mot de passe entré, encodé en MD5, correspond à l'identifiant spécifié
-            //En comparant chaque ligne de la base de données.
-            //Renvoie Vrai si les deux correspondent, faux sinon.
-            bool found = false;
-            int i = 0;
-            List<Visiteur> lesVisiteurs = listeVisiteur();
-            while (!found && i < lesVisiteurs.Count)
+            //Essaye de définir le Visiteur Connecté en récupérant le premier enregistrement
+            //Qui possède les informations entrées.
+            //Si les informations sont couplées, alors la connexion est établie, sinon
+            //L'erreur générée par la requête comme quoi elle est vide est attrapée.
+            bool r;
+            string mdpHash = GetMd5Hash(mdp).ToUpper();
+
+            try
             {
-                Console.WriteLine(i);
-                if(lesVisiteurs[i].identifiant == id && lesVisiteurs[i].password == GetMd5Hash(mdp))
-                    //Si l'identifiant est dans la base, et si le mot de passe converti est dans la base
-                    found = true;
-                    //Alors on arrête la boucle et on certifie la validité.
-                i++;
+                Modele.visiteurConnnecte = VisiteurParSesId(id, mdpHash);
+                r = true;
             }
-            return found;
+            catch
+            {
+                r = false;
+            }
+            return r;
         }
 
+
+        private static Visiteur VisiteurParSesId(string id, string mdp)
+        {
+            //Retourne le premier visiteur, s'il y en a plusieurs, qui comporte un couple id/password.
+            return connexion.Visiteur.Where(x => (x.identifiant == id) && (x.password == mdp)).First();
+        }
 
 
         private static string GetMd5Hash(string PasswdSaisi)         
         {
-            //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères.
+            //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères "0x".
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(PasswdSaisi);
             byte[] hash = (MD5.Create()).ComputeHash(inputBytes);
             StringBuilder sb = new StringBuilder();
@@ -72,6 +95,8 @@ namespace PPE3_Stripscrabble
         }
 
 
+
+
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE
         
         public static List<VILLE> listeVilles()
@@ -81,7 +106,7 @@ namespace PPE3_Stripscrabble
         */
 
 
-        /*EXEMPLE DE METHODE POUR RECUPERER UNE REQUETE
+        /*EXEMPLE DE METHODE POUR RECUPERER AVEC UNE REQUETE
          * 
         public static Object CompositeursParStyle(int idStyle)
         {

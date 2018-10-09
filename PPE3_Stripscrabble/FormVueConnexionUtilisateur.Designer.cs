@@ -61,6 +61,7 @@
             // 
             this.textBoxMDP.Location = new System.Drawing.Point(182, 228);
             this.textBoxMDP.Name = "textBoxMDP";
+            this.textBoxMDP.PasswordChar = '●';
             this.textBoxMDP.Size = new System.Drawing.Size(200, 20);
             this.textBoxMDP.TabIndex = 2;
             // 
@@ -105,7 +106,7 @@
             this.Controls.Add(this.labelIdentifiant);
             this.Controls.Add(this.labelMDP);
             this.Name = "FormVueConnexionUtilisateur";
-            this.Padding = new System.Windows.Forms.Padding(27, 27, 27, 27);
+            this.Padding = new System.Windows.Forms.Padding(27);
             this.Text = "Se connecter à l\'application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.ResumeLayout(false);
