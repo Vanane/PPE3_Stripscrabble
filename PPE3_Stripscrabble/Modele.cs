@@ -13,6 +13,17 @@ namespace PPE3_Stripscrabble
         private static PPE3_StripscrabbleEntities connexion;
         private static Visiteur visiteurConnnecte;
 
+        private static DateTime dateHF;
+        private static string libelleHF;
+        private static double MontantHf;
+        private static int dateduMois;
+
+     
+        public static DateTime DateHF { get => dateHF; set => dateHF = value; }
+        public static string LibelleHF { get => libelleHF; set => libelleHF = value; }
+        public static double MontantHF { get => MontantHf; set => MontantHf = value; }
+        public static int DateduMois { get => dateduMois; set => dateduMois = value; }
+
         public static void init()
         {
             connexion = new PPE3_StripscrabbleEntities();
@@ -29,6 +40,8 @@ namespace PPE3_Stripscrabble
         public static string getDateEmbauche() { return visiteurConnnecte.dateEmbauche; }
         public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
         public static string getPassword() { return visiteurConnnecte.password; }
+
+
 
 
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE

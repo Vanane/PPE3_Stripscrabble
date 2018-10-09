@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PPE3_StripscrabbleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PPE3_StripscrabbleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Etat">
           <Key>
             <PropertyRef Name="id" />
@@ -149,6 +149,13 @@
           </Key>
           <Property Name="idVisiteur" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="idRegion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeVisiteur">
+          <Key>
+            <PropertyRef Name="idType" />
+          </Key>
+          <Property Name="idType" Type="varchar" MaxLength="4" Nullable="false" />
+          <Property Name="libelleType" Type="varchar" MaxLength="32" Nullable="false" />
         </EntityType>
         <EntityType Name="Visiteur">
           <Key>
@@ -402,6 +409,7 @@
           <EntitySet Name="Secteur" EntityType="Self.Secteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SPECIALITE" EntityType="Self.SPECIALITE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Travailler" EntityType="Self.Travailler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeVisiteur" EntityType="Self.TypeVisiteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visiteur" EntityType="Self.Visiteur" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__fichefrai__idEta__4AB81AF0" Association="Self.FK__fichefrai__idEta__4AB81AF0">
             <End Role="Etat" EntitySet="Etat" />
@@ -476,8 +484,7 @@
             <End Role="RAPPORT" EntitySet="RAPPORT" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PPE3_StripscrabbleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -952,7 +959,15 @@
             <End Role="Region" EntitySet="Region" />
             <End Role="Visiteur" EntitySet="Visiteur" />
           </AssociationSet>
+          <EntitySet Name="TypeVisiteur" EntityType="PPE3_StripscrabbleModel.TypeVisiteur" />
         </EntityContainer>
+        <EntityType Name="TypeVisiteur">
+          <Key>
+            <PropertyRef Name="idType" />
+          </Key>
+          <Property Name="idType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="libelleType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1131,6 +1146,14 @@
               <ScalarProperty Name="idVisiteur" ColumnName="idVisiteur" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="TypeVisiteur">
+            <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.TypeVisiteur">
+              <MappingFragment StoreEntitySet="TypeVisiteur">
+                <ScalarProperty Name="libelleType" ColumnName="libelleType" />
+                <ScalarProperty Name="idType" ColumnName="idType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
