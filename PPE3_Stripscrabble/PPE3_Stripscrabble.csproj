@@ -67,11 +67,17 @@
     <Compile Include="fichefrais.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormVueConnexionUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormVueConnexionUtilisateur.Designer.cs">
+      <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueMenu.Designer.cs">
+      <DependentUpon>FormVueMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="FraisForfait.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
@@ -130,8 +136,11 @@
     <Compile Include="Visiteur.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
+      <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueMenu.resx">
+      <DependentUpon>FormVueMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -141,6 +150,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="modeleBDD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -174,6 +184,7 @@
       <DependentUpon>modeleBDD.edmx</DependentUpon>
       <LastGenOutput>modeleBDD.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
