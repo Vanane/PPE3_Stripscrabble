@@ -41,8 +41,35 @@ namespace PPE3_Stripscrabble
         public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
         public static string getPassword() { return visiteurConnnecte.password; }
 
+        // Repris de MusicAtout
+        public static bool ModifDemandeForfaitisé( double Montant, int Quantite, double Prix , string mois)
+        {
+            bool vretour = true;
+            try
+            {
 
+            }catch(Exception e)
+            {
+                vretour = false;
+            }
+            return vretour;
+            
+        }
+        
+        public static bool ModifDemandeHorsForfait ( DateTime dateHorsForfait, string libHF, double MontantHF )
+        {
+            bool vretour = true;
+            try
+            {
 
+            }catch(Exception e)
+            {
+                vretour = false;
+            }
+            return vretour;
+        }
+           
+        
 
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE
         

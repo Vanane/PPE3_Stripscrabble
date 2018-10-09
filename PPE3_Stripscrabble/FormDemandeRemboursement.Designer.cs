@@ -59,12 +59,14 @@
             this.vERIFIERUNEDEMANDEToolStripMenuItem.Name = "vERIFIERUNEDEMANDEToolStripMenuItem";
             this.vERIFIERUNEDEMANDEToolStripMenuItem.Size = new System.Drawing.Size(149, 20);
             this.vERIFIERUNEDEMANDEToolStripMenuItem.Text = "VERIFIER UNE DEMANDE";
+            this.vERIFIERUNEDEMANDEToolStripMenuItem.Click += new System.EventHandler(this.vERIFIERUNEDEMANDEToolStripMenuItem_Click);
             // 
             // cONSULTERUNEDEMANDEToolStripMenuItem
             // 
             this.cONSULTERUNEDEMANDEToolStripMenuItem.Name = "cONSULTERUNEDEMANDEToolStripMenuItem";
             this.cONSULTERUNEDEMANDEToolStripMenuItem.Size = new System.Drawing.Size(170, 20);
             this.cONSULTERUNEDEMANDEToolStripMenuItem.Text = "CONSULTER UNE DEMANDE";
+            this.cONSULTERUNEDEMANDEToolStripMenuItem.Click += new System.EventHandler(this.cONSULTERUNEDEMANDEToolStripMenuItem_Click);
             // 
             // FormDemandeRemboursement
             // 
