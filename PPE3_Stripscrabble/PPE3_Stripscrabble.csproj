@@ -46,16 +46,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FAjoutMedicament.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAjoutMedicament.Designer.cs">
+      <DependentUpon>FAjoutMedicament.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRapportVisite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRapportVisite.Designer.cs">
+      <DependentUpon>FRapportVisite.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRapportVisite.resx">
+      <DependentUpon>FRapportVisite.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
