@@ -16,5 +16,10 @@ namespace PPE3_Stripscrabble
         {
             InitializeComponent();
         }
+
+        private void FAjoutMedicament_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
