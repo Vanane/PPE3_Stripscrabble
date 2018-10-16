@@ -28,7 +28,7 @@ namespace PPE3_Stripscrabble
         private void vERIFIERUNEDEMANDEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FVerifie Verifie = new FVerifie();
-            FVerifie.Show();
+            Verifie.Show();
         }
 
         private void cONSULTERUNEDEMANDEToolStripMenuItem_Click(object sender, EventArgs e)
