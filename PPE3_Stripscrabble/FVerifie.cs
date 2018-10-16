@@ -14,7 +14,8 @@ namespace PPE3_Stripscrabble
     {
         public FVerifie()
         {
-            InitializeComponent();
+            InitializeComponent(); //Besoin de charger la BD et les demandes enregistrées
+        
         }
 
         private void FVerifie_Load(object sender, EventArgs e)
@@ -44,6 +45,11 @@ namespace PPE3_Stripscrabble
         {
             // Enregistre les données + ferme la page
             this.Close();        
+        }
+
+        private void labForfait_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

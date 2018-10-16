@@ -121,6 +121,11 @@
             // nudMontant
             // 
             this.nudMontant.Location = new System.Drawing.Point(87, 204);
+            this.nudMontant.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.nudMontant.Name = "nudMontant";
             this.nudMontant.Size = new System.Drawing.Size(120, 20);
             this.nudMontant.TabIndex = 8;

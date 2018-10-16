@@ -7,7 +7,7 @@
       <Diagram DiagramId="fb7adf41686b4cb291598025cc883338" Name="Diagram1" ZoomLevel="72">
         <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Etat" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PPE3_StripscrabbleModel.FAMILLE" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.fichefrais" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.fichefrais" Width="1.5" PointX="5.5" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PPE3_StripscrabbleModel.FraisForfait" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Laboratoire" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="PPE3_StripscrabbleModel.LigneFraisForfait" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />

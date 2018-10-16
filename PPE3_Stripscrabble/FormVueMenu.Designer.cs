@@ -67,6 +67,7 @@
             this.buttonFormOriane.TabIndex = 2;
             this.buttonFormOriane.Text = "Test Form Oriane";
             this.buttonFormOriane.UseVisualStyleBackColor = true;
+            this.buttonFormOriane.Click += new System.EventHandler(this.buttonFormOriane_Click);
             // 
             // buttonFormVanane
             // 

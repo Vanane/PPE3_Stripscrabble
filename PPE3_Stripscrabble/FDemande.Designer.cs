@@ -272,6 +272,7 @@
             this.txtBoxTotalNuit.ReadOnly = true;
             this.txtBoxTotalNuit.Size = new System.Drawing.Size(100, 20);
             this.txtBoxTotalNuit.TabIndex = 27;
+            this.txtBoxTotalNuit.Text = "0";
             // 
             // txtBoxTotalRepas
             // 
@@ -280,6 +281,7 @@
             this.txtBoxTotalRepas.ReadOnly = true;
             this.txtBoxTotalRepas.Size = new System.Drawing.Size(100, 20);
             this.txtBoxTotalRepas.TabIndex = 28;
+            this.txtBoxTotalRepas.Text = "0";
             // 
             // txtBoxTotalVehicule
             // 
@@ -288,30 +290,74 @@
             this.txtBoxTotalVehicule.ReadOnly = true;
             this.txtBoxTotalVehicule.Size = new System.Drawing.Size(100, 20);
             this.txtBoxTotalVehicule.TabIndex = 29;
+            this.txtBoxTotalVehicule.Text = "0";
             // 
             // nudMontantUnitNuit
             // 
+            this.nudMontantUnitNuit.DecimalPlaces = 2;
+            this.nudMontantUnitNuit.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.nudMontantUnitNuit.Location = new System.Drawing.Point(266, 240);
+            this.nudMontantUnitNuit.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.nudMontantUnitNuit.Name = "nudMontantUnitNuit";
+            this.nudMontantUnitNuit.ReadOnly = true;
             this.nudMontantUnitNuit.Size = new System.Drawing.Size(120, 20);
             this.nudMontantUnitNuit.TabIndex = 30;
-            this.nudMontantUnitNuit.ValueChanged += new System.EventHandler(this.nudMontantUnitNuit_ValueChanged);
+            this.nudMontantUnitNuit.Value = new decimal(new int[] {
+            80,
+            0,
+            0,
+            0});
             // 
             // nudMontantUnitRepas
             // 
+            this.nudMontantUnitRepas.DecimalPlaces = 2;
+            this.nudMontantUnitRepas.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.nudMontantUnitRepas.Location = new System.Drawing.Point(266, 267);
             this.nudMontantUnitRepas.Name = "nudMontantUnitRepas";
+            this.nudMontantUnitRepas.ReadOnly = true;
             this.nudMontantUnitRepas.Size = new System.Drawing.Size(120, 20);
             this.nudMontantUnitRepas.TabIndex = 31;
-            this.nudMontantUnitRepas.ValueChanged += new System.EventHandler(this.nudMontantUnitRepas_ValueChanged);
+            this.nudMontantUnitRepas.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
             // 
             // nudMontantUnitVehicule
             // 
+            this.nudMontantUnitVehicule.DecimalPlaces = 2;
+            this.nudMontantUnitVehicule.Increment = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
             this.nudMontantUnitVehicule.Location = new System.Drawing.Point(266, 293);
+            this.nudMontantUnitVehicule.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
             this.nudMontantUnitVehicule.Name = "nudMontantUnitVehicule";
+            this.nudMontantUnitVehicule.ReadOnly = true;
             this.nudMontantUnitVehicule.Size = new System.Drawing.Size(120, 20);
             this.nudMontantUnitVehicule.TabIndex = 32;
-            this.nudMontantUnitVehicule.ValueChanged += new System.EventHandler(this.nudMontantUnitVehicule_ValueChanged);
+            this.nudMontantUnitVehicule.Value = new decimal(new int[] {
+            62,
+            0,
+            0,
+            131072});
             // 
             // labDateFrais
             // 
@@ -375,16 +421,19 @@
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // Libelle
             // 
             this.Libelle.HeaderText = "Libellé";
             this.Libelle.Name = "Libelle";
+            this.Libelle.ReadOnly = true;
             // 
             // Montant
             // 
             this.Montant.HeaderText = "Montant";
             this.Montant.Name = "Montant";
+            this.Montant.ReadOnly = true;
             // 
             // butAjoutHF
             // 
@@ -423,7 +472,7 @@
             // labPrenom
             // 
             this.labPrenom.AutoSize = true;
-            this.labPrenom.Location = new System.Drawing.Point(359, 145);
+            this.labPrenom.Location = new System.Drawing.Point(430, 108);
             this.labPrenom.Name = "labPrenom";
             this.labPrenom.Size = new System.Drawing.Size(35, 13);
             this.labPrenom.TabIndex = 40;

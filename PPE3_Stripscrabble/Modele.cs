@@ -20,11 +20,6 @@ namespace PPE3_Stripscrabble
         private static int dateduMois;
 
      
-        public static DateTime DateHF { get => dateHF; set => dateHF = value; }
-        public static string LibelleHF { get => libelleHF; set => libelleHF = value; }
-        public static double MontantHF { get => MontantHf; set => MontantHf = value; }
-        public static int DateduMois { get => dateduMois; set => dateduMois = value; }
-
         public static void init()
         {
             connexion = new PPE3_StripscrabbleEntities();
@@ -54,6 +49,14 @@ namespace PPE3_Stripscrabble
         public static void setDateEmbauche(string p) { visiteurConnnecte.dateEmbauche = p; }
         public static void setIdentifiant(string p) { visiteurConnnecte.identifiant = p; }
         public static void setPassword(string p) { visiteurConnnecte.password = p; }
+
+
+
+        public static DateTime DateHF { get => dateHF; set => dateHF = value; }
+        public static string LibelleHF { get => libelleHF; set => libelleHF = value; }
+        public static double MontantHF { get => MontantHf; set => MontantHf = value; }
+        public static int DateduMois { get => dateduMois; set => dateduMois = value; }
+
         #endregion
 
 
@@ -110,9 +113,34 @@ namespace PPE3_Stripscrabble
             }
             return vretour;
         }
-           
-        
 
+
+        public static void ajouterUneDemande(fichefrais f)
+        {
+            try {
+                foreach(LigneFraisForfait uneLigne in f.LigneFraisForfait) //ajouter les lignes forfaits dans la bd
+                {
+                    f.LigneFraisForfait.Add(uneLigne);
+                }
+
+                foreach( LigneFraisHorsForfait uneLigne in f.LigneFraisHorsForfait) //ajouter les lignes hors forfaits dans la bd
+                {
+                    f.LigneFraisHorsForfait.Add(uneLigne);
+                }
+            }
+            catch(Exception e)
+            {
+               
+            }
+            connexion.fichefrais.Add(f);
+
+            // REMPLIR L OBJET FRAISFORFAIT depuis ligneforfait, et specifier fiche de frais dans cette objet idem pour fraisforfait
+            connexion.SaveChanges(); 
+           //$exception	{"Échec de la validation d'une ou de plusieurs entités. Pour plus d'informations, consultez 'EntityValidationErrors'."}	System.Data.Entity.Validation.DbEntityValidationException
+
+
+
+        }
         private static string GetMd5Hash(string PasswdSaisi)         
         {
             //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères "0x".

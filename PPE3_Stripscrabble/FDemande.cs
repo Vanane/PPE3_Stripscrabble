@@ -13,6 +13,8 @@ namespace PPE3_Stripscrabble
     public partial class FDemande : Form
     {
         bool Clique;
+        string[] moisDeLAnnee = { "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre " };
+        fichefrais uneFicheFrais;
 
         public FDemande()
         {
@@ -22,12 +24,13 @@ namespace PPE3_Stripscrabble
         private void FDemande_Load(object sender, EventArgs e)
         {
             //Recupere les données de l'utilisateur au chargement de la page
-            string[] moisDeLAnnee = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre "};
             labMatricule.Text = Modele.getIdVisiteur();
             labNom.Text = Modele.getNom();
             labPrenom.Text = Modele.getPrenom();
-            labDate.Text = moisDeLAnnee[Modele.DateduMois]; //concatener avec l'année
+          //  labDate.Text = moisDeLAnnee[Modele.DateduMois]; //concatener avec l'année
+            labDate.Text = moisDeLAnnee[DateTime.Now.Month - 1] + " " + DateTime.Now.Year; //concatener avec l'année
             Clique = false;
+            uneFicheFrais = new fichefrais();
 
 
 
@@ -91,43 +94,38 @@ namespace PPE3_Stripscrabble
 
                 dgvHF.Rows.Add(DateHF, libHF, montantHF);
 
+                LigneFraisHorsForfait uneautreligne = new LigneFraisHorsForfait();
+
+                uneautreligne.date = DateHF;
+                uneautreligne.libelle = libHF;
+                uneautreligne.montant = Convert.ToDecimal(montantHF);
+
+                uneFicheFrais.LigneFraisHorsForfait.Add(uneautreligne);
+
+                // Ajouter également les démandes aux listes "Verifier une Demande" et "Consulter"
+
                 Clique = false;
             }
-
-            
-
         }
 
         private void numericUpDownQteNuit_ValueChanged(object sender, EventArgs e)
         {
+            numericUpDownQteNuit.Value = Math.Round(numericUpDownQteNuit.Value);
             txtBoxTotalNuit.Text = Convert.ToString(nudMontantUnitNuit.Value * numericUpDownQteNuit.Value);
-        }
-
-        private void nudMontantUnitNuit_ValueChanged(object sender, EventArgs e)
-        {
-            txtBoxTotalNuit.Text = Convert.ToString(nudMontantUnitNuit.Value * numericUpDownQteNuit.Value);
-
         }
 
         private void numericUpDownQteRepas_ValueChanged(object sender, EventArgs e)
         {
+            numericUpDownQteRepas.Value = Math.Round(numericUpDownQteRepas.Value);
             txtBoxTotalRepas.Text = Convert.ToString(nudMontantUnitRepas.Value * numericUpDownQteRepas.Value);
         }
 
-        private void nudMontantUnitRepas_ValueChanged(object sender, EventArgs e)
+         private void numericUpDownQteVehicule_ValueChanged(object sender, EventArgs e)
         {
-            txtBoxTotalRepas.Text = Convert.ToString(nudMontantUnitRepas.Value * numericUpDownQteRepas.Value);
-        }
-
-        private void numericUpDownQteVehicule_ValueChanged(object sender, EventArgs e)
-        {
+            numericUpDownQteVehicule.Value = Math.Round(numericUpDownQteVehicule.Value);
             txtBoxTotalVehicule.Text = Convert.ToString(nudMontantUnitVehicule.Value * numericUpDownQteVehicule.Value);
         }
 
-        private void nudMontantUnitVehicule_ValueChanged(object sender, EventArgs e)
-        {
-            txtBoxTotalVehicule.Text = Convert.ToString(nudMontantUnitVehicule.Value * numericUpDownQteVehicule.Value);
-        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
@@ -138,10 +136,34 @@ namespace PPE3_Stripscrabble
         {
             if (Test() == false)
             {
-                MessageBox.Show(" Veuillez remplir au moins un champs QUANTITE et un champs MONTANT !");
+                MessageBox.Show(" Veuillez remplir au moins un champ QUANTITE !");
             }
             else
             {
+                LigneFraisForfait Nuitee = new LigneFraisForfait();
+                Nuitee.idVisiteur = Modele.getIdVisiteur();
+                Nuitee.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
+                Nuitee.quantite = Convert.ToInt16(numericUpDownQteNuit.Value);
+
+                LigneFraisForfait Repas = new LigneFraisForfait();
+                Repas.idVisiteur = Modele.getIdVisiteur();
+                Repas.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
+                Repas.quantite = Convert.ToInt16(numericUpDownQteRepas.Value);
+
+                LigneFraisForfait Vehicule = new LigneFraisForfait();
+                Vehicule.idVisiteur = Modele.getIdVisiteur();
+                Vehicule.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
+                Vehicule.quantite = Convert.ToInt16(numericUpDownQteVehicule.Value);
+
+
+                uneFicheFrais.LigneFraisForfait.Add(Nuitee);
+                uneFicheFrais.LigneFraisForfait.Add(Repas);
+                uneFicheFrais.LigneFraisForfait.Add(Vehicule);
+
+                
+                //Pour chaque frais forfait : ajouter à la liste fraisForfait de fichefrais, pareil pour H forfait
+              
+                Modele.ajouterUneDemande(uneFicheFrais);
                 this.Close();
             }
         }
