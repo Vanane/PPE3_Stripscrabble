@@ -66,6 +66,7 @@
             this.cONSULTERUNEDEMANDEToolStripMenuItem.Name = "cONSULTERUNEDEMANDEToolStripMenuItem";
             this.cONSULTERUNEDEMANDEToolStripMenuItem.Size = new System.Drawing.Size(170, 20);
             this.cONSULTERUNEDEMANDEToolStripMenuItem.Text = "CONSULTER UNE DEMANDE";
+            this.cONSULTERUNEDEMANDEToolStripMenuItem.Click += new System.EventHandler(this.cONSULTERUNEDEMANDEToolStripMenuItem_Click);
             // 
             // FormDemandeRemboursement
             // 

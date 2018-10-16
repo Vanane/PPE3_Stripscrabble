@@ -19,10 +19,12 @@ namespace PPE3_Stripscrabble
 
         private void btnValider_Click(object sender, EventArgs e)
         {
-            Modele.dateHF = dateTimePicker.Value.Date;
-            Modele.libelleHF = txtBoxLib.Text;
+            Modele.DateHF = dateTimePicker.Value.Date;
+            Modele.LibelleHF = txtBoxLib.Text;
             Modele.MontantHF = Decimal.ToDouble(nudMontant.Value);
-            Modele.dateduMois = dateTimePicker.Value.Date.Month;
+            Modele.DateduMois = dateTimePicker.Value.Date.Month;
+
+            this.Close();
 
             //Si le mois est changé alors affiché une erreur + Ajouter une date limite qui est le 20 de mois
             

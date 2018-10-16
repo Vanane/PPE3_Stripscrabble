@@ -156,6 +156,7 @@
             this.btnValider.TabIndex = 8;
             this.btnValider.Text = "VALIDER";
             this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // cBHF
             // 
@@ -365,6 +366,7 @@
             this.Montant});
             this.dgvHF.Location = new System.Drawing.Point(34, 442);
             this.dgvHF.Name = "dgvHF";
+            this.dgvHF.ReadOnly = true;
             this.dgvHF.Size = new System.Drawing.Size(480, 97);
             this.dgvHF.TabIndex = 37;
             this.dgvHF.Visible = false;

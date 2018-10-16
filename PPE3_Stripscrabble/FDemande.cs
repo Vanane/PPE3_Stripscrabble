@@ -12,6 +12,8 @@ namespace PPE3_Stripscrabble
 {
     public partial class FDemande : Form
     {
+        bool Clique;
+
         public FDemande()
         {
             InitializeComponent();
@@ -24,7 +26,8 @@ namespace PPE3_Stripscrabble
             labMatricule.Text = Modele.getIdVisiteur();
             labNom.Text = Modele.getNom();
             labPrenom.Text = Modele.getPrenom();
-            labDate.Text = moisDeLAnnee[Modele.dateduMois]; //concatener avec l'année
+            labDate.Text = moisDeLAnnee[Modele.DateduMois]; //concatener avec l'année
+            Clique = false;
 
 
 
@@ -56,7 +59,8 @@ namespace PPE3_Stripscrabble
         {
             FAjoutHorsForfait Ajout = new FAjoutHorsForfait();
             Ajout.Show();
-                     
+
+            Clique = true;
         }
 
         private void cBHF_CheckedChanged(object sender, EventArgs e)
@@ -75,15 +79,23 @@ namespace PPE3_Stripscrabble
 
         private void butAjoutLigne_Click(object sender, EventArgs e)
         {
-            DateTime DateHF;
-            string libHF;
-            double montantHF;
+            if (Clique == true)
+            {
+                DateTime DateHF;
+                string libHF;
+                double montantHF;
 
-            DateHF = Modele.dateHF;
-            libHF = Modele.libelleHF;
-            montantHF = Modele.MontantHF;
+                DateHF = Modele.DateHF;
+                libHF = Modele.LibelleHF;
+                montantHF = Modele.MontantHF;
 
-            dgvHF.Rows.Add(DateHF, libHF, montantHF);
+                dgvHF.Rows.Add(DateHF, libHF, montantHF);
+
+                Clique = false;
+            }
+
+            
+
         }
 
         private void numericUpDownQteNuit_ValueChanged(object sender, EventArgs e)
@@ -119,7 +131,33 @@ namespace PPE3_Stripscrabble
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-          
+            this.Close();
+        }
+
+        private void btnValider_Click(object sender, EventArgs e)
+        {
+            if (Test() == false)
+            {
+                MessageBox.Show(" Veuillez remplir au moins un champs QUANTITE et un champs MONTANT !");
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+        private bool Test()
+        {
+            bool remplie;
+            if (Convert.ToDecimal(numericUpDownQteNuit.Value) != 0 && Convert.ToDecimal(nudMontantUnitNuit.Value) != 0 || Convert.ToDecimal(numericUpDownQteRepas.Value) != 0 && Convert.ToDecimal(nudMontantUnitRepas.Value) != 0 || Convert.ToDecimal(numericUpDownQteVehicule.Value) != 0 && Convert.ToDecimal(nudMontantUnitVehicule.Value) != 0)
+            {
+                remplie = true;
+            }
+            else
+            {
+                remplie = false;
+
+            }
+            return remplie;
         }
     }
 }

@@ -25,14 +25,13 @@ namespace PPE3_Stripscrabble
 
         }
 
-        private void cLOTURERUNEDEMANDEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void vERIFIERUNEDEMANDEToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FCloture Cloture = new FCloture();
-            
-            Cloture.Show();
+            FVerifie Verifie = new FVerifie();
+            FVerifie.Show();
         }
 
-        private void vERIFIERUNEDEMANDEToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cONSULTERUNEDEMANDEToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
