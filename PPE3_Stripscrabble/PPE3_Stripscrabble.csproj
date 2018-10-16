@@ -85,11 +85,17 @@
     <Compile Include="fichefrais.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormVueConnexionUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormVueConnexionUtilisateur.Designer.cs">
+      <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueMenu.Designer.cs">
+      <DependentUpon>FormVueMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDemandeRemboursement.cs">
       <SubType>Form</SubType>
@@ -163,6 +169,11 @@
     <Compile Include="Visiteur.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
+      <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueMenu.resx">
+      <DependentUpon>FormVueMenu.cs</DependentUpon>
     <EmbeddedResource Include="FAjoutHorsForfait.resx">
       <DependentUpon>FAjoutHorsForfait.cs</DependentUpon>
     </EmbeddedResource>
