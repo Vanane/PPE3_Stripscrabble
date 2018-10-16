@@ -1,0 +1,131 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PPE3_Stripscrabble
+{
+    public partial class FDemande : Form
+    {
+        public FDemande()
+        {
+            InitializeComponent();
+        }
+
+        private void FDemande_Load(object sender, EventArgs e)
+        {
+            //Recupere les données de l'utilisateur au chargement de la page
+            string[] moisDeLAnnee = {"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Décembre "};
+            labMatricule.Text = Modele.getIdVisiteur();
+            labNom.Text = Modele.getNom();
+            labPrenom.Text = Modele.getPrenom();
+            labDate.Text = moisDeLAnnee[Modele.dateduMois]; //concatener avec l'année
+
+
+
+            if (cBHF.Checked == true)
+            {
+                dgvHF.Visible = true;
+            } else
+            {
+                dgvHF.Visible = false;
+            }
+            // Mettre txtBoxValue au chargement de la page ne va rien afficher vu que les valeurs sont initialement vide
+            // Si les valeurs change alors txtBox prends la valeur de ...
+            
+              //  txtBoxTotalNuit.Text = Convert.ToString(nudMontantUnitNuit.Value * numericUpDownQteNuit.Value);
+              //  txtBoxTotalRepas.Text = Convert.ToString(nudMontantUnitRepas.Value * numericUpDownQteRepas.Value);
+              //  txtBoxTotalVehicule.Text = Convert.ToString(nudMontantUnitVehicule.Value * numericUpDownQteVehicule.Value);
+            
+        }
+
+        private void MontantUnitNuit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) || (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void butAjoutHF_Click(object sender, EventArgs e)
+        {
+            FAjoutHorsForfait Ajout = new FAjoutHorsForfait();
+            Ajout.Show();
+                     
+        }
+
+        private void cBHF_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cBHF.Checked == true)
+            {
+                labDateFrais.Visible = true;
+                lablib.Visible = true;
+                labMontantHF.Visible = true;
+
+                dgvHF.Visible = true;
+                butAjoutHF.Visible = true;
+                butAjoutLigne.Visible = true;
+            }
+        }
+
+        private void butAjoutLigne_Click(object sender, EventArgs e)
+        {
+            DateTime DateHF;
+            string libHF;
+            double montantHF;
+
+            DateHF = Modele.dateHF;
+            libHF = Modele.libelleHF;
+            montantHF = Modele.MontantHF;
+
+            dgvHF.Rows.Add(DateHF, libHF, montantHF);
+        }
+
+        private void numericUpDownQteNuit_ValueChanged(object sender, EventArgs e)
+        {
+            txtBoxTotalNuit.Text = Convert.ToString(nudMontantUnitNuit.Value * numericUpDownQteNuit.Value);
+        }
+
+        private void nudMontantUnitNuit_ValueChanged(object sender, EventArgs e)
+        {
+            txtBoxTotalNuit.Text = Convert.ToString(nudMontantUnitNuit.Value * numericUpDownQteNuit.Value);
+
+        }
+
+        private void numericUpDownQteRepas_ValueChanged(object sender, EventArgs e)
+        {
+            txtBoxTotalRepas.Text = Convert.ToString(nudMontantUnitRepas.Value * numericUpDownQteRepas.Value);
+        }
+
+        private void nudMontantUnitRepas_ValueChanged(object sender, EventArgs e)
+        {
+            txtBoxTotalRepas.Text = Convert.ToString(nudMontantUnitRepas.Value * numericUpDownQteRepas.Value);
+        }
+
+        private void numericUpDownQteVehicule_ValueChanged(object sender, EventArgs e)
+        {
+            txtBoxTotalVehicule.Text = Convert.ToString(nudMontantUnitVehicule.Value * numericUpDownQteVehicule.Value);
+        }
+
+        private void nudMontantUnitVehicule_ValueChanged(object sender, EventArgs e)
+        {
+            txtBoxTotalVehicule.Text = Convert.ToString(nudMontantUnitVehicule.Value * numericUpDownQteVehicule.Value);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+          
+        }
+    }
+}
+
+
+
+
+
+

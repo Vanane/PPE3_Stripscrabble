@@ -61,8 +61,26 @@
     <Compile Include="Etat.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="FAjoutHorsForfait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAjoutHorsForfait.Designer.cs">
+      <DependentUpon>FAjoutHorsForfait.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAMILLE.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FCloture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCloture.Designer.cs">
+      <DependentUpon>FCloture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FDemande.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDemande.Designer.cs">
+      <DependentUpon>FDemande.cs</DependentUpon>
     </Compile>
     <Compile Include="fichefrais.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
@@ -72,6 +90,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDemandeRemboursement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDemandeRemboursement.Designer.cs">
+      <DependentUpon>FormDemandeRemboursement.cs</DependentUpon>
     </Compile>
     <Compile Include="FraisForfait.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
@@ -127,11 +151,26 @@
     <Compile Include="SPECIALITE.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="TypeVisiteur.cs">
+      <DependentUpon>modeleBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Visiteur.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FAjoutHorsForfait.resx">
+      <DependentUpon>FAjoutHorsForfait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCloture.resx">
+      <DependentUpon>FCloture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDemande.resx">
+      <DependentUpon>FDemande.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDemandeRemboursement.resx">
+      <DependentUpon>FormDemandeRemboursement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -141,6 +180,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="modeleBDD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -174,6 +214,8 @@
       <DependentUpon>modeleBDD.edmx</DependentUpon>
       <LastGenOutput>modeleBDD.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\logo.png" />
+    <None Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
