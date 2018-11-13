@@ -36,5 +36,10 @@ namespace PPE3_Stripscrabble
             Application.Run(new FormVueConnexionUtilisateur());
         }
 
+        private void buttonFormVanane_Click(object sender, EventArgs e)
+        {
+            FormVueGestionUtilisateur FVGU = new FormVueGestionUtilisateur();
+            FVGU.Show();
+        }
     }
 }

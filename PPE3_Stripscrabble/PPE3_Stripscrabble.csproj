@@ -73,11 +73,23 @@
     <Compile Include="FormVueConnexionUtilisateur.Designer.cs">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVueGestionUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueGestionUtilisateur.Designer.cs">
+      <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVueMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormVueMenu.Designer.cs">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueModifMdpConfirmation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueModifMdpConfirmation.Designer.cs">
+      <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="FraisForfait.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
@@ -139,8 +151,14 @@
     <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVueGestionUtilisateur.resx">
+      <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueMenu.resx">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueModifMdpConfirmation.resx">
+      <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

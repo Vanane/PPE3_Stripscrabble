@@ -57,20 +57,20 @@
             this.labelIdentifiant.TabIndex = 1;
             this.labelIdentifiant.Text = "Identifiant :";
             // 
+            // textBoxIdentifiant
+            // 
+            this.textBoxIdentifiant.Location = new System.Drawing.Point(182, 190);
+            this.textBoxIdentifiant.Name = "textBoxIdentifiant";
+            this.textBoxIdentifiant.Size = new System.Drawing.Size(200, 20);
+            this.textBoxIdentifiant.TabIndex = 0;
+            // 
             // textBoxMDP
             // 
             this.textBoxMDP.Location = new System.Drawing.Point(182, 228);
             this.textBoxMDP.Name = "textBoxMDP";
             this.textBoxMDP.PasswordChar = '●';
             this.textBoxMDP.Size = new System.Drawing.Size(200, 20);
-            this.textBoxMDP.TabIndex = 2;
-            // 
-            // textBoxIdentifiant
-            // 
-            this.textBoxIdentifiant.Location = new System.Drawing.Point(182, 190);
-            this.textBoxIdentifiant.Name = "textBoxIdentifiant";
-            this.textBoxIdentifiant.Size = new System.Drawing.Size(200, 20);
-            this.textBoxIdentifiant.TabIndex = 3;
+            this.textBoxMDP.TabIndex = 1;
             // 
             // pictureBoxLogo
             // 
@@ -88,7 +88,7 @@
             this.buttonConnexion.Location = new System.Drawing.Point(200, 264);
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(100, 30);
-            this.buttonConnexion.TabIndex = 5;
+            this.buttonConnexion.TabIndex = 2;
             this.buttonConnexion.Text = "Connexion";
             this.buttonConnexion.UseVisualStyleBackColor = true;
             this.buttonConnexion.Click += new System.EventHandler(this.buttonConnexion_Click);
