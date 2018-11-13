@@ -60,7 +60,7 @@ namespace PPE3_Stripscrabble
                 Modele.visiteurConnnecte = VisiteurParSesId(id, mdpHash);
                 r = true;
             }
-            catch
+            catch (Exception e)
             {
                 r = false;
             }
@@ -73,7 +73,7 @@ namespace PPE3_Stripscrabble
             init();
         }
 
-        private static string GetMd5Hash(string PasswdSaisi)         
+        private static string GetMd5Hash(string PasswdSaisi)
         {
             //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères "0x".
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(PasswdSaisi);
@@ -85,6 +85,54 @@ namespace PPE3_Stripscrabble
             }
             return sb.ToString();
         }
+
+
+        public static void modifierInformations(string nom, string prenom, string rue, string ville)
+        {
+            visiteurConnnecte.nom = nom;
+            visiteurConnnecte.prenom = prenom;
+            visiteurConnnecte.ville = ville;
+            visiteurConnnecte.rue = rue;
+
+            try
+            {
+                connexion.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                connexion.Dispose();
+                init();
+            }
+        }
+
+        public static bool modifierMDP(string mdp, string nouv)
+        {
+            if (GetMd5Hash(mdp).ToUpper() == visiteurConnnecte.password.TrimEnd(' '))
+            {
+                visiteurConnnecte.password = GetMd5Hash(nouv).ToUpper();
+                Console.WriteLine(visiteurConnnecte.password);
+
+                try
+                {
+                    connexion.SaveChanges();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    connexion.Dispose();
+                    init();
+                }
+                return true;
+            }
+            else return false;
+        }
+        
+
+
+        /****************************/
+        /*ACCES A LA BASE DE DONNEES*/
+        /****************************/
 
         private static Visiteur VisiteurParSesId(string id, string mdp)
         {
