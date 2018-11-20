@@ -5,40 +5,42 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="fb7adf41686b4cb291598025cc883338" Name="Diagram1" ZoomLevel="78">
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Etat" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.FAMILLE" Width="1.5" PointX="10.5" PointY="14" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.fichefrais" Width="1.5" PointX="5.5" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.FraisForfait" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Laboratoire" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.LigneFraisForfait" Width="1.5" PointX="10.5" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.LigneFraisHorsForfait" Width="1.5" PointX="5.5" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.MEDECIN" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.MEDICAMENT" Width="1.5" PointX="10.5" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.MOTIF" Width="1.5" PointX="6" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.OFFRIR" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.RAPPORT" Width="1.5" PointX="8.25" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Region" Width="1.5" PointX="8.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Secteur" Width="1.5" PointX="2.875" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.SPECIALITE" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Visiteur" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__fichefrai__idEta__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.medicament_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__fichefrai__idVis__4BAC3F29" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__LigneFraisForfai__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__LigneFraisHorsFo__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__LigneFrai__idFra__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_Laboratoire" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.medecin_fk" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.rapport_fk2" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.offrir_fk2" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.rapport_fk3" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.offrir_fk1" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.rapport_fk1" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_SECTEUR" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_VISITEUR" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_VISITEURSECTEUR" ManuallyRouted="false" />
-        <AssociationConnector Association="PPE3_StripscrabbleModel.Travailler" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Date" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Etat" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.FAMILLE" Width="1.5" PointX="6" PointY="23.125" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.fichefrais" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.FraisForfait" Width="1.5" PointX="8.25" PointY="5" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Laboratoire" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.LigneFraisForfait" Width="1.5" PointX="10.5" PointY="8.875" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.LigneFraisHorsForfait" Width="1.5" PointX="7.5" PointY="16.75" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.MEDECIN" Width="1.5" PointX="6" PointY="0.75" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.MEDICAMENT" Width="1.5" PointX="8.25" PointY="22.625" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.MOTIF" Width="1.5" PointX="6" PointY="5.375" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.OFFRIR" Width="1.5" PointX="10.5" PointY="6" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.RAPPORT" Width="1.5" PointX="8.25" PointY="8.5" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Region" Width="1.5" PointX="7.5" PointY="13.5" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Secteur" Width="1.5" PointX="5.25" PointY="19.5" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.SPECIALITE" Width="1.5" PointX="3.75" PointY="2.5" />
+        <EntityTypeShape EntityType="PPE3_StripscrabbleModel.Visiteur" Width="1.5" PointX="3" PointY="7.75" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__fichefrai__idEta__4AB81AF0" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.medicament_fk" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__fichefrai__idVis__4BAC3F29" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__LigneFraisForfai__02FC7413" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__LigneFraisHorsFo__0B91BA14" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK__LigneFrai__idFra__03F0984C" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_Laboratoire" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.medecin_fk" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.rapport_fk2" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.offrir_fk2" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.rapport_fk3" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.offrir_fk1" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.rapport_fk1" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_SECTEUR" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_VISITEUR" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.FK_VISITEURSECTEUR" />
+        <AssociationConnector Association="PPE3_StripscrabbleModel.Travailler" />
       </Diagram>
+      <Diagram DiagramId="be69671249d84fdc8a5dc2f715dd5432" Name="Diagram2" />
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -58,6 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Date.cs">
+      <DependentUpon>modeleBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Etat.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>

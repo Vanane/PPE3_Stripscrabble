@@ -23,8 +23,8 @@ namespace PPE3_Stripscrabble
 
         private void FDemande_Load(object sender, EventArgs e)
         {
-            uneFicheFrais.idVisiteur= Modele.getIdVisiteur();
-            
+            uneFicheFrais = new fichefrais();
+            uneFicheFrais.idVisiteur = Modele.getIdVisiteur();
             //Recupere les données de l'utilisateur au chargement de la page
             labMatricule.Text = Modele.getIdVisiteur();
             labNom.Text = Modele.getNom();
@@ -42,7 +42,6 @@ namespace PPE3_Stripscrabble
                
 
             }
-             uneFicheFrais = new fichefrais();
 
             if (cBHF.Checked == true)
             {
@@ -165,10 +164,16 @@ namespace PPE3_Stripscrabble
                 Vehicule.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
                 Vehicule.quantite = Convert.ToInt16(numericUpDownQteVehicule.Value);
 
-
-                uneFicheFrais.LigneFraisForfait.Add(Nuitee);
-                uneFicheFrais.LigneFraisForfait.Add(Repas);
-                uneFicheFrais.LigneFraisForfait.Add(Vehicule);
+                try
+                {
+                    uneFicheFrais.LigneFraisForfait.Add(Nuitee);
+                    uneFicheFrais.LigneFraisForfait.Add(Repas);
+                    uneFicheFrais.LigneFraisForfait.Add(Vehicule);
+                }
+                catch {
+                    MessageBox.Show("Erreur lors de la validation des frais");
+                }
+                
 
                 
                 //Pour chaque frais forfait : ajouter à la liste fraisForfait de fichefrais, pareil pour H forfait

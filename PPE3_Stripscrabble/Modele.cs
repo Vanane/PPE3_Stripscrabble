@@ -154,34 +154,34 @@ namespace PPE3_Stripscrabble
 
         public static void ajouterUneDemande(fichefrais f)
         {
+           
+            LigneFraisForfait fraisNuit = f.LigneFraisForfait.ElementAt(0);
+            LigneFraisForfait fraisMidi = f.LigneFraisForfait.ElementAt(1);
+            LigneFraisForfait fraisVoiture = f.LigneFraisForfait.ElementAt(2);
 
-        LigneFraisForfait fraisNuit = f.LigneFraisForfait.ElementAt(0);
-        LigneFraisForfait fraisMidi = f.LigneFraisForfait.ElementAt(1);
-        LigneFraisForfait fraisVoiture = f.LigneFraisForfait.ElementAt(2);
-        
-       // Parcours les lignes horsForfaits
+            // Parcours les lignes horsForfaits
 
-            foreach ( LigneFraisHorsForfait l in f.LigneFraisHorsForfait )
+            foreach (LigneFraisHorsForfait l in f.LigneFraisHorsForfait)
             {
-
+                
             }
-                
-        try
-        {
-            connexion.SaveChanges(); 
-        }
-        catch(Exception e)
+
+            try
             {
-                
+                connexion.SaveChanges();
+            }
+            catch (Exception e)
+            {
+
             }
             // Je veux recuperer la collection de fiches frais du visiteur
-            visiteurConnnecte.fichefrais.Add(f);            
-            
+            visiteurConnnecte.fichefrais.Add(f);
+
             // REMPLIR L OBJET FRAISFORFAIT depuis ligneforfait, et specifier fiche de frais dans cette objet idem pour fraisforfait
-           //$exception	{"Échec de la validation d'une ou de plusieurs entités. Pour plus d'informations, consultez 'EntityValidationErrors'."}	System.Data.Entity.Validation.DbEntityValidationException
+            //$exception	{"Échec de la validation d'une ou de plusieurs entités. Pour plus d'informations, consultez 'EntityValidationErrors'."}	System.Data.Entity.Validation.DbEntityValidationException
 
 
-
+        }
         private static string GetMd5Hash(string PasswdSaisi)
         {
             //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères "0x".
