@@ -13,6 +13,7 @@ namespace PPE3_Stripscrabble
     {
         private static PPE3_StripscrabbleEntities connexion;
         private static Visiteur visiteurConnnecte;
+
         private static string typeDemande;
 
         private static int QteNuit;
@@ -24,7 +25,6 @@ namespace PPE3_Stripscrabble
         private static double MontantHf;
         private static int dateduMois;
 
-     
         public static void init()
         {
             connexion = new PPE3_StripscrabbleEntities();
@@ -118,6 +118,22 @@ namespace PPE3_Stripscrabble
             return r;
         }
 
+        public static fichefrais getLaFicheEnDate()
+        {
+            fichefrais f = visiteurConnnecte.fichefrais.Where(x => x.mois.TrimEnd() == DateTime.Now.Month.ToString()).First();
+           
+            return f;
+            
+            
+            
+            /* List<LigneFraisHorsForfait> vretour = new List<LigneFraisHorsForfait>();
+
+            foreach (LigneFraisHorsForfait l in f.LigneFraisHorsForfait)
+            {
+                // Recuperer les lignes FraisHorsForfait de l'utilisateur.
+                vretour.Add(l);
+            }*/
+        }
 
         public static void resetConnexion()
         {
@@ -151,37 +167,55 @@ namespace PPE3_Stripscrabble
             return vretour;
         }
 
-
-        public static void ajouterUneDemande(fichefrais f)
+        public static void sauvegarderLigneFrais(LigneFraisForfait l)
         {
-           
-            LigneFraisForfait fraisNuit = f.LigneFraisForfait.ElementAt(0);
-            LigneFraisForfait fraisMidi = f.LigneFraisForfait.ElementAt(1);
-            LigneFraisForfait fraisVoiture = f.LigneFraisForfait.ElementAt(2);
-
-            // Parcours les lignes horsForfaits
-
-            foreach (LigneFraisHorsForfait l in f.LigneFraisHorsForfait)
-            {
-                
-            }
-
+            connexion.LigneFraisForfait.Add(l);
             try
             {
                 connexion.SaveChanges();
             }
-            catch (Exception e)
+            catch(Exception vex)
             {
-
+                System.Windows.Forms.MessageBox.Show("Erreur {0}", vex.Message);
+                connexion.Dispose();
+                init();
             }
-            // Je veux recuperer la collection de fiches frais du visiteur
-            visiteurConnnecte.fichefrais.Add(f);
-
-            // REMPLIR L OBJET FRAISFORFAIT depuis ligneforfait, et specifier fiche de frais dans cette objet idem pour fraisforfait
-            //$exception	{"Échec de la validation d'une ou de plusieurs entités. Pour plus d'informations, consultez 'EntityValidationErrors'."}	System.Data.Entity.Validation.DbEntityValidationException
-
-
         }
+
+        public static void sauvegarderLigneFraisHorsForfait(LigneFraisHorsForfait l)
+        {
+            connexion.LigneFraisHorsForfait.Add(l);
+            try
+            {
+                connexion.SaveChanges();
+            }
+            catch (Exception vex)
+            {
+                System.Windows.Forms.MessageBox.Show("Erreur {0}", vex.Message);
+                connexion.Dispose();
+                init();
+            }
+        }
+
+        public static void sauvegarderFicheFrais(fichefrais f)
+        {
+            connexion.fichefrais.Add(f);
+            try
+            {
+                connexion.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        public static FraisForfait getTypeFraisSelonSonId(string id)
+        {
+            //Select libelle from FraisForfait Where Fraisforfait.id == id ;
+            return connexion.FraisForfait.Where(x => x.id == id).First();
+        }
+
         private static string GetMd5Hash(string PasswdSaisi)
         {
             //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères "0x".

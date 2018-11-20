@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace PPE3_Stripscrabble
 {
@@ -20,7 +21,7 @@ namespace PPE3_Stripscrabble
         {
             InitializeComponent();
         }
-
+       
         private void FDemande_Load(object sender, EventArgs e)
         {
             uneFicheFrais = new fichefrais();
@@ -31,6 +32,7 @@ namespace PPE3_Stripscrabble
             labPrenom.Text = Modele.getPrenom();
           //  labDate.Text = moisDeLAnnee[Modele.DateduMois]; //concatener avec l'année
             labDate.Text = moisDeLAnnee[DateTime.Now.Month - 1] + " " + DateTime.Now.Year; //concatener avec l'année
+            uneFicheFrais.mois = DateTime.Now.Month.ToString();
             Clique = false;
 
             if ( Modele.getTypeDemande()== "modifier")
@@ -153,39 +155,62 @@ namespace PPE3_Stripscrabble
                 Nuitee.idVisiteur = Modele.getIdVisiteur();
                 Nuitee.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
                 Nuitee.quantite = Convert.ToInt16(numericUpDownQteNuit.Value);
+                Nuitee.fichefrais = uneFicheFrais;
+                Nuitee.FraisForfait = Modele.getTypeFraisSelonSonId("NUI");
 
                 LigneFraisForfait Repas = new LigneFraisForfait();
                 Repas.idVisiteur = Modele.getIdVisiteur();
                 Repas.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
                 Repas.quantite = Convert.ToInt16(numericUpDownQteRepas.Value);
+                Repas.fichefrais = uneFicheFrais;
+                Repas.FraisForfait = Modele.getTypeFraisSelonSonId("REP");
+
 
                 LigneFraisForfait Vehicule = new LigneFraisForfait();
                 Vehicule.idVisiteur = Modele.getIdVisiteur();
                 Vehicule.mois = moisDeLAnnee[DateTime.Now.Month - 1].Substring(0, 6);
                 Vehicule.quantite = Convert.ToInt16(numericUpDownQteVehicule.Value);
+                Vehicule.fichefrais = uneFicheFrais;
+                Vehicule.FraisForfait = Modele.getTypeFraisSelonSonId("KM");
 
+                Modele.sauvegarderFicheFrais(uneFicheFrais);
+                Modele.sauvegarderLigneFrais(Nuitee);
+                Modele.sauvegarderLigneFrais(Repas);
+                Modele.sauvegarderLigneFrais(Vehicule);
                 try
                 {
-                    uneFicheFrais.LigneFraisForfait.Add(Nuitee);
-                    uneFicheFrais.LigneFraisForfait.Add(Repas);
-                    uneFicheFrais.LigneFraisForfait.Add(Vehicule);
-                }
-                catch {
-                    MessageBox.Show("Erreur lors de la validation des frais");
-                }
-                
+                    int i = 0;
+                    while (i + 1 < dgvHF.RowCount)
+                    {
+                        DataGridViewRow l = dgvHF.Rows[i];
+                        LigneFraisHorsForfait hf = new LigneFraisHorsForfait();
+                        hf.montant = decimal.Parse(l.Cells[2].Value.ToString());
+                        hf.date = DateTime.Parse(l.Cells[0].Value.ToString());
+                        hf.libelle = l.Cells[1].Value.ToString();
+                        hf.fichefrais = uneFicheFrais;
+                        // Recuperer les lignes FraisHorsForfait de l'utilisateur.
 
-                
-                //Pour chaque frais forfait : ajouter à la liste fraisForfait de fichefrais, pareil pour H forfait
-              
-                Modele.ajouterUneDemande(uneFicheFrais);
-                this.Close();
+                        Modele.sauvegarderLigneFraisHorsForfait(hf);
+                        i++;
+                    }
+
+                    this.Close();
+                }
+                catch(Exception ex)
+                {                    
+                    MessageBox.Show(ex.ToString());
+                }
             }
         }
         private bool Test()
         {
             bool remplie;
-            if (Convert.ToDecimal(numericUpDownQteNuit.Value) != 0 && Convert.ToDecimal(nudMontantUnitNuit.Value) != 0 || Convert.ToDecimal(numericUpDownQteRepas.Value) != 0 && Convert.ToDecimal(nudMontantUnitRepas.Value) != 0 || Convert.ToDecimal(numericUpDownQteVehicule.Value) != 0 && Convert.ToDecimal(nudMontantUnitVehicule.Value) != 0)
+            if (Convert.ToDecimal(numericUpDownQteNuit.Value) != 0 &&
+                Convert.ToDecimal(nudMontantUnitNuit.Value) != 0 ||
+                Convert.ToDecimal(numericUpDownQteRepas.Value) != 0 &&
+                Convert.ToDecimal(nudMontantUnitRepas.Value) != 0 ||
+                Convert.ToDecimal(numericUpDownQteVehicule.Value) != 0 &&
+                Convert.ToDecimal(nudMontantUnitVehicule.Value) != 0)
             {
                 remplie = true;
             }

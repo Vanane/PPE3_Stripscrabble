@@ -21,7 +21,9 @@ namespace PPE3_Stripscrabble
         private void FVerifie_Load(object sender, EventArgs e)
         {
             //Récuperer toutes les demandes en cours d'une personne
-            //dgvficheFrais.DataSource = Modele.getLesFichesFrais();
+            fichefrais f = Modele.getLaFicheEnDate();
+            dgvficheFrais.DataSource = Modele.getLaFicheFrais();
+
         }
 
         private void btnmodif_Click(object sender, EventArgs e)
