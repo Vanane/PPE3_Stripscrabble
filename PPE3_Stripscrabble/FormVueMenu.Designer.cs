@@ -85,6 +85,7 @@
             this.buttonFormIlan.TabIndex = 4;
             this.buttonFormIlan.Text = "Test Form Ilan";
             this.buttonFormIlan.UseVisualStyleBackColor = true;
+            this.buttonFormIlan.Click += new System.EventHandler(this.buttonFormIlan_Click);
             // 
             // FormVueMenu
             // 

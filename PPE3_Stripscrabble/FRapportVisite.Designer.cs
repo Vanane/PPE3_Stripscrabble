@@ -48,6 +48,10 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnRetirMedocEchant = new System.Windows.Forms.Button();
             this.btnAjoutMedocEchant = new System.Windows.Forms.Button();
+            this.btnAnnulerRapport = new System.Windows.Forms.Button();
+            this.btnValiderRapport = new System.Windows.Forms.Button();
+            this.cbRemplacant = new System.Windows.Forms.CheckBox();
+            this.btnAjoutRemplacant = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedocPresent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -86,11 +90,12 @@
             this.cbBoxMed.Name = "cbBoxMed";
             this.cbBoxMed.Size = new System.Drawing.Size(121, 21);
             this.cbBoxMed.TabIndex = 3;
+            this.cbBoxMed.SelectedIndexChanged += new System.EventHandler(this.cbBoxMed_SelectedIndexChanged);
             // 
             // lblNomMed
             // 
             this.lblNomMed.AutoSize = true;
-            this.lblNomMed.Location = new System.Drawing.Point(343, 49);
+            this.lblNomMed.Location = new System.Drawing.Point(309, 49);
             this.lblNomMed.Name = "lblNomMed";
             this.lblNomMed.Size = new System.Drawing.Size(38, 13);
             this.lblNomMed.TabIndex = 4;
@@ -99,7 +104,7 @@
             // lblnomMedSelec
             // 
             this.lblnomMedSelec.AutoSize = true;
-            this.lblnomMedSelec.Location = new System.Drawing.Point(402, 49);
+            this.lblnomMedSelec.Location = new System.Drawing.Point(368, 49);
             this.lblnomMedSelec.Name = "lblnomMedSelec";
             this.lblnomMedSelec.Size = new System.Drawing.Size(70, 13);
             this.lblnomMedSelec.TabIndex = 5;
@@ -126,7 +131,7 @@
             // lblPrenomMed
             // 
             this.lblPrenomMed.AutoSize = true;
-            this.lblPrenomMed.Location = new System.Drawing.Point(343, 62);
+            this.lblPrenomMed.Location = new System.Drawing.Point(309, 62);
             this.lblPrenomMed.Name = "lblPrenomMed";
             this.lblPrenomMed.Size = new System.Drawing.Size(52, 13);
             this.lblPrenomMed.TabIndex = 9;
@@ -135,7 +140,7 @@
             // lblPrenomMedSelect
             // 
             this.lblPrenomMedSelect.AutoSize = true;
-            this.lblPrenomMedSelect.Location = new System.Drawing.Point(401, 62);
+            this.lblPrenomMedSelect.Location = new System.Drawing.Point(367, 62);
             this.lblPrenomMedSelect.Name = "lblPrenomMedSelect";
             this.lblPrenomMedSelect.Size = new System.Drawing.Size(85, 13);
             this.lblPrenomMedSelect.TabIndex = 10;
@@ -194,6 +199,7 @@
             this.btnAjoutMedocPresent.TabIndex = 16;
             this.btnAjoutMedocPresent.Text = "Ajouter";
             this.btnAjoutMedocPresent.UseVisualStyleBackColor = true;
+            this.btnAjoutMedocPresent.Click += new System.EventHandler(this.btnAjoutMedocPresent_Click);
             // 
             // btnRetirMedocPresent
             // 
@@ -232,12 +238,55 @@
             this.btnAjoutMedocEchant.TabIndex = 19;
             this.btnAjoutMedocEchant.Text = "Ajouter";
             this.btnAjoutMedocEchant.UseVisualStyleBackColor = true;
+            this.btnAjoutMedocEchant.Click += new System.EventHandler(this.btnAjoutMedocEchant_Click);
+            // 
+            // btnAnnulerRapport
+            // 
+            this.btnAnnulerRapport.Location = new System.Drawing.Point(648, 491);
+            this.btnAnnulerRapport.Name = "btnAnnulerRapport";
+            this.btnAnnulerRapport.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnulerRapport.TabIndex = 21;
+            this.btnAnnulerRapport.Text = "Annuler";
+            this.btnAnnulerRapport.UseVisualStyleBackColor = true;
+            this.btnAnnulerRapport.Click += new System.EventHandler(this.btnAnnulerRapport_Click);
+            // 
+            // btnValiderRapport
+            // 
+            this.btnValiderRapport.Location = new System.Drawing.Point(553, 491);
+            this.btnValiderRapport.Name = "btnValiderRapport";
+            this.btnValiderRapport.Size = new System.Drawing.Size(75, 23);
+            this.btnValiderRapport.TabIndex = 22;
+            this.btnValiderRapport.Text = "Valider";
+            this.btnValiderRapport.UseVisualStyleBackColor = true;
+            // 
+            // cbRemplacant
+            // 
+            this.cbRemplacant.AutoSize = true;
+            this.cbRemplacant.Location = new System.Drawing.Point(458, 48);
+            this.cbRemplacant.Name = "cbRemplacant";
+            this.cbRemplacant.Size = new System.Drawing.Size(78, 17);
+            this.cbRemplacant.TabIndex = 23;
+            this.cbRemplacant.Text = "remplacant";
+            this.cbRemplacant.UseVisualStyleBackColor = true;
+            // 
+            // btnAjoutRemplacant
+            // 
+            this.btnAjoutRemplacant.Location = new System.Drawing.Point(542, 44);
+            this.btnAjoutRemplacant.Name = "btnAjoutRemplacant";
+            this.btnAjoutRemplacant.Size = new System.Drawing.Size(124, 23);
+            this.btnAjoutRemplacant.TabIndex = 24;
+            this.btnAjoutRemplacant.Text = "Ajouter un Remplacant";
+            this.btnAjoutRemplacant.UseVisualStyleBackColor = true;
             // 
             // FRapportVisite
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 563);
+            this.Controls.Add(this.btnAjoutRemplacant);
+            this.Controls.Add(this.cbRemplacant);
+            this.Controls.Add(this.btnValiderRapport);
+            this.Controls.Add(this.btnAnnulerRapport);
             this.Controls.Add(this.btnRetirMedocEchant);
             this.Controls.Add(this.btnAjoutMedocEchant);
             this.Controls.Add(this.dataGridView1);
@@ -260,6 +309,7 @@
             this.Controls.Add(this.lblAuteurRapport);
             this.Name = "FRapportVisite";
             this.Text = "FRapportVisite";
+            this.Load += new System.EventHandler(this.FRapportVisite_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedocPresent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -289,5 +339,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnRetirMedocEchant;
         private System.Windows.Forms.Button btnAjoutMedocEchant;
+        private System.Windows.Forms.Button btnAnnulerRapport;
+        private System.Windows.Forms.Button btnValiderRapport;
+        private System.Windows.Forms.CheckBox cbRemplacant;
+        private System.Windows.Forms.Button btnAjoutRemplacant;
     }
 }

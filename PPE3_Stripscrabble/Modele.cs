@@ -13,6 +13,7 @@ namespace PPE3_Stripscrabble
     {
         private static PPE3_StripscrabbleEntities connexion;
         private static Visiteur visiteurConnnecte;
+        private static bool etatMedoc;
 
         public static void init()
         {
@@ -32,6 +33,7 @@ namespace PPE3_Stripscrabble
         public static string getDateEmbauche() { return visiteurConnnecte.dateEmbauche; }
         public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
         public static string getPassword() { return visiteurConnnecte.password; }
+        public static bool getEtatMedoc() { return etatMedoc; }
 
         public static void setIdVisiteur(string p) { visiteurConnnecte.idVisiteur = p; }
         public static void setIdLabo(int p) { visiteurConnnecte.idLabo = p; }
@@ -43,6 +45,7 @@ namespace PPE3_Stripscrabble
         public static void setDateEmbauche(string p) { visiteurConnnecte.dateEmbauche = p; }
         public static void setIdentifiant(string p) { visiteurConnnecte.identifiant = p; }
         public static void setPassword(string p) { visiteurConnnecte.password = p; }
+        public static void setEtatMedoc(bool p) { etatMedoc = p; }
         #endregion
 
 
@@ -92,8 +95,32 @@ namespace PPE3_Stripscrabble
             return connexion.Visiteur.Where(x => (x.identifiant == id) && (x.password == mdp)).First();
         }
 
+        public static List<MEDECIN> listMedecin()
+        {
+            return connexion.MEDECIN.ToList();
+        }
+
+        public static List<MOTIF> listMotif()
+        {
+            return connexion.MOTIF.ToList();
+        }
+
+        public static List<MEDICAMENT> listMedoc()
+        {
+            return connexion.MEDICAMENT.ToList();
+        }
 
 
+
+        /*public static void leMedocEstPres()
+        {
+            medocEstPresente = true;
+        }
+
+        public static void leMedocEstEchan()
+        {
+            medocEstPresente = false;
+        }*/
 
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE
         

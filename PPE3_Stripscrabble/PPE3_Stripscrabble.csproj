@@ -61,6 +61,12 @@
     <Compile Include="Etat.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="FAjoutRemplacant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAjoutRemplacant.Designer.cs">
+      <DependentUpon>FAjoutRemplacant.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAMILLE.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
@@ -68,14 +74,13 @@
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="FormVueConnexionUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FAjoutMedicament.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FAjoutMedicament.Designer.cs">
       <DependentUpon>FAjoutMedicament.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormVueConnexionUtilisateur.Designer.cs">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
@@ -149,15 +154,18 @@
     <Compile Include="Visiteur.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FAjoutRemplacant.resx">
+      <DependentUpon>FAjoutRemplacant.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueMenu.resx">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAjoutMedicament.resx">
       <DependentUpon>FAjoutMedicament.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="FRapportVisite.resx">
       <DependentUpon>FRapportVisite.cs</DependentUpon>
     </EmbeddedResource>

@@ -36,5 +36,10 @@ namespace PPE3_Stripscrabble
             Application.Run(new FormVueConnexionUtilisateur());
         }
 
+        private void buttonFormIlan_Click(object sender, EventArgs e)
+        {
+            FRapportVisite FRapport = new FRapportVisite();
+            FRapport.Show();
+        }
     }
 }
