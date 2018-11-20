@@ -61,9 +61,10 @@
             // 
             // buttonFormOriane
             // 
-            this.buttonFormOriane.Location = new System.Drawing.Point(331, 136);
+            this.buttonFormOriane.Font = new System.Drawing.Font("Calibri Light", 14.25F);
+            this.buttonFormOriane.Location = new System.Drawing.Point(331, 129);
             this.buttonFormOriane.Name = "buttonFormOriane";
-            this.buttonFormOriane.Size = new System.Drawing.Size(120, 50);
+            this.buttonFormOriane.Size = new System.Drawing.Size(120, 57);
             this.buttonFormOriane.TabIndex = 2;
             this.buttonFormOriane.Text = "Test Form Oriane";
             this.buttonFormOriane.UseVisualStyleBackColor = true;
@@ -71,18 +72,21 @@
             // 
             // buttonFormVanane
             // 
-            this.buttonFormVanane.Location = new System.Drawing.Point(331, 248);
+            this.buttonFormVanane.Font = new System.Drawing.Font("Calibri Light", 14.25F);
+            this.buttonFormVanane.Location = new System.Drawing.Point(331, 241);
             this.buttonFormVanane.Name = "buttonFormVanane";
-            this.buttonFormVanane.Size = new System.Drawing.Size(120, 50);
+            this.buttonFormVanane.Size = new System.Drawing.Size(120, 57);
             this.buttonFormVanane.TabIndex = 3;
             this.buttonFormVanane.Text = "Test Form Alvin";
             this.buttonFormVanane.UseVisualStyleBackColor = true;
+            this.buttonFormVanane.Click += new System.EventHandler(this.buttonFormVanane_Click);
             // 
             // buttonFormIlan
             // 
-            this.buttonFormIlan.Location = new System.Drawing.Point(457, 192);
+            this.buttonFormIlan.Font = new System.Drawing.Font("Calibri Light", 14.25F);
+            this.buttonFormIlan.Location = new System.Drawing.Point(457, 186);
             this.buttonFormIlan.Name = "buttonFormIlan";
-            this.buttonFormIlan.Size = new System.Drawing.Size(120, 50);
+            this.buttonFormIlan.Size = new System.Drawing.Size(120, 56);
             this.buttonFormIlan.TabIndex = 4;
             this.buttonFormIlan.Text = "Test Form Ilan";
             this.buttonFormIlan.UseVisualStyleBackColor = true;
