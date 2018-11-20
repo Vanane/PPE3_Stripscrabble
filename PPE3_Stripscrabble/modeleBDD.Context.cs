@@ -25,6 +25,7 @@ namespace PPE3_Stripscrabble
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Date> Date { get; set; }
         public virtual DbSet<Etat> Etat { get; set; }
         public virtual DbSet<FAMILLE> FAMILLE { get; set; }
         public virtual DbSet<fichefrais> fichefrais { get; set; }

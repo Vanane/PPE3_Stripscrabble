@@ -18,6 +18,8 @@ namespace PPE3_Stripscrabble
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormVueConnexionUtilisateur());
+            //Application.Run(new Form1());
+            //Application.Run(new FormDemandeRemboursement());
         }
     }
 }

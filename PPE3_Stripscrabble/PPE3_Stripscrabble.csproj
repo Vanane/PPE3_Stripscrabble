@@ -58,11 +58,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Date.cs">
+      <DependentUpon>modeleBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Etat.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="FAjoutHorsForfait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAjoutHorsForfait.Designer.cs">
+      <DependentUpon>FAjoutHorsForfait.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAMILLE.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FCloture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCloture.Designer.cs">
+      <DependentUpon>FCloture.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FDemande.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDemande.Designer.cs">
+      <DependentUpon>FDemande.cs</DependentUpon>
     </Compile>
     <Compile Include="fichefrais.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
@@ -91,8 +112,20 @@
     <Compile Include="FormVueModifMdpConfirmation.Designer.cs">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDemandeRemboursement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDemandeRemboursement.Designer.cs">
+      <DependentUpon>FormDemandeRemboursement.cs</DependentUpon>
+    </Compile>
     <Compile Include="FraisForfait.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FVerifie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FVerifie.Designer.cs">
+      <DependentUpon>FVerifie.cs</DependentUpon>
     </Compile>
     <Compile Include="Laboratoire.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
@@ -157,6 +190,21 @@
     <EmbeddedResource Include="FormVueMenu.resx">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FAjoutHorsForfait.resx">
+      <DependentUpon>FAjoutHorsForfait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCloture.resx">
+      <DependentUpon>FCloture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDemande.resx">
+      <DependentUpon>FDemande.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDemandeRemboursement.resx">
+      <DependentUpon>FormDemandeRemboursement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FVerifie.resx">
+      <DependentUpon>FVerifie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueModifMdpConfirmation.resx">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +251,7 @@
       <LastGenOutput>modeleBDD.cs</LastGenOutput>
     </Content>
     <None Include="Resources\logo.png" />
+    <None Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
