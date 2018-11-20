@@ -67,6 +67,7 @@
           <Property Name="libelle" Type="varchar" MaxLength="100" />
           <Property Name="date" Type="date" />
           <Property Name="montant" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="annee" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MEDECIN">
           <Key>
@@ -150,13 +151,6 @@
           <Property Name="idVisiteur" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="idRegion" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="TypeVisiteur">
-          <Key>
-            <PropertyRef Name="idType" />
-          </Key>
-          <Property Name="idType" Type="varchar" MaxLength="4" Nullable="false" />
-          <Property Name="libelleType" Type="varchar" MaxLength="32" Nullable="false" />
-        </EntityType>
         <EntityType Name="Visiteur">
           <Key>
             <PropertyRef Name="idVisiteur" />
@@ -171,6 +165,7 @@
           <Property Name="dateEmbauche" Type="char" MaxLength="10" />
           <Property Name="identifiant" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="actif" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__fichefrai__idEta__4AB81AF0">
           <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
@@ -205,34 +200,6 @@
             </Principal>
             <Dependent Role="LigneFraisForfait">
               <PropertyRef Name="idFraisForfait" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__LigneFraisForfai__5165187F">
-          <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
-          <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="fichefrais">
-              <PropertyRef Name="idVisiteur" />
-              <PropertyRef Name="mois" />
-            </Principal>
-            <Dependent Role="LigneFraisForfait">
-              <PropertyRef Name="idVisiteur" />
-              <PropertyRef Name="mois" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__LigneFraisHorsFo__59FA5E80">
-          <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
-          <End Role="LigneFraisHorsForfait" Type="Self.LigneFraisHorsForfait" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="fichefrais">
-              <PropertyRef Name="idVisiteur" />
-              <PropertyRef Name="mois" />
-            </Principal>
-            <Dependent Role="LigneFraisHorsForfait">
-              <PropertyRef Name="idVisiteur" />
-              <PropertyRef Name="mois" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -409,7 +376,6 @@
           <EntitySet Name="Secteur" EntityType="Self.Secteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SPECIALITE" EntityType="Self.SPECIALITE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Travailler" EntityType="Self.Travailler" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TypeVisiteur" EntityType="Self.TypeVisiteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visiteur" EntityType="Self.Visiteur" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__fichefrai__idEta__4AB81AF0" Association="Self.FK__fichefrai__idEta__4AB81AF0">
             <End Role="Etat" EntitySet="Etat" />
@@ -422,14 +388,6 @@
           <AssociationSet Name="FK__LigneFrai__idFra__52593CB8" Association="Self.FK__LigneFrai__idFra__52593CB8">
             <End Role="FraisForfait" EntitySet="FraisForfait" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
-          </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisForfai__5165187F" Association="Self.FK__LigneFraisForfai__5165187F">
-            <End Role="fichefrais" EntitySet="fichefrais" />
-            <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
-          </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisHorsFo__59FA5E80" Association="Self.FK__LigneFraisHorsFo__59FA5E80">
-            <End Role="fichefrais" EntitySet="fichefrais" />
-            <End Role="LigneFraisHorsForfait" EntitySet="LigneFraisHorsForfait" />
           </AssociationSet>
           <AssociationSet Name="FK_Laboratoire" Association="Self.FK_Laboratoire">
             <End Role="Laboratoire" EntitySet="Laboratoire" />
@@ -673,6 +631,7 @@
           <NavigationProperty Name="Region" Relationship="Self.FK_VISITEUR" FromRole="Visiteur" ToRole="Region" />
           <NavigationProperty Name="Secteur" Relationship="Self.FK_VISITEURSECTEUR" FromRole="Visiteur" ToRole="Secteur" />
           <NavigationProperty Name="Region1" Relationship="Self.Travailler" FromRole="Visiteur" ToRole="Region" />
+          <Property Name="actif" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__fichefrai__idEta__4AB81AF0">
           <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
@@ -959,15 +918,7 @@
             <End Role="Region" EntitySet="Region" />
             <End Role="Visiteur" EntitySet="Visiteur" />
           </AssociationSet>
-          <EntitySet Name="TypeVisiteur" EntityType="PPE3_StripscrabbleModel.TypeVisiteur" />
         </EntityContainer>
-        <EntityType Name="TypeVisiteur">
-          <Key>
-            <PropertyRef Name="idType" />
-          </Key>
-          <Property Name="idType" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="libelleType" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1125,6 +1076,7 @@
           <EntitySetMapping Name="Visiteur">
             <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Visiteur">
               <MappingFragment StoreEntitySet="Visiteur">
+                <ScalarProperty Name="actif" ColumnName="actif" />
                 <ScalarProperty Name="idVisiteur" ColumnName="idVisiteur" />
                 <ScalarProperty Name="idLabo" ColumnName="idLabo" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
@@ -1146,14 +1098,6 @@
               <ScalarProperty Name="idVisiteur" ColumnName="idVisiteur" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="TypeVisiteur">
-            <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.TypeVisiteur">
-              <MappingFragment StoreEntitySet="TypeVisiteur">
-                <ScalarProperty Name="libelleType" ColumnName="libelleType" />
-                <ScalarProperty Name="idType" ColumnName="idType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -20,21 +20,26 @@ namespace PPE3_Stripscrabble
 
         private void FVerifie_Load(object sender, EventArgs e)
         {
-
+            //Récuperer toutes les demandes en cours d'une personne
+            //dgvficheFrais.DataSource = Modele.getLesFichesFrais();
         }
 
         private void btnmodif_Click(object sender, EventArgs e)
         {
+            Modele.setTypeDemande("modifier");
+            FDemande Demande = new FDemande();
+            Demande.Show();
+
             // Retrouver l'id du compositeur choisi pour faire fonctionner la méthode de Modele qui retourne un compositeur à partir de l'id
-           // System.Type type = bsCompositeur.Current.GetType();
-          //  int id = (int)type.GetProperty("idCompositeur").GetValue(bsCompositeur.Current, null);
+            // System.Type type = bsCompositeur.Current.GetType();
+            //  int id = (int)type.GetProperty("idCompositeur").GetValue(bsCompositeur.Current, null);
 
             //Modification variables actionGestionCompositeur et CompositeurChoisi
             // SELECT NomCompo et à partir de là on recup' l'id du nom -> On utlise la mméthode de Modele
 
-           // Modele.CompositeurChoisi = Modele.CompositeurParId(id);
+            // Modele.CompositeurChoisi = Modele.CompositeurParId(id);
 
-           // FAjoutModifCompositeur Modif = new FAjoutModifCompositeur();
+            // FAjoutModifCompositeur Modif = new FAjoutModifCompositeur();
 
 
 

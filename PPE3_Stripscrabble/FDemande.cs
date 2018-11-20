@@ -23,6 +23,8 @@ namespace PPE3_Stripscrabble
 
         private void FDemande_Load(object sender, EventArgs e)
         {
+            uneFicheFrais.idVisiteur= Modele.getIdVisiteur();
+            
             //Recupere les données de l'utilisateur au chargement de la page
             labMatricule.Text = Modele.getIdVisiteur();
             labNom.Text = Modele.getNom();
@@ -30,9 +32,17 @@ namespace PPE3_Stripscrabble
           //  labDate.Text = moisDeLAnnee[Modele.DateduMois]; //concatener avec l'année
             labDate.Text = moisDeLAnnee[DateTime.Now.Month - 1] + " " + DateTime.Now.Year; //concatener avec l'année
             Clique = false;
-            uneFicheFrais = new fichefrais();
 
+            if ( Modele.getTypeDemande()== "modifier")
+            {
 
+                /*numericUpDownQteNuit.Value = Modele. ;
+                numericUpDownQteRepas.Value =    ;  valeur affichée dans fverifier 
+                numericUpDownQteVehicule.Value = ; */
+               
+
+            }
+             uneFicheFrais = new fichefrais();
 
             if (cBHF.Checked == true)
             {

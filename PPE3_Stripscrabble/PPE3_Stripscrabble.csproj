@@ -163,9 +163,6 @@
     <Compile Include="SPECIALITE.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="TypeVisiteur.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
-    </Compile>
     <Compile Include="Visiteur.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>

@@ -19,6 +19,7 @@ namespace PPE3_Stripscrabble
 
         private void dEMANDEDEREMBOURSEMENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Modele.setTypeDemande("ajouter");
             FDemande Demande = new FDemande();
             Demande.Show();
 

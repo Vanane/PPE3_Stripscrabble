@@ -13,6 +13,11 @@ namespace PPE3_Stripscrabble
     {
         private static PPE3_StripscrabbleEntities connexion;
         private static Visiteur visiteurConnnecte;
+        private static string typeDemande;
+
+        private static int QteNuit;
+        private static int QteRepas;
+        private static int QteVehicule;
 
         private static DateTime dateHF;
         private static string libelleHF;
@@ -39,6 +44,31 @@ namespace PPE3_Stripscrabble
         public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
         public static string getPassword() { return visiteurConnnecte.password; }
 
+        public static fichefrais getLaFicheFrais()
+        {
+            return visiteurConnnecte.fichefrais.Where(x => x.mois == DateTime.Now.Month.ToString()).First();
+            // && x.mois == DateTime.Now.Year.ToString()
+        }
+        public static List<LigneFraisForfait> getLesLignesForfait()
+        {
+            /*   var LQuery = maConnexion.COMPOSITEUR.ToList()
+                        .Where(x => x.idStyle == 1)
+                        .Select(x => new { x.nomCompositeur, x.prenomCompositeur, x.anNais, x.anMort, x.remarque })
+                        .OrderBy(x => x.nomCompositeur);
+            return LQuery.ToList(); */
+
+            List<LigneFraisForfait> l = connexion.LigneFraisForfait
+                            .Where(x => x.mois == DateTime.Now.Month.ToString() && x.idVisiteur == visiteurConnnecte.idVisiteur).ToList();
+            return l;
+        }
+
+        public static List<LigneFraisHorsForfait> getLesLignesHorsForfait()
+        {
+            List<LigneFraisHorsForfait> l = connexion.LigneFraisHorsForfait
+                            .Where(x => x.mois == DateTime.Now.Month.ToString() && x.idVisiteur == visiteurConnnecte.idVisiteur).ToList();
+            return l;
+        }
+
         public static void setIdVisiteur(string p) { visiteurConnnecte.idVisiteur = p; }
         public static void setIdLabo(int p) { visiteurConnnecte.idLabo = p; }
         public static void setNom(string p) { visiteurConnnecte.nom = p; }
@@ -56,6 +86,13 @@ namespace PPE3_Stripscrabble
         public static string LibelleHF { get => libelleHF; set => libelleHF = value; }
         public static double MontantHF { get => MontantHf; set => MontantHf = value; }
         public static int DateduMois { get => dateduMois; set => dateduMois = value; }
+        public static int QteNuit1 { get => QteNuit; set => QteNuit = value; }
+        public static int QteRepas1 { get => QteRepas; set => QteRepas = value; }
+        public static int QteVehicule1 { get => QteVehicule; set => QteVehicule = value; }
+
+        public static void setTypeDemande(string s) { typeDemande = s; }
+        public static string getTypeDemande() { return typeDemande; }
+       
 
         #endregion
 
@@ -117,25 +154,30 @@ namespace PPE3_Stripscrabble
 
         public static void ajouterUneDemande(fichefrais f)
         {
-            try {
-                foreach(LigneFraisForfait uneLigne in f.LigneFraisForfait) //ajouter les lignes forfaits dans la bd
-                {
-                    f.LigneFraisForfait.Add(uneLigne);
-                }
 
-                foreach( LigneFraisHorsForfait uneLigne in f.LigneFraisHorsForfait) //ajouter les lignes hors forfaits dans la bd
-                {
-                    f.LigneFraisHorsForfait.Add(uneLigne);
-                }
-            }
-            catch(Exception e)
+        LigneFraisForfait fraisNuit = f.LigneFraisForfait.ElementAt(0);
+        LigneFraisForfait fraisMidi = f.LigneFraisForfait.ElementAt(1);
+        LigneFraisForfait fraisVoiture = f.LigneFraisForfait.ElementAt(2);
+        
+       // Parcours les lignes horsForfaits
+
+            foreach ( LigneFraisHorsForfait l in f.LigneFraisHorsForfait )
             {
-               
-            }
-            connexion.fichefrais.Add(f);
 
-            // REMPLIR L OBJET FRAISFORFAIT depuis ligneforfait, et specifier fiche de frais dans cette objet idem pour fraisforfait
+            }
+                
+        try
+        {
             connexion.SaveChanges(); 
+        }
+        catch(Exception e)
+            {
+                
+            }
+            // Je veux recuperer la collection de fiches frais du visiteur
+            visiteurConnnecte.fichefrais.Add(f);            
+            
+            // REMPLIR L OBJET FRAISFORFAIT depuis ligneforfait, et specifier fiche de frais dans cette objet idem pour fraisforfait
            //$exception	{"Échec de la validation d'une ou de plusieurs entités. Pour plus d'informations, consultez 'EntityValidationErrors'."}	System.Data.Entity.Validation.DbEntityValidationException
 
 
@@ -177,7 +219,7 @@ namespace PPE3_Stripscrabble
         public static Object CompositeursParStyle(int idStyle)
         {
             var LQuery = maConnexion.COMPOSITEUR.ToList()
-                        .Where(x => x.idStyle == idStyle)
+                        .Where(x => x.idStyle == 1)
                         .Select(x => new { x.nomCompositeur, x.prenomCompositeur, x.anNais, x.anMort, x.remarque })
                         .OrderBy(x => x.nomCompositeur);
             return LQuery.ToList();
