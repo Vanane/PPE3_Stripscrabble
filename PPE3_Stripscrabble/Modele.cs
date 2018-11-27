@@ -13,6 +13,7 @@ namespace PPE3_Stripscrabble
     {
         private static PPE3_StripscrabbleEntities connexion;
         private static Visiteur visiteurConnnecte;
+        public static fichefrais laficheactuelle;
 
         private static string typeDemande;
 
@@ -44,31 +45,6 @@ namespace PPE3_Stripscrabble
         public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
         public static string getPassword() { return visiteurConnnecte.password; }
 
-        public static fichefrais getLaFicheFrais()
-        {
-            return visiteurConnnecte.fichefrais.Where(x => x.mois == DateTime.Now.Month.ToString()).First();
-            // && x.mois == DateTime.Now.Year.ToString()
-        }
-        public static List<LigneFraisForfait> getLesLignesForfait()
-        {
-            /*   var LQuery = maConnexion.COMPOSITEUR.ToList()
-                        .Where(x => x.idStyle == 1)
-                        .Select(x => new { x.nomCompositeur, x.prenomCompositeur, x.anNais, x.anMort, x.remarque })
-                        .OrderBy(x => x.nomCompositeur);
-            return LQuery.ToList(); */
-
-            List<LigneFraisForfait> l = connexion.LigneFraisForfait
-                            .Where(x => x.mois == DateTime.Now.Month.ToString() && x.idVisiteur == visiteurConnnecte.idVisiteur).ToList();
-            return l;
-        }
-
-        public static List<LigneFraisHorsForfait> getLesLignesHorsForfait()
-        {
-            List<LigneFraisHorsForfait> l = connexion.LigneFraisHorsForfait
-                            .Where(x => x.mois == DateTime.Now.Month.ToString() && x.idVisiteur == visiteurConnnecte.idVisiteur).ToList();
-            return l;
-        }
-
         public static void setIdVisiteur(string p) { visiteurConnnecte.idVisiteur = p; }
         public static void setIdLabo(int p) { visiteurConnnecte.idLabo = p; }
         public static void setNom(string p) { visiteurConnnecte.nom = p; }
@@ -99,6 +75,7 @@ namespace PPE3_Stripscrabble
 
         public static bool verifierConnexion(string id, string mdp)
         {
+            
             //Essaye de définir le Visiteur Connecté en récupérant le premier enregistrement
             //Qui possède les informations entrées.
             //Si les informations sont couplées, alors la connexion est établie, sinon
@@ -133,6 +110,39 @@ namespace PPE3_Stripscrabble
                 // Recuperer les lignes FraisHorsForfait de l'utilisateur.
                 vretour.Add(l);
             }*/
+        }
+
+        public static fichefrais getLaFicheFrais()
+        {
+            //return visiteurConnnecte.fichefrais.Where(x => x.mois == DateTime.Now.Month.ToString()).First();
+            Console.WriteLine(visiteurConnnecte.fichefrais.Count);
+            return visiteurConnnecte.fichefrais.First();
+            // && x.mois == DateTime.Now.Year.ToString()
+        }
+
+        public static List<LigneFraisForfait> getLesLignesForfait()
+        {
+            /*   var LQuery = maConnexion.COMPOSITEUR.ToList()
+                        .Where(x => x.idStyle == 1)
+                        .Select(x => new { x.nomCompositeur, x.prenomCompositeur, x.anNais, x.anMort, x.remarque })
+                        .OrderBy(x => x.nomCompositeur);
+            return LQuery.ToList(); */
+
+            List<LigneFraisForfait> l = connexion.LigneFraisForfait
+                            .Where(x => x.mois == DateTime.Now.Month.ToString() && x.idVisiteur == visiteurConnnecte.idVisiteur).ToList();
+            return l;
+        }
+
+        public static List<LigneFraisHorsForfait> getLesLignesHorsForfait()
+        {
+            List<LigneFraisHorsForfait> l = connexion.LigneFraisHorsForfait
+                            .Where(x => x.mois == DateTime.Now.Month.ToString() && x.idVisiteur == visiteurConnnecte.idVisiteur).ToList();
+            return l;
+        }
+
+        public static List<fichefrais> lesFiches()
+        {
+            return connexion.fichefrais.ToList();
         }
 
         public static void resetConnexion()
@@ -170,13 +180,14 @@ namespace PPE3_Stripscrabble
         public static void sauvegarderLigneFrais(LigneFraisForfait l)
         {
             connexion.LigneFraisForfait.Add(l);
+
             try
             {
                 connexion.SaveChanges();
             }
             catch(Exception vex)
             {
-                System.Windows.Forms.MessageBox.Show("Erreur {0}", vex.Message);
+                System.Windows.Forms.MessageBox.Show(vex.ToString(), "Bug méthode saveLigneForfait");
                 connexion.Dispose();
                 init();
             }
@@ -191,9 +202,10 @@ namespace PPE3_Stripscrabble
             }
             catch (Exception vex)
             {
-                System.Windows.Forms.MessageBox.Show("Erreur {0}", vex.Message);
+                System.Windows.Forms.MessageBox.Show(vex.Message, "Bug méthode saveLigneHF");
                 connexion.Dispose();
                 init();
+
             }
         }
 
@@ -208,6 +220,43 @@ namespace PPE3_Stripscrabble
             {
                 Console.WriteLine(ex);
             }
+        }
+        public static void save()
+        {
+            try
+            {
+                connexion.SaveChanges();
+            }
+            catch (Exception monerreur)
+            {
+                System.Windows.Forms.MessageBox.Show("erreur save");
+                init();
+            }
+        }
+        public static void SupprimerFiche(fichefrais f)
+        {
+            Console.WriteLine(f.mois + f.idVisiteur);
+            connexion.LigneFraisForfait.ToList().RemoveAll(x => x.fichefrais.idVisiteur == f.idVisiteur && x.fichefrais.mois == f.mois);
+
+            connexion.SaveChanges();
+            Console.WriteLine("1er Save ok, count : " +connexion.LigneFraisForfait.ToList().Count);
+            connexion.LigneFraisHorsForfait.ToList().RemoveAll(x => x.fichefrais.idVisiteur == f.idVisiteur && x.fichefrais.mois == f.mois);
+
+            connexion.SaveChanges();
+            Console.WriteLine("2eme Save ok");
+
+            connexion.fichefrais.ToList().RemoveAll(x => x.idVisiteur == f.idVisiteur && x.mois == f.mois);
+            try
+            {
+                connexion.SaveChanges();
+                Console.WriteLine("3eme Save ok");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
         }
 
         public static FraisForfait getTypeFraisSelonSonId(string id)

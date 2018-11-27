@@ -22,14 +22,17 @@ namespace PPE3_Stripscrabble
         {
             //Récuperer toutes les demandes en cours d'une personne
             fichefrais f = Modele.getLaFicheEnDate();
-            dgvficheFrais.DataSource = Modele.getLaFicheFrais();
-
+            Modele.laficheactuelle = f;
+            dgvficheFrais.DataSource = Modele.lesFiches();
         }
 
         private void btnmodif_Click(object sender, EventArgs e)
         {
             Modele.setTypeDemande("modifier");
-            FDemande Demande = new FDemande();
+           FDemande Demande = new FDemande();
+           
+           // Demande = Modele.getLaFicheFrais() =  
+
             Demande.Show();
 
             // Retrouver l'id du compositeur choisi pour faire fonctionner la méthode de Modele qui retourne un compositeur à partir de l'id
@@ -51,6 +54,7 @@ namespace PPE3_Stripscrabble
         private void btnvalider_Click(object sender, EventArgs e)
         {
             // Enregistre les données + ferme la page
+
             this.Close();        
         }
 

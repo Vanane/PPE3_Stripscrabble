@@ -37,28 +37,43 @@ namespace PPE3_Stripscrabble
 
             if ( Modele.getTypeDemande()== "modifier")
             {
+                uneFicheFrais = Modele.laficheactuelle;
 
-                /*numericUpDownQteNuit.Value = Modele. ;
-                numericUpDownQteRepas.Value =    ;  valeur affichée dans fverifier 
-                numericUpDownQteVehicule.Value = ; */
-               
+                foreach (LigneFraisForfait l in uneFicheFrais.LigneFraisForfait)
+                {
+                    switch (l.idFraisForfait.Trim())
+                    {
+                        case "KM":
+                            numericUpDownQteNuit.Value = Convert.ToDecimal(l.quantite);
+                            break;
+                        case "NUI":
+                            numericUpDownQteVehicule.Value = Convert.ToDecimal(l.quantite);
+                            break;
+                        case "REP":
+                            numericUpDownQteRepas.Value = Convert.ToDecimal(l.quantite);
+                            break;
+                    }
+                }
 
+                foreach (LigneFraisHorsForfait ll in uneFicheFrais.LigneFraisHorsForfait)
+                {
+                    dgvHF.Visible = true;
+                    dgvHF.Rows.Add(ll.date, ll.libelle, ll.montant);
+                    Console.WriteLine("ligne ajoutée, libelle :{0}", ll.libelle);
+                }
+                
             }
 
             if (cBHF.Checked == true)
-            {
                 dgvHF.Visible = true;
-            } else
-            {
+            else
                 dgvHF.Visible = false;
-            }
             // Mettre txtBoxValue au chargement de la page ne va rien afficher vu que les valeurs sont initialement vide
             // Si les valeurs change alors txtBox prends la valeur de ...
             
               //  txtBoxTotalNuit.Text = Convert.ToString(nudMontantUnitNuit.Value * numericUpDownQteNuit.Value);
               //  txtBoxTotalRepas.Text = Convert.ToString(nudMontantUnitRepas.Value * numericUpDownQteRepas.Value);
               //  txtBoxTotalVehicule.Text = Convert.ToString(nudMontantUnitVehicule.Value * numericUpDownQteVehicule.Value);
-            
         }
 
         private void MontantUnitNuit_KeyPress(object sender, KeyPressEventArgs e)
@@ -79,16 +94,14 @@ namespace PPE3_Stripscrabble
 
         private void cBHF_CheckedChanged(object sender, EventArgs e)
         {
-            if(cBHF.Checked == true)
-            {
-                labDateFrais.Visible = true;
-                lablib.Visible = true;
-                labMontantHF.Visible = true;
 
-                dgvHF.Visible = true;
-                butAjoutHF.Visible = true;
-                butAjoutLigne.Visible = true;
-            }
+                labDateFrais.Visible = cBHF.Checked;
+                lablib.Visible = cBHF.Checked;
+                labMontantHF.Visible = cBHF.Checked;
+
+                dgvHF.Visible = cBHF.Checked;
+                butAjoutHF.Visible = cBHF.Checked;
+                butAjoutLigne.Visible = cBHF.Checked;
         }
 
         private void butAjoutLigne_Click(object sender, EventArgs e)
@@ -111,7 +124,7 @@ namespace PPE3_Stripscrabble
                 uneautreligne.libelle = libHF;
                 uneautreligne.montant = Convert.ToDecimal(montantHF);
 
-                uneFicheFrais.LigneFraisHorsForfait.Add(uneautreligne);
+                //uneFicheFrais.LigneFraisHorsForfait.Add(uneautreligne);
 
                 // Ajouter également les démandes aux listes "Verifier une Demande" et "Consulter"
 
@@ -145,6 +158,7 @@ namespace PPE3_Stripscrabble
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+           
             if (Test() == false)
             {
                 MessageBox.Show(" Veuillez remplir au moins un champ QUANTITE !");
@@ -173,33 +187,42 @@ namespace PPE3_Stripscrabble
                 Vehicule.fichefrais = uneFicheFrais;
                 Vehicule.FraisForfait = Modele.getTypeFraisSelonSonId("KM");
 
-                Modele.sauvegarderFicheFrais(uneFicheFrais);
-                Modele.sauvegarderLigneFrais(Nuitee);
-                Modele.sauvegarderLigneFrais(Repas);
-                Modele.sauvegarderLigneFrais(Vehicule);
-                try
+
+                if (Modele.getTypeDemande() == "modifier")
                 {
-                    int i = 0;
-                    while (i + 1 < dgvHF.RowCount)
+                    //Modele.SupprimerFiche(uneFicheFrais);
+                    Modele.save();
+                }
+                else
+                {
+                    Modele.sauvegarderFicheFrais(uneFicheFrais);
+                    Modele.sauvegarderLigneFrais(Nuitee);
+                    Modele.sauvegarderLigneFrais(Repas);
+                    Modele.sauvegarderLigneFrais(Vehicule);
+
+                    try
                     {
-                        DataGridViewRow l = dgvHF.Rows[i];
-                        LigneFraisHorsForfait hf = new LigneFraisHorsForfait();
-                        hf.montant = decimal.Parse(l.Cells[2].Value.ToString());
-                        hf.date = DateTime.Parse(l.Cells[0].Value.ToString());
-                        hf.libelle = l.Cells[1].Value.ToString();
-                        hf.fichefrais = uneFicheFrais;
-                        // Recuperer les lignes FraisHorsForfait de l'utilisateur.
+                        int i = 0;
+                        while (i + 1 < dgvHF.RowCount)
+                        {
+                            DataGridViewRow l = dgvHF.Rows[i];
+                            LigneFraisHorsForfait hf = new LigneFraisHorsForfait();
+                            hf.montant = decimal.Parse(l.Cells[2].Value.ToString());
+                            hf.date = DateTime.Parse(l.Cells[0].Value.ToString());
+                            hf.libelle = l.Cells[1].Value.ToString();
+                            hf.fichefrais = uneFicheFrais;
+                            // Recuperer les lignes FraisHorsForfait de l'utilisateur.
 
-                        Modele.sauvegarderLigneFraisHorsForfait(hf);
-                        i++;
+                            Modele.sauvegarderLigneFraisHorsForfait(hf);
+                            i++;
+                        }
                     }
-
-                    this.Close();
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString(), "Bug sur While ajout HF");
+                    }
                 }
-                catch(Exception ex)
-                {                    
-                    MessageBox.Show(ex.ToString());
-                }
+                this.Close();
             }
         }
         private bool Test()
