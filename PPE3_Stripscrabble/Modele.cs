@@ -193,27 +193,17 @@ namespace PPE3_Stripscrabble
         }
 
 
-        public static bool EstResponsableDUneRegion()
+
+        public static bool[] getLesResponsabilites()
         {
-            if (connexion.Region.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First())
-                return true;
-            else
-                return false;
+            //Retourne un tableau de booléens qui disent si l'utilisateur est responsable d'un labo, d'une région, et d'un secteur.
+            bool[] retour = new bool[3];
+            retour[0] = (bool)connexion.Laboratoire.Select(x => x.idDirecteur == visiteurConnecte.idVisiteur).First();
+            retour[1] = (bool)connexion.Region.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First();
+            retour[2] = (bool)connexion.Secteur.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First();
+            return retour;
         }
-        public static bool EstResponsableDUnLabo()
-        {
-            if (connexion.Laboratoire.Select(x => x.idDirecteur == visiteurConnecte.idVisiteur).First())
-                return true;
-            else
-                return false;
-        }
-        public static bool EstResponsableDUnSecteur()
-        {
-            if (connexion.Secteur.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First())
-                return true;
-            else
-                return false;
-        }
+    
 
 
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE

@@ -76,12 +76,9 @@ namespace PPE3_Stripscrabble
 
         private void checkEstResponsable()
         {
-            if (Modele.EstResponsableDUneRegion())
-                regionToolStripMenuItem.Visible = true;
-            if (Modele.EstResponsableDUnLabo())
-                laboratoireToolStripMenuItem.Visible = true;
-            if (Modele.EstResponsableDUnSecteur())
-                secteurToolStripMenuItem.Visible = true;
+            laboratoireToolStripMenuItem.Visible = Modele.getLesResponsabilites()[0];
+            regionToolStripMenuItem.Visible = Modele.getLesResponsabilites()[1];
+            secteurToolStripMenuItem.Visible = Modele.getLesResponsabilites()[2];
         }
 
         private void secteurToolStripMenuItem_Click(object sender, EventArgs e)
