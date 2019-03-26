@@ -73,6 +73,12 @@
     <Compile Include="FormVueConnexionUtilisateur.Designer.cs">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVueGestionSecteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueGestionSecteur.Designer.cs">
+      <DependentUpon>FormVueGestionSecteur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVueGestionUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="FormVueMenu.Designer.cs">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueMenuUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueMenuUtilisateur.Designer.cs">
+      <DependentUpon>FormVueMenuUtilisateur.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVueModifMdpConfirmation.cs">
       <SubType>Form</SubType>
@@ -151,11 +163,17 @@
     <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVueGestionSecteur.resx">
+      <DependentUpon>FormVueGestionSecteur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueGestionUtilisateur.resx">
       <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueMenu.resx">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueMenuUtilisateur.resx">
+      <DependentUpon>FormVueMenuUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueModifMdpConfirmation.resx">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>

@@ -22,8 +22,10 @@ namespace PPE3_Stripscrabble
     
         public int idLabo { get; set; }
         public string nomLabo { get; set; }
+        public string idDirecteur { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Visiteur> Visiteur { get; set; }
+        public virtual Visiteur VisiteurResp { get; set; }
     }
 }

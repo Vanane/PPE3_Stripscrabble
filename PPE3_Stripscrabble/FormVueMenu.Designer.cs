@@ -41,9 +41,9 @@
             this.lblTest.Font = new System.Drawing.Font("Calibri Light", 32F);
             this.lblTest.Location = new System.Drawing.Point(12, 9);
             this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(126, 53);
+            this.lblTest.Size = new System.Drawing.Size(56, 53);
             this.lblTest.TabIndex = 0;
-            this.lblTest.Text = "label1";
+            this.lblTest.Text = "...";
             // 
             // buttonDeconnexion
             // 

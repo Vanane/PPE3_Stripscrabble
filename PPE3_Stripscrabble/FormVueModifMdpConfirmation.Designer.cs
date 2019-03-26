@@ -42,6 +42,7 @@
             // 
             this.textBoxAncien.Location = new System.Drawing.Point(174, 24);
             this.textBoxAncien.Name = "textBoxAncien";
+            this.textBoxAncien.PasswordChar = '*';
             this.textBoxAncien.Size = new System.Drawing.Size(150, 20);
             this.textBoxAncien.TabIndex = 0;
             // 
@@ -49,6 +50,7 @@
             // 
             this.textBoxNouveauConf.Location = new System.Drawing.Point(174, 110);
             this.textBoxNouveauConf.Name = "textBoxNouveauConf";
+            this.textBoxNouveauConf.PasswordChar = '*';
             this.textBoxNouveauConf.Size = new System.Drawing.Size(150, 20);
             this.textBoxNouveauConf.TabIndex = 2;
             // 
@@ -56,6 +58,7 @@
             // 
             this.textBoxNouveau.Location = new System.Drawing.Point(174, 67);
             this.textBoxNouveau.Name = "textBoxNouveau";
+            this.textBoxNouveau.PasswordChar = '*';
             this.textBoxNouveau.Size = new System.Drawing.Size(150, 20);
             this.textBoxNouveau.TabIndex = 1;
             // 

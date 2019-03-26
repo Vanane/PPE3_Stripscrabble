@@ -12,37 +12,37 @@ namespace PPE3_Stripscrabble
     public static class Modele
     {
         private static PPE3_StripscrabbleEntities connexion;
-        private static Visiteur visiteurConnnecte;
+        public static Visiteur visiteurConnecte;
 
         public static void init()
         {
             connexion = new PPE3_StripscrabbleEntities();
-            visiteurConnnecte = new Visiteur();
+            visiteurConnecte = new Visiteur();
         }
 
         #region Getters/Setters
         //Liste des getters et setters de visiteurConnecté, mis en région pour masquer le bloc
-        public static string getIdVisiteur() { return visiteurConnnecte.idVisiteur; }
-        public static int getIdLabo() { return visiteurConnnecte.idLabo; }
-        public static string getNom() { return visiteurConnnecte.nom; }
-        public static string getPrenom() { return visiteurConnnecte.prenom; }
-        public static string getRue() { return visiteurConnnecte.rue; }
-        public static string getCp() { return visiteurConnnecte.cp; }
-        public static string getVille() { return visiteurConnnecte.ville; }
-        public static string getDateEmbauche() { return visiteurConnnecte.dateEmbauche; }
-        public static string getIdentifiant() { return visiteurConnnecte.identifiant; }
-        public static string getPassword() { return visiteurConnnecte.password; }
+        public static string getIdVisiteur() { return visiteurConnecte.idVisiteur; }
+        public static int getIdLabo() { return visiteurConnecte.idLabo; }
+        public static string getNom() { return visiteurConnecte.nom; }
+        public static string getPrenom() { return visiteurConnecte.prenom; }
+        public static string getRue() { return visiteurConnecte.rue; }
+        public static string getCp() { return visiteurConnecte.cp; }
+        public static string getVille() { return visiteurConnecte.ville; }
+        public static string getDateEmbauche() { return visiteurConnecte.dateEmbauche; }
+        public static string getIdentifiant() { return visiteurConnecte.identifiant; }
+        public static string getPassword() { return visiteurConnecte.password; }
 
-        public static void setIdVisiteur(string p) { visiteurConnnecte.idVisiteur = p; }
-        public static void setIdLabo(int p) { visiteurConnnecte.idLabo = p; }
-        public static void setNom(string p) { visiteurConnnecte.nom = p; }
-        public static void setPrenom(string p) { visiteurConnnecte.prenom = p; }
-        public static void setRue(string p) { visiteurConnnecte.rue = p; }
-        public static void setCp(string p) { visiteurConnnecte.cp = p; }
-        public static void setVille(string p) { visiteurConnnecte.ville = p; }
-        public static void setDateEmbauche(string p) { visiteurConnnecte.dateEmbauche = p; }
-        public static void setIdentifiant(string p) { visiteurConnnecte.identifiant = p; }
-        public static void setPassword(string p) { visiteurConnnecte.password = p; }
+        public static void setIdVisiteur(string p) { visiteurConnecte.idVisiteur = p; }
+        public static void setIdLabo(int p) { visiteurConnecte.idLabo = p; }
+        public static void setNom(string p) { visiteurConnecte.nom = p; }
+        public static void setPrenom(string p) { visiteurConnecte.prenom = p; }
+        public static void setRue(string p) { visiteurConnecte.rue = p; }
+        public static void setCp(string p) { visiteurConnecte.cp = p; }
+        public static void setVille(string p) { visiteurConnecte.ville = p; }
+        public static void setDateEmbauche(string p) { visiteurConnecte.dateEmbauche = p; }
+        public static void setIdentifiant(string p) { visiteurConnecte.identifiant = p; }
+        public static void setPassword(string p) { visiteurConnecte.password = p; }
         #endregion
 
 
@@ -57,7 +57,7 @@ namespace PPE3_Stripscrabble
 
             try
             {
-                Modele.visiteurConnnecte = VisiteurParSesId(id, mdpHash);
+                Modele.visiteurConnecte = VisiteurParSesId(id, mdpHash);
                 r = true;
             }
             catch (Exception e)
@@ -89,10 +89,10 @@ namespace PPE3_Stripscrabble
 
         public static void modifierInformations(string nom, string prenom, string rue, string ville)
         {
-            visiteurConnnecte.nom = nom;
-            visiteurConnnecte.prenom = prenom;
-            visiteurConnnecte.ville = ville;
-            visiteurConnnecte.rue = rue;
+            visiteurConnecte.nom = nom;
+            visiteurConnecte.prenom = prenom;
+            visiteurConnecte.ville = ville;
+            visiteurConnecte.rue = rue;
 
             try
             {
@@ -108,10 +108,9 @@ namespace PPE3_Stripscrabble
 
         public static bool modifierMDP(string mdp, string nouv)
         {
-            if (GetMd5Hash(mdp).ToUpper() == visiteurConnnecte.password.TrimEnd(' '))
+            if (GetMd5Hash(mdp).ToUpper() == visiteurConnecte.password.TrimEnd(' '))
             {
-                visiteurConnnecte.password = GetMd5Hash(nouv).ToUpper();
-                Console.WriteLine(visiteurConnnecte.password);
+                visiteurConnecte.password = GetMd5Hash(nouv).ToUpper();
 
                 try
                 {
@@ -127,20 +126,94 @@ namespace PPE3_Stripscrabble
             }
             else return false;
         }
-        
+
 
 
         /****************************/
         /*ACCES A LA BASE DE DONNEES*/
         /****************************/
 
-        private static Visiteur VisiteurParSesId(string id, string mdp)
+        public static Visiteur VisiteurParSesId(string id, string mdp)
         {
             //Retourne le premier visiteur, s'il y en a plusieurs, qui comporte un couple id/password.
             return connexion.Visiteur.Where(x => (x.identifiant == id) && (x.password == mdp)).First();
         }
 
+        public static List<Visiteur> VisiteursParSecteur(int idS)
+        {
+            List<Visiteur> r = new List<Visiteur>();
+            foreach (Region re in connexion.Secteur.Where(x => x.idSecteur == idS).First().Region )
+            {
+                foreach (Visiteur v in re.Visiteurs.ToList())
+                {
+                    r.Add(v);
+                }
+            }
+            return r;
+        }
 
+        public static List<Visiteur> VisiteursParRegion(int idR)
+        {
+            List<Visiteur> r = new List<Visiteur>();
+            Region re = connexion.Region.Where(x=>x.idRegion == idR).First();
+                foreach (Visiteur v in re.Visiteurs.ToList())
+                {
+                    r.Add(v);
+                }
+            return r;
+        }
+
+        public static List<Secteur> lesSecteurs()
+        {
+            return connexion.Secteur.ToList();
+        }
+
+        public static List<Region> lesRegions()
+        {
+            return connexion.Region.ToList();
+        }
+
+
+        public static List<Region> RegionsParSecteur(Secteur s)
+        {
+            List<Region> retour = connexion.Region.Where(x => x.idSecteur == s.idSecteur).ToList();
+
+
+            return retour;
+        }
+
+        public static Visiteur ResponsableParSecteur(int idS)
+        {
+            return connexion.Secteur.Where(x => x.idSecteur == idS).First().Visiteur;
+        }
+
+        public static Visiteur ResponsableParRegion(int idR)
+        {
+            return connexion.Region.Where(x => x.idRegion == idR).First().VisiteurResp;            
+        }
+
+
+        public static bool EstResponsableDUneRegion()
+        {
+            if (connexion.Region.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First())
+                return true;
+            else
+                return false;
+        }
+        public static bool EstResponsableDUnLabo()
+        {
+            if (connexion.Laboratoire.Select(x => x.idDirecteur == visiteurConnecte.idVisiteur).First())
+                return true;
+            else
+                return false;
+        }
+        public static bool EstResponsableDUnSecteur()
+        {
+            if (connexion.Secteur.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First())
+                return true;
+            else
+                return false;
+        }
 
 
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE

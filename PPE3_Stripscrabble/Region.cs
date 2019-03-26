@@ -17,7 +17,7 @@ namespace PPE3_Stripscrabble
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Region()
         {
-            this.Visiteur1 = new HashSet<Visiteur>();
+            this.Visiteurs = new HashSet<Visiteur>();
         }
     
         public int idRegion { get; set; }
@@ -26,8 +26,8 @@ namespace PPE3_Stripscrabble
         public int idSecteur { get; set; }
     
         public virtual Secteur Secteur { get; set; }
-        public virtual Visiteur Visiteur { get; set; }
+        public virtual Visiteur VisiteurResp { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Visiteur> Visiteur1 { get; set; }
+        public virtual ICollection<Visiteur> Visiteurs { get; set; }
     }
 }

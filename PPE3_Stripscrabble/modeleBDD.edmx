@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PPE3_StripscrabbleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PPE3_StripscrabbleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Etat">
           <Key>
             <PropertyRef Name="id" />
@@ -45,6 +45,7 @@
           </Key>
           <Property Name="idLabo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomLabo" Type="char" MaxLength="20" />
+          <Property Name="idDirecteur" Type="char" MaxLength="3" />
         </EntityType>
         <EntityType Name="LigneFraisForfait">
           <Key>
@@ -164,6 +165,7 @@
           <Property Name="dateEmbauche" Type="char" MaxLength="10" />
           <Property Name="identifiant" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="actif" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__fichefrai__idEta__4AB81AF0">
           <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
@@ -189,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFrai__idFra__52593CB8">
+        <Association Name="FK__LigneFrai__idFra__03F0984C">
           <End Role="FraisForfait" Type="Self.FraisForfait" Multiplicity="1" />
           <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +203,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFraisForfai__5165187F">
+        <Association Name="FK__LigneFraisForfai__02FC7413">
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
           <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFraisHorsFo__59FA5E80">
+        <Association Name="FK__LigneFraisHorsFo__0B91BA14">
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
           <End Role="LigneFraisHorsForfait" Type="Self.LigneFraisHorsForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,6 +228,18 @@
             <Dependent Role="LigneFraisHorsForfait">
               <PropertyRef Name="idVisiteur" />
               <PropertyRef Name="mois" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdDir_IdVis">
+          <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="0..1" />
+          <End Role="Laboratoire" Type="Self.Laboratoire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiteur">
+              <PropertyRef Name="idVisiteur" />
+            </Principal>
+            <Dependent Role="Laboratoire">
+              <PropertyRef Name="idDirecteur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -411,17 +425,21 @@
             <End Role="Visiteur" EntitySet="Visiteur" />
             <End Role="fichefrais" EntitySet="fichefrais" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFrai__idFra__52593CB8" Association="Self.FK__LigneFrai__idFra__52593CB8">
+          <AssociationSet Name="FK__LigneFrai__idFra__03F0984C" Association="Self.FK__LigneFrai__idFra__03F0984C">
             <End Role="FraisForfait" EntitySet="FraisForfait" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisForfai__5165187F" Association="Self.FK__LigneFraisForfai__5165187F">
+          <AssociationSet Name="FK__LigneFraisForfai__02FC7413" Association="Self.FK__LigneFraisForfai__02FC7413">
             <End Role="fichefrais" EntitySet="fichefrais" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisHorsFo__59FA5E80" Association="Self.FK__LigneFraisHorsFo__59FA5E80">
+          <AssociationSet Name="FK__LigneFraisHorsFo__0B91BA14" Association="Self.FK__LigneFraisHorsFo__0B91BA14">
             <End Role="fichefrais" EntitySet="fichefrais" />
             <End Role="LigneFraisHorsForfait" EntitySet="LigneFraisHorsForfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdDir_IdVis" Association="Self.FK_IdDir_IdVis">
+            <End Role="Visiteur" EntitySet="Visiteur" />
+            <End Role="Laboratoire" EntitySet="Laboratoire" />
           </AssociationSet>
           <AssociationSet Name="FK_Laboratoire" Association="Self.FK_Laboratoire">
             <End Role="Laboratoire" EntitySet="Laboratoire" />
@@ -476,8 +494,7 @@
             <End Role="RAPPORT" EntitySet="RAPPORT" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PPE3_StripscrabbleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -529,6 +546,8 @@
           <Property Name="idLabo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomLabo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Visiteur" Relationship="Self.FK_Laboratoire" FromRole="Laboratoire" ToRole="Visiteur" />
+          <Property Name="idDirecteur" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="VisiteurResp" Relationship="PPE3_StripscrabbleModel.FK_IdDir_IdVis" FromRole="Laboratoire" ToRole="Visiteur" />
         </EntityType>
         <EntityType Name="LigneFraisForfait">
           <Key>
@@ -625,8 +644,8 @@
           <Property Name="idVisiteur" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="idSecteur" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Secteur" Relationship="Self.FK_SECTEUR" FromRole="Region" ToRole="Secteur" />
-          <NavigationProperty Name="Visiteur" Relationship="Self.FK_VISITEUR" FromRole="Region" ToRole="Visiteur" />
-          <NavigationProperty Name="Visiteur1" Relationship="Self.Travailler" FromRole="Region" ToRole="Visiteur" />
+          <NavigationProperty Name="VisiteurResp" Relationship="Self.FK_VISITEUR" FromRole="Region" ToRole="Visiteur" />
+          <NavigationProperty Name="Visiteurs" Relationship="Self.Travailler" FromRole="Region" ToRole="Visiteur" />
         </EntityType>
         <EntityType Name="Secteur">
           <Key>
@@ -663,9 +682,11 @@
           <NavigationProperty Name="fichefrais" Relationship="Self.FK__fichefrai__idVis__4BAC3F29" FromRole="Visiteur" ToRole="fichefrais" />
           <NavigationProperty Name="Laboratoire" Relationship="Self.FK_Laboratoire" FromRole="Visiteur" ToRole="Laboratoire" />
           <NavigationProperty Name="RAPPORT" Relationship="Self.rapport_fk1" FromRole="Visiteur" ToRole="RAPPORT" />
-          <NavigationProperty Name="Region" Relationship="Self.FK_VISITEUR" FromRole="Visiteur" ToRole="Region" />
+          <NavigationProperty Name="RegionResp" Relationship="Self.FK_VISITEUR" FromRole="Visiteur" ToRole="Region" />
           <NavigationProperty Name="Secteur" Relationship="Self.FK_VISITEURSECTEUR" FromRole="Visiteur" ToRole="Secteur" />
-          <NavigationProperty Name="Region1" Relationship="Self.Travailler" FromRole="Visiteur" ToRole="Region" />
+          <NavigationProperty Name="Region" Relationship="Self.Travailler" FromRole="Visiteur" ToRole="Region" />
+          <Property Name="actif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LaboResp" Relationship="PPE3_StripscrabbleModel.FK_IdDir_IdVis" FromRole="Visiteur" ToRole="Laboratoire" />
         </EntityType>
         <Association Name="FK__fichefrai__idEta__4AB81AF0">
           <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
@@ -952,7 +973,23 @@
             <End Role="Region" EntitySet="Region" />
             <End Role="Visiteur" EntitySet="Visiteur" />
           </AssociationSet>
+          <AssociationSet Name="FK_IdDir_IdVis" Association="PPE3_StripscrabbleModel.FK_IdDir_IdVis">
+            <End Role="Visiteur" EntitySet="Visiteur" />
+            <End Role="Laboratoire" EntitySet="Laboratoire" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_IdDir_IdVis">
+          <End Type="PPE3_StripscrabbleModel.Visiteur" Role="Visiteur" Multiplicity="0..1" />
+          <End Type="PPE3_StripscrabbleModel.Laboratoire" Role="Laboratoire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiteur">
+              <PropertyRef Name="idVisiteur" />
+            </Principal>
+            <Dependent Role="Laboratoire">
+              <PropertyRef Name="idDirecteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -999,6 +1036,7 @@
           <EntitySetMapping Name="Laboratoire">
             <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Laboratoire">
               <MappingFragment StoreEntitySet="Laboratoire">
+                <ScalarProperty Name="idDirecteur" ColumnName="idDirecteur" />
                 <ScalarProperty Name="idLabo" ColumnName="idLabo" />
                 <ScalarProperty Name="nomLabo" ColumnName="nomLabo" />
               </MappingFragment>
@@ -1110,6 +1148,7 @@
           <EntitySetMapping Name="Visiteur">
             <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Visiteur">
               <MappingFragment StoreEntitySet="Visiteur">
+                <ScalarProperty Name="actif" ColumnName="actif" />
                 <ScalarProperty Name="idVisiteur" ColumnName="idVisiteur" />
                 <ScalarProperty Name="idLabo" ColumnName="idLabo" />
                 <ScalarProperty Name="nom" ColumnName="nom" />
