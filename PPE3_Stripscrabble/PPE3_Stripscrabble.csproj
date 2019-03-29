@@ -103,6 +103,18 @@
     <Compile Include="FormVueModifMdpConfirmation.Designer.cs">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVueModifRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueModifRegion.Designer.cs">
+      <DependentUpon>FormVueModifRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueVoirUtilisateurs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueVoirUtilisateurs.Designer.cs">
+      <DependentUpon>FormVueVoirUtilisateurs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FraisForfait.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
@@ -177,6 +189,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueModifMdpConfirmation.resx">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueModifRegion.resx">
+      <DependentUpon>FormVueModifRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueVoirUtilisateurs.resx">
+      <DependentUpon>FormVueVoirUtilisateurs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

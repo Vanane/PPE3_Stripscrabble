@@ -12,7 +12,9 @@ namespace PPE3_Stripscrabble
 {
     public partial class FormVueGestionUtilisateur : Form
     {
-        bool readOnlyInfo, readOnlyMdp;
+        private bool readOnlyInfo, readOnlyMdp;
+        private FormVueModifMdpConfirmation FVMMC;
+
 
         public FormVueGestionUtilisateur()
         {
@@ -28,6 +30,7 @@ namespace PPE3_Stripscrabble
             textBoxUserId.Text = Modele.getIdentifiant();
             textBoxUserMdp.Text = "••••••••";
             readOnlyInfo = true;
+            FVMMC = new FormVueModifMdpConfirmation();
         }
 
         private void buttonModifierInfo_Click(object sender, EventArgs e)
@@ -56,7 +59,6 @@ namespace PPE3_Stripscrabble
 
         private void buttonModifierMdp_Click(object sender, EventArgs e)
         {
-            FormVueModifMdpConfirmation FVMMC = new FormVueModifMdpConfirmation();
             FVMMC.Show();
         }
     }

@@ -47,7 +47,7 @@ namespace PPE3_Stripscrabble
 
 
         public static bool verifierConnexion(string id, string mdp)
-        {
+        {          
             //Essaye de définir le Visiteur Connecté en récupérant le premier enregistrement
             //Qui possède les informations entrées.
             //Si les informations sont couplées, alors la connexion est établie, sinon
