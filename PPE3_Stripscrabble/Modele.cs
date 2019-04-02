@@ -173,6 +173,12 @@ namespace PPE3_Stripscrabble
             return connexion.Region.ToList();
         }
 
+        public static List<Visiteur> LesVisiteurs()
+        {
+            return connexion.Visiteur.ToList();
+
+        }
+
 
         public static List<Region> RegionsParSecteur(Secteur s)
         {
@@ -193,17 +199,35 @@ namespace PPE3_Stripscrabble
         }
 
 
-
-        public static bool[] getLesResponsabilites()
+        public static bool[] EstResponsable()
         {
-            //Retourne un tableau de booléens qui disent si l'utilisateur est responsable d'un labo, d'une région, et d'un secteur.
-            bool[] retour = new bool[3];
-            retour[0] = (bool)connexion.Laboratoire.Select(x => x.idDirecteur == visiteurConnecte.idVisiteur).First();
-            retour[1] = (bool)connexion.Region.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First();
-            retour[2] = (bool)connexion.Secteur.Select(x => x.idVisiteur == visiteurConnecte.idVisiteur).First();
-            return retour;
+            //Renvoie un tableau de bool permettant de savoir si l'utilisateur connecté
+            //Est responsable d'un laboratoire, d'une région, d'un secteur.
+
+            bool[] r = new bool[3];
+
+            //r[numCase] = "Le nombre de lignes renvoyées par la requête est > 0."
+            //Si oui, alors le visiteur est responsable d'au moins un élément.
+            r[0] = connexion.Laboratoire.Where(x => x.idDirecteur == visiteurConnecte.idVisiteur).Count() > 0;
+            r[1] = connexion.Region.Where(x => x.idVisiteur == visiteurConnecte.idVisiteur).Count() > 0;
+            r[2] = connexion.Secteur.Where(x => x.idVisiteur == visiteurConnecte.idVisiteur).Count() > 0;
+            return r;        
         }
-    
+
+
+        public static string ChangeRespRegion(Region r, Visiteur v)
+        {
+            try
+            {
+                r.idVisiteur = v.idVisiteur;
+                connexion.SaveChanges();
+                return "Mise à jour effectuée !";
+            }
+            catch (Exception e)
+            {
+                return "Erreur lors de l'insertion, réessayez ultérieurement.";
+            }
+        }       
 
 
         /*EXEMPLE DE METHODE POUR RECUPERER UNE TABLE

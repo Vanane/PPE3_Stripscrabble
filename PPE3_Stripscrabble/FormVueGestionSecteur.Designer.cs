@@ -37,19 +37,20 @@
             this.textBoxResp = new System.Windows.Forms.TextBox();
             this.lblChamps = new System.Windows.Forms.Label();
             this.btnModifRegion = new System.Windows.Forms.Button();
+            this.lblTexte = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRegions)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxNomS
             // 
-            this.textBoxNomS.Location = new System.Drawing.Point(148, 57);
+            this.textBoxNomS.Location = new System.Drawing.Point(148, 46);
             this.textBoxNomS.Name = "textBoxNomS";
             this.textBoxNomS.Size = new System.Drawing.Size(120, 20);
             this.textBoxNomS.TabIndex = 0;
             // 
             // textBoxIdSecteur
             // 
-            this.textBoxIdSecteur.Location = new System.Drawing.Point(148, 17);
+            this.textBoxIdSecteur.Location = new System.Drawing.Point(148, 6);
             this.textBoxIdSecteur.Name = "textBoxIdSecteur";
             this.textBoxIdSecteur.ReadOnly = true;
             this.textBoxIdSecteur.Size = new System.Drawing.Size(120, 20);
@@ -58,7 +59,7 @@
             // lblIdS
             // 
             this.lblIdS.AutoSize = true;
-            this.lblIdS.Location = new System.Drawing.Point(12, 20);
+            this.lblIdS.Location = new System.Drawing.Point(12, 9);
             this.lblIdS.Name = "lblIdS";
             this.lblIdS.Size = new System.Drawing.Size(64, 13);
             this.lblIdS.TabIndex = 3;
@@ -67,7 +68,7 @@
             // lblNomS
             // 
             this.lblNomS.AutoSize = true;
-            this.lblNomS.Location = new System.Drawing.Point(12, 60);
+            this.lblNomS.Location = new System.Drawing.Point(12, 49);
             this.lblNomS.Name = "lblNomS";
             this.lblNomS.Size = new System.Drawing.Size(97, 13);
             this.lblNomS.TabIndex = 4;
@@ -76,7 +77,7 @@
             // lblVisiteurS
             // 
             this.lblVisiteurS.AutoSize = true;
-            this.lblVisiteurS.Location = new System.Drawing.Point(12, 100);
+            this.lblVisiteurS.Location = new System.Drawing.Point(12, 89);
             this.lblVisiteurS.Name = "lblVisiteurS";
             this.lblVisiteurS.Size = new System.Drawing.Size(130, 13);
             this.lblVisiteurS.TabIndex = 5;
@@ -88,14 +89,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGVRegions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVRegions.Location = new System.Drawing.Point(15, 124);
+            this.DGVRegions.Location = new System.Drawing.Point(12, 164);
             this.DGVRegions.Name = "DGVRegions";
-            this.DGVRegions.Size = new System.Drawing.Size(691, 311);
+            this.DGVRegions.Size = new System.Drawing.Size(637, 283);
             this.DGVRegions.TabIndex = 7;
+            this.DGVRegions.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVRegions_CellClick);
             // 
             // textBoxResp
             // 
-            this.textBoxResp.Location = new System.Drawing.Point(148, 97);
+            this.textBoxResp.Location = new System.Drawing.Point(148, 86);
             this.textBoxResp.Name = "textBoxResp";
             this.textBoxResp.ReadOnly = true;
             this.textBoxResp.Size = new System.Drawing.Size(120, 20);
@@ -105,7 +107,7 @@
             // 
             this.lblChamps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblChamps.AutoSize = true;
-            this.lblChamps.Location = new System.Drawing.Point(461, 438);
+            this.lblChamps.Location = new System.Drawing.Point(404, 450);
             this.lblChamps.Name = "lblChamps";
             this.lblChamps.Size = new System.Drawing.Size(245, 13);
             this.lblChamps.TabIndex = 9;
@@ -113,10 +115,8 @@
             // 
             // btnModifRegion
             // 
-            this.btnModifRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModifRegion.Location = new System.Drawing.Point(584, 89);
+            this.btnModifRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModifRegion.Location = new System.Drawing.Point(527, 86);
             this.btnModifRegion.Name = "btnModifRegion";
             this.btnModifRegion.Size = new System.Drawing.Size(122, 24);
             this.btnModifRegion.TabIndex = 10;
@@ -124,11 +124,22 @@
             this.btnModifRegion.UseVisualStyleBackColor = true;
             this.btnModifRegion.Click += new System.EventHandler(this.btnModifRegion_Click);
             // 
+            // lblTexte
+            // 
+            this.lblTexte.AutoSize = true;
+            this.lblTexte.Location = new System.Drawing.Point(12, 148);
+            this.lblTexte.Name = "lblTexte";
+            this.lblTexte.Size = new System.Drawing.Size(492, 13);
+            this.lblTexte.TabIndex = 11;
+            this.lblTexte.Text = "Vous pouvez consulter les informations d\'une région en cliquant sur la ligne corr" +
+    "espondante ci-dessous.";
+            // 
             // FormVueGestionSecteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 460);
+            this.ClientSize = new System.Drawing.Size(661, 472);
+            this.Controls.Add(this.lblTexte);
             this.Controls.Add(this.btnModifRegion);
             this.Controls.Add(this.lblChamps);
             this.Controls.Add(this.textBoxResp);
@@ -157,5 +168,6 @@
         private System.Windows.Forms.TextBox textBoxResp;
         private System.Windows.Forms.Label lblChamps;
         private System.Windows.Forms.Button btnModifRegion;
+        private System.Windows.Forms.Label lblTexte;
     }
 }

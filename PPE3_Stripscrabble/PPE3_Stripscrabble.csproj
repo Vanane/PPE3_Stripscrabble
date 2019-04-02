@@ -73,6 +73,12 @@
     <Compile Include="FormVueConnexionUtilisateur.Designer.cs">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVueCoordonneesUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueCoordonneesUtilisateur.Designer.cs">
+      <DependentUpon>FormVueCoordonneesUtilisateur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVueGestionSecteur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </Compile>
     <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueCoordonneesUtilisateur.resx">
+      <DependentUpon>FormVueCoordonneesUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueGestionSecteur.resx">
       <DependentUpon>FormVueGestionSecteur.cs</DependentUpon>

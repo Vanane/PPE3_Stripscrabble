@@ -32,6 +32,8 @@
             this.labelSelec = new System.Windows.Forms.Label();
             this.labelVisit = new System.Windows.Forms.Label();
             this.comboBoxVisiteurs = new System.Windows.Forms.ComboBox();
+            this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnValider = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxRegions
@@ -41,7 +43,6 @@
             this.comboBoxRegions.Name = "comboBoxRegions";
             this.comboBoxRegions.Size = new System.Drawing.Size(121, 21);
             this.comboBoxRegions.TabIndex = 2;
-            this.comboBoxRegions.SelectedIndexChanged += new System.EventHandler(this.comboBoxRegions_SelectedIndexChanged);
             // 
             // labelSelec
             // 
@@ -68,13 +69,36 @@
             this.comboBoxVisiteurs.Name = "comboBoxVisiteurs";
             this.comboBoxVisiteurs.Size = new System.Drawing.Size(121, 21);
             this.comboBoxVisiteurs.TabIndex = 5;
-            this.comboBoxVisiteurs.SelectedIndexChanged += new System.EventHandler(this.comboBoxVisiteurs_SelectedIndexChanged);
+            // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAnnuler.Location = new System.Drawing.Point(260, 160);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnuler.TabIndex = 6;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
+            // btnValider
+            // 
+            this.btnValider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnValider.Location = new System.Drawing.Point(179, 160);
+            this.btnValider.Name = "btnValider";
+            this.btnValider.Size = new System.Drawing.Size(75, 23);
+            this.btnValider.TabIndex = 7;
+            this.btnValider.Text = "Valider";
+            this.btnValider.UseVisualStyleBackColor = true;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // FormVueModifRegion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(443, 287);
+            this.ClientSize = new System.Drawing.Size(347, 195);
+            this.Controls.Add(this.btnValider);
+            this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.comboBoxVisiteurs);
             this.Controls.Add(this.labelVisit);
             this.Controls.Add(this.labelSelec);
@@ -93,5 +117,7 @@
         private System.Windows.Forms.Label labelSelec;
         private System.Windows.Forms.Label labelVisit;
         private System.Windows.Forms.ComboBox comboBoxVisiteurs;
+        private System.Windows.Forms.Button btnAnnuler;
+        private System.Windows.Forms.Button btnValider;
     }
 }

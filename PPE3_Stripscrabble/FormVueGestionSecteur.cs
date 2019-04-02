@@ -35,7 +35,14 @@ namespace PPE3_Stripscrabble
 
         private void btnModifRegion_Click(object sender, EventArgs e)
         {
+            FVMR.Dispose();
+            FVMR = new FormVueModifRegion(Modele.visiteurConnecte.Secteur.First());
             FVMR.Show();
+        }
+
+        private void DGVRegions_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine(DGVRegions[0,e.RowIndex].Value);
         }
     }
 }

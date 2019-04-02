@@ -23,17 +23,28 @@ namespace PPE3_Stripscrabble
             comboBoxRegions.ValueMember = "idRegion";
             comboBoxRegions.DisplayMember = "libRegion";
             comboBoxRegions.DataSource = Modele.RegionsParSecteur(leSecteur);
+
+            comboBoxVisiteurs.ValueMember = "idVisiteur";
+            comboBoxVisiteurs.DisplayMember = "nom";
+            comboBoxVisiteurs.DataSource = Modele.LesVisiteurs();
         }
 
-        private void comboBoxRegions_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnAnnuler_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void comboBoxVisiteurs_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnValider_Click(object sender, EventArgs e)
         {
-
+            if (comboBoxRegions.SelectedIndex != -1 && comboBoxVisiteurs.SelectedIndex != -1)
+            {
+                MessageBox.Show(Modele.ChangeRespRegion((Region)comboBoxRegions.SelectedItem, (Visiteur)comboBoxVisiteurs.SelectedItem), "Résultat");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez choisir tous les champs !", "Erreur de saisie");                               
+            }
         }
-
     }
 }

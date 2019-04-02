@@ -37,6 +37,7 @@
             this.comboBoxSecteur = new System.Windows.Forms.ComboBox();
             this.comboBoxRegion = new System.Windows.Forms.ComboBox();
             this.DGVVisiteurs = new System.Windows.Forms.DataGridView();
+            this.btnCoordonnees = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVVisiteurs)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,16 +119,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGVVisiteurs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVVisiteurs.Location = new System.Drawing.Point(12, 74);
+            this.DGVVisiteurs.Location = new System.Drawing.Point(12, 100);
             this.DGVVisiteurs.Name = "DGVVisiteurs";
-            this.DGVVisiteurs.Size = new System.Drawing.Size(667, 256);
+            this.DGVVisiteurs.Size = new System.Drawing.Size(667, 328);
             this.DGVVisiteurs.TabIndex = 13;
+            // 
+            // btnCoordonnees
+            // 
+            this.btnCoordonnees.Location = new System.Drawing.Point(460, 71);
+            this.btnCoordonnees.Name = "btnCoordonnees";
+            this.btnCoordonnees.Size = new System.Drawing.Size(179, 23);
+            this.btnCoordonnees.TabIndex = 22;
+            this.btnCoordonnees.Text = "Voir les Coordonnées";
+            this.btnCoordonnees.UseVisualStyleBackColor = true;
+            this.btnCoordonnees.Click += new System.EventHandler(this.btnCoordonnees_Click);
             // 
             // FormVueVoirUtilisateurs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(691, 342);
+            this.ClientSize = new System.Drawing.Size(691, 440);
+            this.Controls.Add(this.btnCoordonnees);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.lblNom);
             this.Controls.Add(this.lblRespId);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.ComboBox comboBoxSecteur;
         private System.Windows.Forms.ComboBox comboBoxRegion;
         private System.Windows.Forms.DataGridView DGVVisiteurs;
+        private System.Windows.Forms.Button btnCoordonnees;
     }
 }

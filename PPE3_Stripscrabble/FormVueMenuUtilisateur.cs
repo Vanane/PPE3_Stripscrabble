@@ -50,12 +50,16 @@ namespace PPE3_Stripscrabble
 
         private void ToolStripInfos_Click(object sender, EventArgs e)
         {
+            FVGU.Dispose();
+            FVGU = new FormVueGestionUtilisateur();
             FVGU.Show();
         }
 
 
         private void secteurToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            FVGS.Dispose();
+            FVGS = new FormVueGestionSecteur();
             FVGS.Show();
         }
 
@@ -71,17 +75,18 @@ namespace PPE3_Stripscrabble
 
         private void ToolStripFiltrer_Click(object sender, EventArgs e)
         {
+            FVVU.Dispose();
+            FVVU = new FormVueVoirUtilisateurs();
             FVVU.Show();
         }
+
         private void checkEstResponsable()
         {
-            bool[] lesResp = Modele.getLesResponsabilites();
-            //Renvoie un tableau de booléens qui contiennent les responsabilités d'un user
-
-            //On affecte ces booléens à la visiblité des choix de gestion
-            laboratoireToolStripMenuItem.Visible = lesResp[0];
-            regionToolStripMenuItem.Visible = lesResp[1];
-            secteurToolStripMenuItem.Visible = lesResp[2];
+            //On affecte des booléens à la visiblité des choix de gestion           
+            laboratoireToolStripMenuItem.Visible = Modele.EstResponsable()[0];
+            regionToolStripMenuItem.Visible = Modele.EstResponsable()[1];
+            secteurToolStripMenuItem.Visible = Modele.EstResponsable()[2];
+            
         }
 
         private void afficheTexteAccueil()
