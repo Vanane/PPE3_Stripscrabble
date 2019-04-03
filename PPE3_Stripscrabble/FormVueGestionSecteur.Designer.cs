@@ -36,21 +36,20 @@
             this.DGVRegions = new System.Windows.Forms.DataGridView();
             this.textBoxResp = new System.Windows.Forms.TextBox();
             this.lblChamps = new System.Windows.Forms.Label();
-            this.btnModifRegion = new System.Windows.Forms.Button();
             this.lblTexte = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRegions)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxNomS
             // 
-            this.textBoxNomS.Location = new System.Drawing.Point(148, 46);
+            this.textBoxNomS.Location = new System.Drawing.Point(146, 52);
             this.textBoxNomS.Name = "textBoxNomS";
             this.textBoxNomS.Size = new System.Drawing.Size(120, 20);
             this.textBoxNomS.TabIndex = 0;
             // 
             // textBoxIdSecteur
             // 
-            this.textBoxIdSecteur.Location = new System.Drawing.Point(148, 6);
+            this.textBoxIdSecteur.Location = new System.Drawing.Point(146, 12);
             this.textBoxIdSecteur.Name = "textBoxIdSecteur";
             this.textBoxIdSecteur.ReadOnly = true;
             this.textBoxIdSecteur.Size = new System.Drawing.Size(120, 20);
@@ -59,7 +58,7 @@
             // lblIdS
             // 
             this.lblIdS.AutoSize = true;
-            this.lblIdS.Location = new System.Drawing.Point(12, 9);
+            this.lblIdS.Location = new System.Drawing.Point(76, 15);
             this.lblIdS.Name = "lblIdS";
             this.lblIdS.Size = new System.Drawing.Size(64, 13);
             this.lblIdS.TabIndex = 3;
@@ -68,7 +67,7 @@
             // lblNomS
             // 
             this.lblNomS.AutoSize = true;
-            this.lblNomS.Location = new System.Drawing.Point(12, 49);
+            this.lblNomS.Location = new System.Drawing.Point(43, 55);
             this.lblNomS.Name = "lblNomS";
             this.lblNomS.Size = new System.Drawing.Size(97, 13);
             this.lblNomS.TabIndex = 4;
@@ -77,7 +76,7 @@
             // lblVisiteurS
             // 
             this.lblVisiteurS.AutoSize = true;
-            this.lblVisiteurS.Location = new System.Drawing.Point(12, 89);
+            this.lblVisiteurS.Location = new System.Drawing.Point(12, 95);
             this.lblVisiteurS.Name = "lblVisiteurS";
             this.lblVisiteurS.Size = new System.Drawing.Size(130, 13);
             this.lblVisiteurS.TabIndex = 5;
@@ -97,7 +96,7 @@
             // 
             // textBoxResp
             // 
-            this.textBoxResp.Location = new System.Drawing.Point(148, 86);
+            this.textBoxResp.Location = new System.Drawing.Point(146, 92);
             this.textBoxResp.Name = "textBoxResp";
             this.textBoxResp.ReadOnly = true;
             this.textBoxResp.Size = new System.Drawing.Size(120, 20);
@@ -112,17 +111,6 @@
             this.lblChamps.Size = new System.Drawing.Size(245, 13);
             this.lblChamps.TabIndex = 9;
             this.lblChamps.Text = "*Tous les champs marqués d\'un * sont modifiables.";
-            // 
-            // btnModifRegion
-            // 
-            this.btnModifRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModifRegion.Location = new System.Drawing.Point(527, 86);
-            this.btnModifRegion.Name = "btnModifRegion";
-            this.btnModifRegion.Size = new System.Drawing.Size(122, 24);
-            this.btnModifRegion.TabIndex = 10;
-            this.btnModifRegion.Text = "Modifier une Région";
-            this.btnModifRegion.UseVisualStyleBackColor = true;
-            this.btnModifRegion.Click += new System.EventHandler(this.btnModifRegion_Click);
             // 
             // lblTexte
             // 
@@ -140,7 +128,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 472);
             this.Controls.Add(this.lblTexte);
-            this.Controls.Add(this.btnModifRegion);
             this.Controls.Add(this.lblChamps);
             this.Controls.Add(this.textBoxResp);
             this.Controls.Add(this.DGVRegions);
@@ -167,7 +154,6 @@
         private System.Windows.Forms.DataGridView DGVRegions;
         private System.Windows.Forms.TextBox textBoxResp;
         private System.Windows.Forms.Label lblChamps;
-        private System.Windows.Forms.Button btnModifRegion;
         private System.Windows.Forms.Label lblTexte;
     }
 }

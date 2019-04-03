@@ -26,16 +26,14 @@ namespace PPE3_Stripscrabble
 
         private void FormVueCoordonneesUtilisateur_Load(object sender, EventArgs e)
         {
-            if (leContact is Secteur)
+            if (leContact is Secteur s)
             {
-                Secteur s = (Secteur)leContact;
                 lblInfos.Text = s.Visiteur.ToString();
             }
             else
             {
-                if (leContact is Region)
+                if (leContact is Region r)
                 {
-                    Region r = (Region)leContact;
                     lblInfos.Text = r.VisiteurResp.ToString();
                 }
             }

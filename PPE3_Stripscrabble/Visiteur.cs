@@ -29,6 +29,7 @@ namespace PPE3_Stripscrabble
         public int idLabo { get; set; }
         public string nom { get; set; }
         public string prenom { get; set; }
+        public string NomComplet { get { return prenom + " " + nom; } }
         public string rue { get; set; }
         public string cp { get; set; }
         public string ville { get; set; }

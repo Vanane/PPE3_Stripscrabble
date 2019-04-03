@@ -67,6 +67,12 @@
     <Compile Include="fichefrais.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="FormVueAjoutSupprAffectation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueAjoutSupprAffectation.Designer.cs">
+      <DependentUpon>FormVueAjoutSupprAffectation.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVueConnexionUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,18 @@
     <Compile Include="FormVueGestionUtilisateur.Designer.cs">
       <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVueInfoRegion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueInfoRegion.Designer.cs">
+      <DependentUpon>FormVueInfoRegion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueInfoVisiteur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueInfoVisiteur.Designer.cs">
+      <DependentUpon>FormVueInfoVisiteur.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVueMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,12 +126,6 @@
     </Compile>
     <Compile Include="FormVueModifMdpConfirmation.Designer.cs">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormVueModifRegion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVueModifRegion.Designer.cs">
-      <DependentUpon>FormVueModifRegion.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVueVoirUtilisateurs.cs">
       <SubType>Form</SubType>
@@ -178,6 +190,9 @@
     <Compile Include="Visiteur.cs">
       <DependentUpon>modeleBDD.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormVueAjoutSupprAffectation.resx">
+      <DependentUpon>FormVueAjoutSupprAffectation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueConnexionUtilisateur.resx">
       <DependentUpon>FormVueConnexionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +205,12 @@
     <EmbeddedResource Include="FormVueGestionUtilisateur.resx">
       <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVueInfoRegion.resx">
+      <DependentUpon>FormVueInfoRegion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueInfoVisiteur.resx">
+      <DependentUpon>FormVueInfoVisiteur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueMenu.resx">
       <DependentUpon>FormVueMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,9 +219,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueModifMdpConfirmation.resx">
       <DependentUpon>FormVueModifMdpConfirmation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormVueModifRegion.resx">
-      <DependentUpon>FormVueModifRegion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueVoirUtilisateurs.resx">
       <DependentUpon>FormVueVoirUtilisateurs.cs</DependentUpon>

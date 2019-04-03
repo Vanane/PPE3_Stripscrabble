@@ -129,10 +129,23 @@ namespace PPE3_Stripscrabble
 
 
 
+        public static void Save()
+        {
+            connexion.SaveChanges();
+        }
+
+
         /****************************/
         /*ACCES A LA BASE DE DONNEES*/
         /****************************/
 
+
+        public static Visiteur VisiteurParSonId(string id)
+        {
+            return connexion.Visiteur.Where(x => x.idVisiteur == id).First();
+
+
+        }
         public static Visiteur VisiteurParSesId(string id, string mdp)
         {
             //Retourne le premier visiteur, s'il y en a plusieurs, qui comporte un couple id/password.
@@ -161,6 +174,11 @@ namespace PPE3_Stripscrabble
                     r.Add(v);
                 }
             return r;
+        }
+
+        public static Region RegionParSonId(int id)
+        {
+            return connexion.Region.Where(x => x.idRegion == id).First();
         }
 
         public static List<Secteur> lesSecteurs()
