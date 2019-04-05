@@ -40,8 +40,21 @@ namespace PPE3_Stripscrabble
 
         private void btnAjoutSuppr_Click(object sender, EventArgs e)
         {
+            OuvreFormAjoutSuppr("supprimer");
+        }
+
+        private void btnAjout_Click(object sender, EventArgs e)
+        {
+            OuvreFormAjoutSuppr("ajouter");
+        }
+
+
+        private void OuvreFormAjoutSuppr(string s)
+        {
+            //Détruit un objet Form, puis le redéclare, évitant ainsi d'ouvrir la form plusieurs fois.
+            //la Form demande un string et un Visiteur pour savoir quel visiteur traiter, et pour quelle opération (ajouter/supprimer)
             FVASA.Dispose();
-            FVASA = new FormVueAjoutSupprAffectation(LeVisiteur);
+            FVASA = new FormVueAjoutSupprAffectation(LeVisiteur, s);
             FVASA.Show();
         }
     }

@@ -36,7 +36,8 @@
             this.textBoxPrenomV = new System.Windows.Forms.TextBox();
             this.textBoxNomV = new System.Windows.Forms.TextBox();
             this.lblTitreDGV = new System.Windows.Forms.Label();
-            this.btnAjoutSuppr = new System.Windows.Forms.Button();
+            this.btnSuppr = new System.Windows.Forms.Button();
+            this.btnAjout = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRegions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,22 +109,33 @@
             this.lblTitreDGV.TabIndex = 13;
             this.lblTitreDGV.Text = "...";
             // 
-            // btnAjoutSuppr
+            // btnSuppr
             // 
-            this.btnAjoutSuppr.Location = new System.Drawing.Point(447, 437);
-            this.btnAjoutSuppr.Name = "btnAjoutSuppr";
-            this.btnAjoutSuppr.Size = new System.Drawing.Size(202, 23);
-            this.btnAjoutSuppr.TabIndex = 14;
-            this.btnAjoutSuppr.Text = "Ajout/Suppression d\'une affectation";
-            this.btnAjoutSuppr.UseVisualStyleBackColor = true;
-            this.btnAjoutSuppr.Click += new System.EventHandler(this.btnAjoutSuppr_Click);
+            this.btnSuppr.Location = new System.Drawing.Point(499, 437);
+            this.btnSuppr.Name = "btnSuppr";
+            this.btnSuppr.Size = new System.Drawing.Size(150, 23);
+            this.btnSuppr.TabIndex = 14;
+            this.btnSuppr.Text = "Supprimer une Affectation";
+            this.btnSuppr.UseVisualStyleBackColor = true;
+            this.btnSuppr.Click += new System.EventHandler(this.btnAjoutSuppr_Click);
+            // 
+            // btnAjout
+            // 
+            this.btnAjout.Location = new System.Drawing.Point(343, 437);
+            this.btnAjout.Name = "btnAjout";
+            this.btnAjout.Size = new System.Drawing.Size(150, 23);
+            this.btnAjout.TabIndex = 15;
+            this.btnAjout.Text = "Ajouter une Affectation";
+            this.btnAjout.UseVisualStyleBackColor = true;
+            this.btnAjout.Click += new System.EventHandler(this.btnAjout_Click);
             // 
             // FormVueInfoVisiteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 472);
-            this.Controls.Add(this.btnAjoutSuppr);
+            this.Controls.Add(this.btnAjout);
+            this.Controls.Add(this.btnSuppr);
             this.Controls.Add(this.lblTitreDGV);
             this.Controls.Add(this.textBoxNomV);
             this.Controls.Add(this.textBoxPrenomV);
@@ -150,6 +162,7 @@
         private System.Windows.Forms.TextBox textBoxPrenomV;
         private System.Windows.Forms.TextBox textBoxNomV;
         private System.Windows.Forms.Label lblTitreDGV;
-        private System.Windows.Forms.Button btnAjoutSuppr;
+        private System.Windows.Forms.Button btnSuppr;
+        private System.Windows.Forms.Button btnAjout;
     }
 }
