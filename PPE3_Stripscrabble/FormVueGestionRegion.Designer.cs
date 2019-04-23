@@ -1,6 +1,6 @@
 ﻿namespace PPE3_Stripscrabble
 {
-    partial class FormVueInfoRegion
+    partial class FormVueGestionRegion
     {
         /// <summary>
         /// Required designer variable.

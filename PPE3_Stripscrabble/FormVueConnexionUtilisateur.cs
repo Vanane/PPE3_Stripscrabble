@@ -26,11 +26,7 @@ namespace PPE3_Stripscrabble
                 MessageBox.Show(("Vous êtes connnecté ! Bienvenue, " + Modele.getIdentifiant() + " !"), "Connexion Établie", MessageBoxButtons.OK);
 
                 //On crée un nouveau thread pour lancer le menu, avant de fermer ce thread-ci.
-                System.Threading.Thread t = new System.Threading.Thread(
-                        new System.Threading.ThreadStart(ThreadMenu));
-                t.Start();
-
-                this.Close();
+                DemarreThread();
             }
             else
             {
@@ -39,11 +35,37 @@ namespace PPE3_Stripscrabble
             }             
         }
 
+
+        private void btnTestRegion_Click(object sender, EventArgs e)
+        {
+            Modele.verifierConnexion("jfinck", "jfinck");
+            DemarreThread();
+        }
+
+        private void btnTestSecteur_Click(object sender, EventArgs e)
+        {
+            Modele.verifierConnexion("veynde", "veynde");
+            DemarreThread();
+        }
+
+        private void btnTestLabo_Click(object sender, EventArgs e)
+        {
+            Modele.verifierConnexion("ecadic", "ecadic");
+            DemarreThread();
+        }
+
+        public void DemarreThread()
+        {
+            System.Threading.Thread t = new System.Threading.Thread(
+                    new System.Threading.ThreadStart(ThreadMenu));
+            t.Start();
+            this.Close();
+        }
+
         public static void ThreadMenu()
         {
             Application.Run(new FormVueMenu());
         }
-
 
     }
 }

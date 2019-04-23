@@ -34,7 +34,13 @@
             this.textBoxMDP = new System.Windows.Forms.TextBox();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.buttonConnexion = new System.Windows.Forms.Button();
+            this.btnTestRegion = new System.Windows.Forms.Button();
+            this.btnTestLabo = new System.Windows.Forms.Button();
+            this.btnTestSecteur = new System.Windows.Forms.Button();
+            this.lblTest = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelMDP
@@ -93,12 +99,63 @@
             this.buttonConnexion.UseVisualStyleBackColor = true;
             this.buttonConnexion.Click += new System.EventHandler(this.buttonConnexion_Click);
             // 
+            // btnTestRegion
+            // 
+            this.btnTestRegion.Location = new System.Drawing.Point(3, 16);
+            this.btnTestRegion.Name = "btnTestRegion";
+            this.btnTestRegion.Size = new System.Drawing.Size(96, 23);
+            this.btnTestRegion.TabIndex = 5;
+            this.btnTestRegion.Text = "jfinck region";
+            this.btnTestRegion.UseVisualStyleBackColor = true;
+            this.btnTestRegion.Click += new System.EventHandler(this.btnTestRegion_Click);
+            // 
+            // btnTestLabo
+            // 
+            this.btnTestLabo.Location = new System.Drawing.Point(3, 74);
+            this.btnTestLabo.Name = "btnTestLabo";
+            this.btnTestLabo.Size = new System.Drawing.Size(96, 23);
+            this.btnTestLabo.TabIndex = 6;
+            this.btnTestLabo.Text = "ecadic labo";
+            this.btnTestLabo.UseVisualStyleBackColor = true;
+            this.btnTestLabo.Click += new System.EventHandler(this.btnTestLabo_Click);
+            // 
+            // btnTestSecteur
+            // 
+            this.btnTestSecteur.Location = new System.Drawing.Point(3, 45);
+            this.btnTestSecteur.Name = "btnTestSecteur";
+            this.btnTestSecteur.Size = new System.Drawing.Size(96, 23);
+            this.btnTestSecteur.TabIndex = 7;
+            this.btnTestSecteur.Text = "veynde secteur";
+            this.btnTestSecteur.UseVisualStyleBackColor = true;
+            this.btnTestSecteur.Click += new System.EventHandler(this.btnTestSecteur_Click);
+            // 
+            // lblTest
+            // 
+            this.lblTest.AutoSize = true;
+            this.lblTest.Location = new System.Drawing.Point(3, 0);
+            this.lblTest.Name = "lblTest";
+            this.lblTest.Size = new System.Drawing.Size(105, 13);
+            this.lblTest.TabIndex = 8;
+            this.lblTest.Text = "!!! Boutons de test !!!";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.lblTest);
+            this.flowLayoutPanel1.Controls.Add(this.btnTestRegion);
+            this.flowLayoutPanel1.Controls.Add(this.btnTestSecteur);
+            this.flowLayoutPanel1.Controls.Add(this.btnTestLabo);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(372, 1);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(111, 100);
+            this.flowLayoutPanel1.TabIndex = 9;
+            // 
             // FormVueConnexionUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(484, 312);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.buttonConnexion);
             this.Controls.Add(this.pictureBoxLogo);
             this.Controls.Add(this.textBoxIdentifiant);
@@ -109,6 +166,8 @@
             this.Padding = new System.Windows.Forms.Padding(27);
             this.Text = "Se connecter à l\'application";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,6 +181,11 @@
         private System.Windows.Forms.TextBox textBoxIdentifiant;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
         private System.Windows.Forms.Button buttonConnexion;
+        private System.Windows.Forms.Button btnTestRegion;
+        private System.Windows.Forms.Button btnTestLabo;
+        private System.Windows.Forms.Button btnTestSecteur;
+        private System.Windows.Forms.Label lblTest;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 

@@ -37,6 +37,7 @@
             this.textBoxResp = new System.Windows.Forms.TextBox();
             this.lblChamps = new System.Windows.Forms.Label();
             this.lblTexte = new System.Windows.Forms.Label();
+            this.btnModifSecteur = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRegions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -122,11 +123,22 @@
             this.lblTexte.Text = "Vous pouvez consulter les informations d\'une région en cliquant sur la ligne corr" +
     "espondante ci-dessous.";
             // 
+            // btnModifSecteur
+            // 
+            this.btnModifSecteur.Location = new System.Drawing.Point(191, 118);
+            this.btnModifSecteur.Name = "btnModifSecteur";
+            this.btnModifSecteur.Size = new System.Drawing.Size(75, 23);
+            this.btnModifSecteur.TabIndex = 12;
+            this.btnModifSecteur.Text = "Modifier";
+            this.btnModifSecteur.UseVisualStyleBackColor = true;
+            this.btnModifSecteur.Click += new System.EventHandler(this.btnModifSecteur_Click);
+            // 
             // FormVueGestionSecteur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(661, 472);
+            this.Controls.Add(this.btnModifSecteur);
             this.Controls.Add(this.lblTexte);
             this.Controls.Add(this.lblChamps);
             this.Controls.Add(this.textBoxResp);
@@ -155,5 +167,6 @@
         private System.Windows.Forms.TextBox textBoxResp;
         private System.Windows.Forms.Label lblChamps;
         private System.Windows.Forms.Label lblTexte;
+        private System.Windows.Forms.Button btnModifSecteur;
     }
 }

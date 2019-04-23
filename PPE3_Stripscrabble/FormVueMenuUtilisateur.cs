@@ -15,8 +15,8 @@ namespace PPE3_Stripscrabble
         private bool ready;
         private FormVueVoirUtilisateurs FVVU;
         private FormVueGestionUtilisateur FVGU;
-        private FormVueGestionSecteur FVGS;
-        /*private FormVueGestionRegion FVGR;*/
+        private FormVueGestionListeSecteurs FVGS;
+        private FormVueGestionListeRegions FVGR;
         /*private FormVueGestionLabo FVGL;*/
 
 
@@ -36,13 +36,13 @@ namespace PPE3_Stripscrabble
             checkEstResponsable();
 
             //Appel à la méthode pour afficher le texte d'accueil
-            afficheTexteAccueil();
+            AfficheTexteAccueil();
 
             //On instancie les forms
             FVVU = new FormVueVoirUtilisateurs();
             FVGU = new FormVueGestionUtilisateur();
-            FVGS = new FormVueGestionSecteur();
-            /*FVGR = new FormVueGestionRegion()*/
+            FVGS = new FormVueGestionListeSecteurs();
+            FVGR = new FormVueGestionListeRegions();
             /*FVGL new FormVueGestionLabo()*/
 
             ready = true;
@@ -59,13 +59,15 @@ namespace PPE3_Stripscrabble
         private void secteurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FVGS.Dispose();
-            FVGS = new FormVueGestionSecteur();
+            FVGS = new FormVueGestionListeSecteurs();
             FVGS.Show();
         }
 
         private void regionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*FGVR.Show();*/
+            FVGR.Dispose();
+            FVGR = new FormVueGestionListeRegions();
+            FVGR.Show();
         }
 
         private void laboratoireToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,7 +91,7 @@ namespace PPE3_Stripscrabble
             
         }
 
-        private void afficheTexteAccueil()
+        private void AfficheTexteAccueil()
         {
             lblTexte.Text = "Bienvenue sur l'interface de gestion.\n" +
                 "Vous pouvez accéder, à l'aide de la barre de menu ci-dessus, aux informations de l'application.\n" +

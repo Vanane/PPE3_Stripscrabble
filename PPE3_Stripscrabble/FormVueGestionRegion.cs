@@ -10,21 +10,23 @@ using System.Windows.Forms;
 
 namespace PPE3_Stripscrabble
 {
-    public partial class FormVueInfoRegion : Form
+    public partial class FormVueGestionRegion : Form
     {
         private Region LaRegion;
         private FormVueInfoVisiteur FVIV;
+        private bool VisiteurEstResponsable;
 
 
-        public FormVueInfoRegion()
+        public FormVueGestionRegion()
         {
             InitializeComponent();
         }
 
-        public FormVueInfoRegion(Region r)
+        public FormVueGestionRegion(Region r, bool resp)
         {
             InitializeComponent();
             LaRegion = r;
+            VisiteurEstResponsable = resp;
         }
 
         private void FormVueInfoRegion_Load(object sender, EventArgs e)
@@ -37,6 +39,12 @@ namespace PPE3_Stripscrabble
             comboBoxVisiteurs.DisplayMember = "NomComplet";
             comboBoxVisiteurs.DataSource = Modele.LesVisiteurs();
             comboBoxVisiteurs.SelectedItem = LaRegion.VisiteurResp;
+
+            if (VisiteurEstResponsable)
+            {
+                comboBoxVisiteurs.Enabled = false;
+
+            }
 
             DGVVisiteurs.DataSource = LaRegion.Visiteurs.Select(x => new {ID = x.idVisiteur, Nom = x.nom, Prenom = x.prenom, Ville = x.cp + " " + x.ville}).ToList();
             FVIV = new FormVueInfoVisiteur();

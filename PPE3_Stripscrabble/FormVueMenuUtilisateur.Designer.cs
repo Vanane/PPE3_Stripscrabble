@@ -126,7 +126,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox comboBoxFiltres;
         private System.Windows.Forms.Label lblTexte;
         private System.Windows.Forms.ToolStripMenuItem ToolStripInfos;
         private System.Windows.Forms.ToolStripMenuItem ToolStripFiltrer;

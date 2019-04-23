@@ -13,7 +13,8 @@ namespace PPE3_Stripscrabble
     public partial class FormVueGestionSecteur : Form
     {
         private bool ready;
-        private FormVueInfoRegion FVIR;
+        private FormVueGestionRegion FVIR;
+        private Secteur LeSecteur;
 
 
         public FormVueGestionSecteur()
@@ -22,22 +23,42 @@ namespace PPE3_Stripscrabble
             ready = false;
         }
 
+        public FormVueGestionSecteur(Secteur s)
+        {
+            InitializeComponent();
+            LeSecteur = s;
+            ready = false;
+        }
+
         private void FormVueGestionSecteur_Load(object sender, EventArgs e)
         {
-            this.Text = "Gestion du secteur " + Modele.visiteurConnecte.Secteur.First().libSecteur.ToString();
-            textBoxIdSecteur.Text = Modele.visiteurConnecte.Secteur.First().idSecteur.ToString();
-            textBoxNomS.Text = Modele.visiteurConnecte.Secteur.First().libSecteur;
+            this.Text = "Gestion du secteur " + LeSecteur.libSecteur;
+            textBoxIdSecteur.Text = LeSecteur.idSecteur.ToString();
+            textBoxNomS.Text = LeSecteur.libSecteur;
             textBoxResp.Text = Modele.visiteurConnecte.nom + " " + Modele.visiteurConnecte.prenom;
             DGVRegions.DataSource = Modele.RegionsParSecteur(Modele.visiteurConnecte.Secteur.First()).Select(x => new { ID = x.idRegion, Libellé = x.libRegion, Responsable = x.VisiteurResp.NomComplet}).ToList();
-            FVIR = new FormVueInfoRegion();
+            FVIR = new FormVueGestionRegion();
             ready = true;
         }
 
         private void DGVRegions_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            FVIR.Dispose();
-            FVIR = new FormVueInfoRegion(Modele.RegionParSonId((int)DGVRegions[0, e.RowIndex].Value));
-            FVIR.Show();
+            try
+            {
+                FVIR.Dispose();
+                FVIR = new FormVueGestionRegion(Modele.RegionParSonId((int)DGVRegions[0, e.RowIndex].Value), false);
+                FVIR.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Veuillez choisir une ligne valide !", "Erreur");
+            }
+        }
+
+        private void btnModifSecteur_Click(object sender, EventArgs e)
+        {
+            LeSecteur.libSecteur = textBoxNomS.Text;
+            Modele.Save();
         }
     }
 }

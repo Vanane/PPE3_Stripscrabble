@@ -32,7 +32,7 @@ namespace PPE3_Stripscrabble
             
             comboBoxRegion.ValueMember = "idregion";
             comboBoxRegion.DisplayMember = "libRegion";
-            comboBoxRegion.DataSource = Modele.lesRegions();
+            comboBoxRegion.DataSource = Modele.LesRegions();
 
             DGVVisiteurs.DataSource = Modele.VisiteursParRegion(Convert.ToInt32(comboBoxRegion.SelectedValue))
                 .Select(x => new { x.idVisiteur, x.nom, x.prenom, x.cp, x.ville, x.dateEmbauche, x.actif}).ToList();

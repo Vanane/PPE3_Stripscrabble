@@ -1,0 +1,9 @@
+update laboratoire set idDirecteur = 'e52' where idLabo = 1
+update laboratoire set idDirecteur = 'zzz' where idLabo = 2 
+update laboratoire set idDirecteur = 'b16' where idLabo = 3
+update laboratoire set idDirecteur = 'b19' where idLabo = 4
+update laboratoire set idDirecteur = 'b25' where idLabo = 5
+update laboratoire set idDirecteur = 'b28' where idLabo = 6
+update laboratoire set idDirecteur = 'b34' where idLabo = 7
+update laboratoire set idDirecteur = 'b46' where idLabo = 8
+update laboratoire set idDirecteur = 'b50' where idLabo = 9 

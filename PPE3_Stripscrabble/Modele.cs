@@ -1,4 +1,7 @@
 ﻿using System;
+
+using System.Windows.Forms;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +9,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
+using System.Data;
 
 namespace PPE3_Stripscrabble
 {
@@ -44,7 +48,6 @@ namespace PPE3_Stripscrabble
         public static void setIdentifiant(string p) { visiteurConnecte.identifiant = p; }
         public static void setPassword(string p) { visiteurConnecte.password = p; }
         #endregion
-
 
         public static bool verifierConnexion(string id, string mdp)
         {          
@@ -158,7 +161,7 @@ namespace PPE3_Stripscrabble
             foreach (Region re in connexion.Secteur.Where(x => x.idSecteur == idS).First().Region )
             {
                 foreach (Visiteur v in re.Visiteurs.ToList())
-                {
+                {                    
                     r.Add(v);
                 }
             }
@@ -181,12 +184,17 @@ namespace PPE3_Stripscrabble
             return connexion.Region.Where(x => x.idRegion == id).First();
         }
 
+        public static Secteur SecteurParSonId(int id)
+        {
+            return connexion.Secteur.Where(x => x.idSecteur == id).First();
+        }
+
         public static List<Secteur> lesSecteurs()
         {
             return connexion.Secteur.ToList();
         }
 
-        public static List<Region> lesRegions()
+        public static List<Region> LesRegions()
         {
             return connexion.Region.ToList();
         }
@@ -230,6 +238,27 @@ namespace PPE3_Stripscrabble
             r[1] = connexion.Region.Where(x => x.idVisiteur == visiteurConnecte.idVisiteur).Count() > 0;
             r[2] = connexion.Secteur.Where(x => x.idVisiteur == visiteurConnecte.idVisiteur).Count() > 0;
             return r;        
+        }
+
+
+        /***************************/
+        /*MODIFICATIONS DANS LA BDD*/
+        /***************************/
+
+
+        public static bool AjouteUneRegionAUnVisiteur(Visiteur v, Region r)
+        {
+            if (!v.Region.Contains(r))
+                v.Region.Add(r);
+            connexion.SaveChanges();
+            return !v.Region.Contains(r);
+        }
+
+        public static bool RetireUneRegionAUnVisiteur(Visiteur v, Region r)
+        {
+            bool ret = v.Region.Remove(r);
+            connexion.SaveChanges();
+            return ret;
         }
 
 

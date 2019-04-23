@@ -12,7 +12,7 @@ namespace PPE3_Stripscrabble
 {
     public partial class FormVueGestionUtilisateur : Form
     {
-        private bool readOnlyInfo, readOnlyMdp;
+        private bool readOnlyInfo;
         private FormVueModifMdpConfirmation FVMMC;
 
 

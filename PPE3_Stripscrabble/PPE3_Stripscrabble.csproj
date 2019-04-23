@@ -59,13 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Etat.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="FAMILLE.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="fichefrais.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="FormVueAjoutSupprAffectation.cs">
       <SubType>Form</SubType>
@@ -85,6 +85,18 @@
     <Compile Include="FormVueCoordonneesUtilisateur.Designer.cs">
       <DependentUpon>FormVueCoordonneesUtilisateur.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVueGestionListeRegions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueGestionListeRegions.Designer.cs">
+      <DependentUpon>FormVueGestionListeRegions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueGestionListeSecteurs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueGestionListeSecteurs.Designer.cs">
+      <DependentUpon>FormVueGestionListeSecteurs.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormVueGestionSecteur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,11 +109,11 @@
     <Compile Include="FormVueGestionUtilisateur.Designer.cs">
       <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormVueInfoRegion.cs">
+    <Compile Include="FormVueGestionRegion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormVueInfoRegion.Designer.cs">
-      <DependentUpon>FormVueInfoRegion.cs</DependentUpon>
+    <Compile Include="FormVueGestionRegion.Designer.cs">
+      <DependentUpon>FormVueGestionRegion.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVueInfoVisiteur.cs">
       <SubType>Form</SubType>
@@ -134,61 +146,61 @@
       <DependentUpon>FormVueVoirUtilisateurs.cs</DependentUpon>
     </Compile>
     <Compile Include="FraisForfait.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Laboratoire.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="LigneFraisForfait.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="LigneFraisHorsForfait.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="MEDECIN.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="MEDICAMENT.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Modele.cs" />
-    <Compile Include="modeleBDD.Context.cs">
+    <Compile Include="ModeleBDD.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>modeleBDD.Context.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="modeleBDD.cs">
+    <Compile Include="ModeleBDD.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
-    <Compile Include="modeleBDD.Designer.cs">
+    <Compile Include="ModeleBDD.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
+      <DependentUpon>ModeleBDD.edmx</DependentUpon>
     </Compile>
     <Compile Include="MOTIF.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="OFFRIR.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAPPORT.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Region.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Secteur.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="SPECIALITE.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <Compile Include="Visiteur.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FormVueAjoutSupprAffectation.resx">
       <DependentUpon>FormVueAjoutSupprAffectation.cs</DependentUpon>
@@ -199,14 +211,20 @@
     <EmbeddedResource Include="FormVueCoordonneesUtilisateur.resx">
       <DependentUpon>FormVueCoordonneesUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormVueGestionListeRegions.resx">
+      <DependentUpon>FormVueGestionListeRegions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueGestionListeSecteurs.resx">
+      <DependentUpon>FormVueGestionListeSecteurs.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormVueGestionSecteur.resx">
       <DependentUpon>FormVueGestionSecteur.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueGestionUtilisateur.resx">
       <DependentUpon>FormVueGestionUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVueInfoRegion.resx">
-      <DependentUpon>FormVueInfoRegion.cs</DependentUpon>
+    <EmbeddedResource Include="FormVueGestionRegion.resx">
+      <DependentUpon>FormVueGestionRegion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueInfoVisiteur.resx">
       <DependentUpon>FormVueInfoVisiteur.cs</DependentUpon>
@@ -233,12 +251,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="modeleBDD.edmx">
+    <EntityDeploy Include="ModeleBDD.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>modeleBDD.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModeleBDD.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="modeleBDD.edmx.diagram">
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
+    <None Include="ModeleBDD.edmx.diagram">
+      <DependentUpon>ModeleBDD.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -255,20 +273,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="modeleBDD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>modeleBDD.Context.cs</LastGenOutput>
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
-    </Content>
-    <Content Include="modeleBDD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
-      <LastGenOutput>modeleBDD.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModeleBDD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeleBDD.edmx</DependentUpon>
+      <LastGenOutput>ModeleBDD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModeleBDD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeleBDD.edmx</DependentUpon>
+      <LastGenOutput>ModeleBDD.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

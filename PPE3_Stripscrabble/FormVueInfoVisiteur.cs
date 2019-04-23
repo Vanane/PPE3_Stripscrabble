@@ -26,7 +26,7 @@ namespace PPE3_Stripscrabble
 
         private void FormVueInfoVisiteur_Load(object sender, EventArgs e)
         {
-            this.Text = "Informations de" + LeVisiteur.NomComplet;
+            this.Text = "Informations de " + LeVisiteur.NomComplet;
             textBoxIdV.Text = LeVisiteur.idVisiteur;
             textBoxNomV.Text = LeVisiteur.nom;
             textBoxPrenomV.Text = LeVisiteur.prenom;
