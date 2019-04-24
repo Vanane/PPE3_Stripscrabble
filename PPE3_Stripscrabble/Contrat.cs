@@ -12,13 +12,14 @@ namespace PPE3_Stripscrabble
     using System;
     using System.Collections.Generic;
     
-    public partial class OFFRIR
+    public partial class Contrat
     {
-        public int idRapport { get; set; }
-        public string idMedicament { get; set; }
-        public Nullable<int> quantite { get; set; }
+        public int idContrat { get; set; }
+        public string idVisiteur { get; set; }
+        public System.DateTime dateDebut { get; set; }
+        public Nullable<System.DateTime> dateFin { get; set; }
     
-        public virtual MEDICAMENT MEDICAMENT { get; set; }
-        public virtual RAPPORT RAPPORT { get; set; }
+        public virtual Date Date { get; set; }
+        public virtual Visiteur Visiteur { get; set; }
     }
 }

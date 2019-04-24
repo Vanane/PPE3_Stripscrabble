@@ -22,7 +22,7 @@ namespace PPE3_Stripscrabble
 
         private void FormVueGestionListeRegions_Load(object sender, EventArgs e)
         {
-            this.Text = "Régions sous la responsabilité de" + Modele.visiteurConnecte.NomComplet;
+            this.Text = "Régions sous la responsabilité de " + Modele.visiteurConnecte.NomComplet;
             DGVRegions.DataSource = Modele.visiteurConnecte.Region.Select(x => new { ID = x.idRegion, Nom = x.libRegion}).ToList();
         }
 

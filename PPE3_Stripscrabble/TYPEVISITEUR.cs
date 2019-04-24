@@ -12,13 +12,9 @@ namespace PPE3_Stripscrabble
     using System;
     using System.Collections.Generic;
     
-    public partial class OFFRIR
+    public partial class TYPEVISITEUR
     {
-        public int idRapport { get; set; }
-        public string idMedicament { get; set; }
-        public Nullable<int> quantite { get; set; }
-    
-        public virtual MEDICAMENT MEDICAMENT { get; set; }
-        public virtual RAPPORT RAPPORT { get; set; }
+        public int idType { get; set; }
+        public string libType { get; set; }
     }
 }

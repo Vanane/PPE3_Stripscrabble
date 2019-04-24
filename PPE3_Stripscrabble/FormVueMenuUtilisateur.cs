@@ -17,7 +17,7 @@ namespace PPE3_Stripscrabble
         private FormVueGestionUtilisateur FVGU;
         private FormVueGestionListeSecteurs FVGS;
         private FormVueGestionListeRegions FVGR;
-        /*private FormVueGestionLabo FVGL;*/
+        private FormVueGestionListeLaboratoires FVGL;
 
 
         public FormVueMenuUtilisateur()
@@ -43,8 +43,7 @@ namespace PPE3_Stripscrabble
             FVGU = new FormVueGestionUtilisateur();
             FVGS = new FormVueGestionListeSecteurs();
             FVGR = new FormVueGestionListeRegions();
-            /*FVGL new FormVueGestionLabo()*/
-
+            FVGL = new FormVueGestionListeLaboratoires();
             ready = true;
         }
 
@@ -72,7 +71,7 @@ namespace PPE3_Stripscrabble
 
         private void laboratoireToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*FGVL.Show();*/
+            FVGL.Show();
         }
 
         private void ToolStripFiltrer_Click(object sender, EventArgs e)

@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrat.cs">
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Date.cs">
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Etat.cs">
       <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
@@ -84,6 +90,18 @@
     </Compile>
     <Compile Include="FormVueCoordonneesUtilisateur.Designer.cs">
       <DependentUpon>FormVueCoordonneesUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueGestionLaboratoire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueGestionLaboratoire.Designer.cs">
+      <DependentUpon>FormVueGestionLaboratoire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVueGestionListeLaboratoires.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVueGestionListeLaboratoires.Designer.cs">
+      <DependentUpon>FormVueGestionListeLaboratoires.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVueGestionListeRegions.cs">
       <SubType>Form</SubType>
@@ -199,6 +217,12 @@
     <Compile Include="SPECIALITE.cs">
       <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TYPEVISITEUR.cs">
+      <DependentUpon>ModeleBDD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Visiteur.cs">
       <DependentUpon>ModeleBDD.tt</DependentUpon>
     </Compile>
@@ -210,6 +234,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueCoordonneesUtilisateur.resx">
       <DependentUpon>FormVueCoordonneesUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueGestionLaboratoire.resx">
+      <DependentUpon>FormVueGestionLaboratoire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVueGestionListeLaboratoires.resx">
+      <DependentUpon>FormVueGestionListeLaboratoires.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVueGestionListeRegions.resx">
       <DependentUpon>FormVueGestionListeRegions.cs</DependentUpon>

@@ -50,7 +50,7 @@ namespace PPE3_Stripscrabble
         #endregion
 
         public static bool verifierConnexion(string id, string mdp)
-        {          
+        {
             //Essaye de définir le Visiteur Connecté en récupérant le premier enregistrement
             //Qui possède les informations entrées.
             //Si les informations sont couplées, alors la connexion est établie, sinon
@@ -158,10 +158,10 @@ namespace PPE3_Stripscrabble
         public static List<Visiteur> VisiteursParSecteur(int idS)
         {
             List<Visiteur> r = new List<Visiteur>();
-            foreach (Region re in connexion.Secteur.Where(x => x.idSecteur == idS).First().Region )
+            foreach (Region re in connexion.Secteur.Where(x => x.idSecteur == idS).First().Region)
             {
                 foreach (Visiteur v in re.Visiteurs.ToList())
-                {                    
+                {
                     r.Add(v);
                 }
             }
@@ -171,11 +171,11 @@ namespace PPE3_Stripscrabble
         public static List<Visiteur> VisiteursParRegion(int idR)
         {
             List<Visiteur> r = new List<Visiteur>();
-            Region re = connexion.Region.Where(x=>x.idRegion == idR).First();
-                foreach (Visiteur v in re.Visiteurs.ToList())
-                {
-                    r.Add(v);
-                }
+            Region re = connexion.Region.Where(x => x.idRegion == idR).First();
+            foreach (Visiteur v in re.Visiteurs.ToList())
+            {
+                r.Add(v);
+            }
             return r;
         }
 
@@ -189,6 +189,12 @@ namespace PPE3_Stripscrabble
             return connexion.Secteur.Where(x => x.idSecteur == id).First();
         }
 
+        public static Laboratoire LaboratoireParSonId(int id)
+        {
+            return connexion.Laboratoire.Where(x => x.idLabo == id).First();
+
+        }
+
         public static List<Secteur> lesSecteurs()
         {
             return connexion.Secteur.ToList();
@@ -198,6 +204,12 @@ namespace PPE3_Stripscrabble
         {
             return connexion.Region.ToList();
         }
+
+        public static List<Laboratoire> LesLaboratoires()
+        {
+            return connexion.Laboratoire.ToList();
+        }
+
 
         public static List<Visiteur> LesVisiteurs()
         {
