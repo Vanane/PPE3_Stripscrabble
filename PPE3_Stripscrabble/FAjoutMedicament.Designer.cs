@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblListMedoc = new System.Windows.Forms.Label();
             this.cbListMedoc = new System.Windows.Forms.ComboBox();
             this.lblNomMedoc = new System.Windows.Forms.Label();
@@ -38,7 +39,9 @@
             this.NUDQtt = new System.Windows.Forms.NumericUpDown();
             this.btnValiderAjoutMedoc = new System.Windows.Forms.Button();
             this.btnAnnulerAjoutMedoc = new System.Windows.Forms.Button();
+            this.bsAjoutMed = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.NUDQtt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAjoutMed)).BeginInit();
             this.SuspendLayout();
             // 
             // lblListMedoc
@@ -57,7 +60,6 @@
             this.cbListMedoc.Name = "cbListMedoc";
             this.cbListMedoc.Size = new System.Drawing.Size(121, 21);
             this.cbListMedoc.TabIndex = 1;
-            this.cbListMedoc.SelectedIndexChanged += new System.EventHandler(this.cbListMedoc_SelectedIndexChanged);
             // 
             // lblNomMedoc
             // 
@@ -112,12 +114,23 @@
             0,
             0,
             0});
+            this.NUDQtt.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NUDQtt.Name = "NUDQtt";
             this.NUDQtt.Size = new System.Drawing.Size(88, 20);
             this.NUDQtt.TabIndex = 7;
+            this.NUDQtt.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // btnValiderAjoutMedoc
             // 
+            this.btnValiderAjoutMedoc.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnValiderAjoutMedoc.Location = new System.Drawing.Point(12, 161);
             this.btnValiderAjoutMedoc.Name = "btnValiderAjoutMedoc";
             this.btnValiderAjoutMedoc.Size = new System.Drawing.Size(75, 23);
@@ -127,18 +140,24 @@
             // 
             // btnAnnulerAjoutMedoc
             // 
+            this.btnAnnulerAjoutMedoc.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnulerAjoutMedoc.Location = new System.Drawing.Point(141, 161);
             this.btnAnnulerAjoutMedoc.Name = "btnAnnulerAjoutMedoc";
             this.btnAnnulerAjoutMedoc.Size = new System.Drawing.Size(75, 23);
             this.btnAnnulerAjoutMedoc.TabIndex = 9;
             this.btnAnnulerAjoutMedoc.Text = "Annuler";
             this.btnAnnulerAjoutMedoc.UseVisualStyleBackColor = true;
-            this.btnAnnulerAjoutMedoc.Click += new System.EventHandler(this.btnAnnulerAjoutMedoc_Click);
+            // 
+            // bsAjoutMed
+            // 
+            this.bsAjoutMed.CurrentChanged += new System.EventHandler(this.bsAjoutMed_CurrentChanged);
             // 
             // FAjoutMedicament
             // 
+            this.AcceptButton = this.btnValiderAjoutMedoc;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnAnnulerAjoutMedoc;
             this.ClientSize = new System.Drawing.Size(326, 239);
             this.Controls.Add(this.btnAnnulerAjoutMedoc);
             this.Controls.Add(this.btnValiderAjoutMedoc);
@@ -154,6 +173,7 @@
             this.Text = "FAjoutMedicament";
             this.Load += new System.EventHandler(this.FAjoutMedicament_Load);
             ((System.ComponentModel.ISupportInitialize)(this.NUDQtt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsAjoutMed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +191,6 @@
         private System.Windows.Forms.NumericUpDown NUDQtt;
         private System.Windows.Forms.Button btnValiderAjoutMedoc;
         private System.Windows.Forms.Button btnAnnulerAjoutMedoc;
+        private System.Windows.Forms.BindingSource bsAjoutMed;
     }
 }

@@ -12,20 +12,14 @@ namespace PPE3_Stripscrabble
     using System;
     using System.Collections.Generic;
     
-    public partial class Laboratoire
+    public partial class Contrat
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Laboratoire()
-        {
-            this.Visiteur1 = new HashSet<Visiteur>();
-        }
+        public int idContrat { get; set; }
+        public string idVisiteur { get; set; }
+        public System.DateTime dateDebut { get; set; }
+        public Nullable<System.DateTime> dateFin { get; set; }
     
-        public int idLabo { get; set; }
-        public string nomLabo { get; set; }
-        public string idDirecteur { get; set; }
-    
+        public virtual Date Date { get; set; }
         public virtual Visiteur Visiteur { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Visiteur> Visiteur1 { get; set; }
     }
 }

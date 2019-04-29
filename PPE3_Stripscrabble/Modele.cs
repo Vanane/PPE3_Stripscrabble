@@ -110,8 +110,15 @@ namespace PPE3_Stripscrabble
             return connexion.MEDICAMENT.ToList();
         }
 
+        public static MEDICAMENT medocChoisi(MEDICAMENT leMedChx)
+        {
+            return leMedChx;
+        }
 
-
+        public static int QuantiteChoisi(int qtt)
+        {
+            return qtt;
+        }
         /*public static void leMedocEstPres()
         {
             medocEstPresente = true;

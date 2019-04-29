@@ -17,7 +17,9 @@ namespace PPE3_Stripscrabble
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Visiteur()
         {
+            this.Contrat = new HashSet<Contrat>();
             this.fichefrais = new HashSet<fichefrais>();
+            this.Laboratoire = new HashSet<Laboratoire>();
             this.RAPPORT = new HashSet<RAPPORT>();
             this.Region = new HashSet<Region>();
             this.Secteur = new HashSet<Secteur>();
@@ -34,10 +36,15 @@ namespace PPE3_Stripscrabble
         public string dateEmbauche { get; set; }
         public string identifiant { get; set; }
         public string password { get; set; }
+        public bool actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contrat> Contrat { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<fichefrais> fichefrais { get; set; }
-        public virtual Laboratoire Laboratoire { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Laboratoire> Laboratoire { get; set; }
+        public virtual Laboratoire Laboratoire1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RAPPORT> RAPPORT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

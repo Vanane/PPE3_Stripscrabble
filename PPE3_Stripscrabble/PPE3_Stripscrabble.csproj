@@ -58,8 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contrat.cs">
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Date.cs">
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
     <Compile Include="Etat.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="FAjoutRemplacant.cs">
       <SubType>Form</SubType>
@@ -68,10 +74,10 @@
       <DependentUpon>FAjoutRemplacant.cs</DependentUpon>
     </Compile>
     <Compile Include="FAMILLE.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="fichefrais.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="FormVueConnexionUtilisateur.cs">
       <SubType>Form</SubType>
@@ -92,22 +98,22 @@
       <DependentUpon>FormVueMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="FraisForfait.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="Laboratoire.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="LigneFraisForfait.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="LigneFraisHorsForfait.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="MEDECIN.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="MEDICAMENT.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="Modele.cs" />
     <Compile Include="modeleBDD.Context.cs">
@@ -125,11 +131,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>modeleBDD.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ModeleBDD2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeleBDD2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeleBDD2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModeleBDD2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
+    </Compile>
     <Compile Include="MOTIF.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="OFFRIR.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="FRapportVisite.cs">
       <SubType>Form</SubType>
@@ -140,19 +161,31 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAPPORT.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="Region.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="Secteur.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="SPECIALITE.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TYPEVISITEUR.cs">
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <Compile Include="Visiteur.cs">
-      <DependentUpon>modeleBDD.tt</DependentUpon>
+      <DependentUpon>ModeleBDD2.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FAjoutRemplacant.resx">
       <DependentUpon>FAjoutRemplacant.cs</DependentUpon>
@@ -186,6 +219,13 @@
     <None Include="modeleBDD.edmx.diagram">
       <DependentUpon>modeleBDD.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="ModeleBDD2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModeleBDD2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModeleBDD2.edmx.diagram">
+      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -210,6 +250,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>modeleBDD.edmx</DependentUpon>
       <LastGenOutput>modeleBDD.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModeleBDD2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
+      <LastGenOutput>ModeleBDD2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ModeleBDD2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
+      <LastGenOutput>ModeleBDD2.cs</LastGenOutput>
     </Content>
     <None Include="Resources\logo.png" />
   </ItemGroup>

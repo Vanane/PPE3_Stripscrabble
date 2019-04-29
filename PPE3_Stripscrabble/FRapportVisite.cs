@@ -46,14 +46,23 @@ namespace PPE3_Stripscrabble
         {
             Modele.setEtatMedoc(true);
             FAjoutMedicament FAjoutMed = new FAjoutMedicament();
-            FAjoutMed.Show();
+            if(FAjoutMed.ShowDialog()==DialogResult.OK)
+            {
+                MEDICAMENT monMedoc = FAjoutMed.getCombo();
+                MessageBox.Show(monMedoc.nomCommercial);
+            }
         }
 
         private void btnAjoutMedocEchant_Click(object sender, EventArgs e)
         {
             Modele.setEtatMedoc(false);
             FAjoutMedicament FAjoutMed = new FAjoutMedicament();
-            FAjoutMed.Show();
+            if (FAjoutMed.ShowDialog() == DialogResult.OK)
+            {
+                MEDICAMENT monMedoc = FAjoutMed.getCombo();
+                int nbMedoc = FAjoutMed.getNbMedoc();
+                MessageBox.Show(monMedoc.nomCommercial + " " + nbMedoc);
+            }
         }
 
         private void btnAnnulerRapport_Click(object sender, EventArgs e)
