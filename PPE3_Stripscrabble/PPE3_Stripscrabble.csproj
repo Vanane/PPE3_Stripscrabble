@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +46,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -59,13 +77,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contrat.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="Date.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="Etat.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="FAjoutRemplacant.cs">
       <SubType>Form</SubType>
@@ -74,10 +92,10 @@
       <DependentUpon>FAjoutRemplacant.cs</DependentUpon>
     </Compile>
     <Compile Include="FAMILLE.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="fichefrais.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="FormVueConnexionUtilisateur.cs">
       <SubType>Form</SubType>
@@ -98,94 +116,79 @@
       <DependentUpon>FormVueMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="FraisForfait.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="Laboratoire.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="LigneFraisForfait.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="LigneFraisHorsForfait.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="MEDECIN.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="MEDICAMENT.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modele.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modele.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Modele.cs" />
-    <Compile Include="modeleBDD.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>modeleBDD.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modeleBDD.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>modeleBDD.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modeleBDD.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ModeleBDD2.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeleBDD2.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeleBDD2.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModeleBDD2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="MOTIF.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OFFRIR.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
-    </Compile>
     <Compile Include="FRapportVisite.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FRapportVisite.Designer.cs">
       <DependentUpon>FRapportVisite.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modele.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modele.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modele1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MOTIF.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OFFRIR.cs">
+      <DependentUpon>Modele.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RAPPORT.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="Region.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="Secteur.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="SPECIALITE.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="TYPEVISITEUR.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <Compile Include="Visiteur.cs">
-      <DependentUpon>ModeleBDD2.tt</DependentUpon>
+      <DependentUpon>Modele.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FAjoutRemplacant.resx">
       <DependentUpon>FAjoutRemplacant.cs</DependentUpon>
@@ -212,19 +215,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="modeleBDD.edmx">
+    <EntityDeploy Include="Modele.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>modeleBDD.Designer.cs</LastGenOutput>
+      <LastGenOutput>Modele.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="modeleBDD.edmx.diagram">
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
-    </None>
-    <EntityDeploy Include="ModeleBDD2.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeleBDD2.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ModeleBDD2.edmx.diagram">
-      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
+    <None Include="Modele.edmx.diagram">
+      <DependentUpon>Modele.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -241,30 +237,34 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="modeleBDD.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>modeleBDD.Context.cs</LastGenOutput>
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
-    </Content>
-    <Content Include="modeleBDD.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>modeleBDD.edmx</DependentUpon>
-      <LastGenOutput>modeleBDD.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModeleBDD2.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
-      <LastGenOutput>ModeleBDD2.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModeleBDD2.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeleBDD2.edmx</DependentUpon>
-      <LastGenOutput>ModeleBDD2.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Modele.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modele.edmx</DependentUpon>
+      <LastGenOutput>Modele.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Modele.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Modele.edmx</DependentUpon>
+      <LastGenOutput>Modele1.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

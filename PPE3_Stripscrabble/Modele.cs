@@ -12,7 +12,7 @@ namespace PPE3_Stripscrabble
     public static class Modele
     {
         private static PPE3_StripscrabbleEntities connexion;
-        private static Visiteur visiteurConnnecte;
+        public static Visiteur visiteurConnnecte;
         private static bool etatMedoc;
 
         public static void init()
@@ -76,6 +76,34 @@ namespace PPE3_Stripscrabble
             init();
         }
 
+        public static void Save()
+        {
+            connexion.SaveChanges();
+        }
+
+
+        public static void AjouteUnRapport(RAPPORT r)
+        {
+            connexion.RAPPORT.Add(r);
+        }
+
+        public static void AjouteOffrir(OFFRIR o)
+        {
+            connexion.OFFRIR.Add(o);
+        }
+
+        public static int dernierRapport()
+        {
+            try
+            {
+                return connexion.RAPPORT.OrderByDescending(x => x.idRapport).First().idRapport;
+            }
+            catch(Exception e)
+            {
+                return 0;
+            }
+        }
+
         private static string GetMd5Hash(string PasswdSaisi)         
         {
             //Permet de retourner une chaine encryptée en MD5 en retirant les deux premiers caractères "0x".
@@ -119,6 +147,7 @@ namespace PPE3_Stripscrabble
         {
             return qtt;
         }
+
         /*public static void leMedocEstPres()
         {
             medocEstPresente = true;

@@ -4,7 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PPE3_StripscrabbleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PPE3_StripscrabbleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contrat">
+          <Key>
+            <PropertyRef Name="idContrat" />
+          </Key>
+          <Property Name="idContrat" Type="int" Nullable="false" />
+          <Property Name="idVisiteur" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="dateDebut" Type="date" Nullable="false" />
+          <Property Name="dateFin" Type="date" />
+        </EntityType>
+        <EntityType Name="Date">
+          <Key>
+            <PropertyRef Name="dateJour" />
+          </Key>
+          <Property Name="dateJour" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Etat">
           <Key>
             <PropertyRef Name="id" />
@@ -45,6 +60,7 @@
           </Key>
           <Property Name="idLabo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nomLabo" Type="char" MaxLength="20" />
+          <Property Name="idDirecteur" Type="char" MaxLength="3" />
         </EntityType>
         <EntityType Name="LigneFraisForfait">
           <Key>
@@ -142,6 +158,16 @@
           <Property Name="idSpecialite" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="libSpecialite" Type="varchar" MaxLength="64" Nullable="false" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="Travailler">
           <Key>
             <PropertyRef Name="idVisiteur" />
@@ -149,6 +175,13 @@
           </Key>
           <Property Name="idVisiteur" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="idRegion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TYPEVISITEUR">
+          <Key>
+            <PropertyRef Name="idType" />
+          </Key>
+          <Property Name="idType" Type="int" Nullable="false" />
+          <Property Name="libType" Type="char" MaxLength="24" />
         </EntityType>
         <EntityType Name="Visiteur">
           <Key>
@@ -164,8 +197,33 @@
           <Property Name="dateEmbauche" Type="char" MaxLength="10" />
           <Property Name="identifiant" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="actif" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__fichefrai__idEta__4AB81AF0">
+        <Association Name="FK__Contrat__dateDeb__66603565">
+          <End Role="Date" Type="Self.Date" Multiplicity="1" />
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date">
+              <PropertyRef Name="dateJour" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="dateDebut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrat__idVisit__6754599E">
+          <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="1" />
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiteur">
+              <PropertyRef Name="idVisiteur" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="idVisiteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fichefrai__idEta__68487DD7">
           <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="*" />
           <ReferentialConstraint>
@@ -177,7 +235,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__fichefrai__idVis__4BAC3F29">
+        <Association Name="FK__fichefrai__idVis__693CA210">
           <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="1" />
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="*" />
           <ReferentialConstraint>
@@ -189,7 +247,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFrai__idFra__52593CB8">
+        <Association Name="FK__LigneFrai__idFra__6B24EA82">
           <End Role="FraisForfait" Type="Self.FraisForfait" Multiplicity="1" />
           <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +259,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFraisForfai__5165187F">
+        <Association Name="FK__LigneFraisForfai__6C190EBB">
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
           <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -215,7 +273,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFraisHorsFo__59FA5E80">
+        <Association Name="FK__LigneFraisHorsFo__6D0D32F4">
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
           <End Role="LigneFraisHorsForfait" Type="Self.LigneFraisHorsForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,6 +284,18 @@
             <Dependent Role="LigneFraisHorsForfait">
               <PropertyRef Name="idVisiteur" />
               <PropertyRef Name="mois" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdDir_IdVis">
+          <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="0..1" />
+          <End Role="Laboratoire" Type="Self.Laboratoire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiteur">
+              <PropertyRef Name="idVisiteur" />
+            </Principal>
+            <Dependent Role="Laboratoire">
+              <PropertyRef Name="idDirecteur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -385,7 +455,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="PPE3_StripscrabbleModelStoreContainer">
+          <EntitySet Name="Contrat" EntityType="Self.Contrat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Date" EntityType="Self.Date" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Etat" EntityType="Self.Etat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FAMILLE" EntityType="Self.FAMILLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="fichefrais" EntityType="Self.fichefrais" Schema="dbo" store:Type="Tables" />
@@ -401,27 +504,41 @@
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Secteur" EntityType="Self.Secteur" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SPECIALITE" EntityType="Self.SPECIALITE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Travailler" EntityType="Self.Travailler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TYPEVISITEUR" EntityType="Self.TYPEVISITEUR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Visiteur" EntityType="Self.Visiteur" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__fichefrai__idEta__4AB81AF0" Association="Self.FK__fichefrai__idEta__4AB81AF0">
+          <AssociationSet Name="FK__Contrat__dateDeb__66603565" Association="Self.FK__Contrat__dateDeb__66603565">
+            <End Role="Date" EntitySet="Date" />
+            <End Role="Contrat" EntitySet="Contrat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrat__idVisit__6754599E" Association="Self.FK__Contrat__idVisit__6754599E">
+            <End Role="Visiteur" EntitySet="Visiteur" />
+            <End Role="Contrat" EntitySet="Contrat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fichefrai__idEta__68487DD7" Association="Self.FK__fichefrai__idEta__68487DD7">
             <End Role="Etat" EntitySet="Etat" />
             <End Role="fichefrais" EntitySet="fichefrais" />
           </AssociationSet>
-          <AssociationSet Name="FK__fichefrai__idVis__4BAC3F29" Association="Self.FK__fichefrai__idVis__4BAC3F29">
+          <AssociationSet Name="FK__fichefrai__idVis__693CA210" Association="Self.FK__fichefrai__idVis__693CA210">
             <End Role="Visiteur" EntitySet="Visiteur" />
             <End Role="fichefrais" EntitySet="fichefrais" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFrai__idFra__52593CB8" Association="Self.FK__LigneFrai__idFra__52593CB8">
+          <AssociationSet Name="FK__LigneFrai__idFra__6B24EA82" Association="Self.FK__LigneFrai__idFra__6B24EA82">
             <End Role="FraisForfait" EntitySet="FraisForfait" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisForfai__5165187F" Association="Self.FK__LigneFraisForfai__5165187F">
+          <AssociationSet Name="FK__LigneFraisForfai__6C190EBB" Association="Self.FK__LigneFraisForfai__6C190EBB">
             <End Role="fichefrais" EntitySet="fichefrais" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisHorsFo__59FA5E80" Association="Self.FK__LigneFraisHorsFo__59FA5E80">
+          <AssociationSet Name="FK__LigneFraisHorsFo__6D0D32F4" Association="Self.FK__LigneFraisHorsFo__6D0D32F4">
             <End Role="fichefrais" EntitySet="fichefrais" />
             <End Role="LigneFraisHorsForfait" EntitySet="LigneFraisHorsForfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdDir_IdVis" Association="Self.FK_IdDir_IdVis">
+            <End Role="Visiteur" EntitySet="Visiteur" />
+            <End Role="Laboratoire" EntitySet="Laboratoire" />
           </AssociationSet>
           <AssociationSet Name="FK_Laboratoire" Association="Self.FK_Laboratoire">
             <End Role="Laboratoire" EntitySet="Laboratoire" />
@@ -481,13 +598,31 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PPE3_StripscrabbleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contrat">
+          <Key>
+            <PropertyRef Name="idContrat" />
+          </Key>
+          <Property Name="idContrat" Type="Int32" Nullable="false" />
+          <Property Name="idVisiteur" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="dateDebut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateFin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Date" Relationship="Self.FK__Contrat__dateDeb__66603565" FromRole="Contrat" ToRole="Date" />
+          <NavigationProperty Name="Visiteur" Relationship="Self.FK__Contrat__idVisit__6754599E" FromRole="Contrat" ToRole="Visiteur" />
+        </EntityType>
+        <EntityType Name="Date">
+          <Key>
+            <PropertyRef Name="dateJour" />
+          </Key>
+          <Property Name="dateJour" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Contrat" Relationship="Self.FK__Contrat__dateDeb__66603565" FromRole="Date" ToRole="Contrat" />
+        </EntityType>
         <EntityType Name="Etat">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="libelle" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="fichefrais" Relationship="Self.FK__fichefrai__idEta__4AB81AF0" FromRole="Etat" ToRole="fichefrais" />
+          <NavigationProperty Name="fichefrais" Relationship="Self.FK__fichefrai__idEta__68487DD7" FromRole="Etat" ToRole="fichefrais" />
         </EntityType>
         <EntityType Name="FAMILLE">
           <Key>
@@ -508,10 +643,10 @@
           <Property Name="montantValide" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="dateModif" Type="DateTime" Precision="0" />
           <Property Name="idEtat" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Etat" Relationship="Self.FK__fichefrai__idEta__4AB81AF0" FromRole="fichefrais" ToRole="Etat" />
-          <NavigationProperty Name="Visiteur" Relationship="Self.FK__fichefrai__idVis__4BAC3F29" FromRole="fichefrais" ToRole="Visiteur" />
-          <NavigationProperty Name="LigneFraisForfait" Relationship="Self.FK__LigneFraisForfai__5165187F" FromRole="fichefrais" ToRole="LigneFraisForfait" />
-          <NavigationProperty Name="LigneFraisHorsForfait" Relationship="Self.FK__LigneFraisHorsFo__59FA5E80" FromRole="fichefrais" ToRole="LigneFraisHorsForfait" />
+          <NavigationProperty Name="Etat" Relationship="Self.FK__fichefrai__idEta__68487DD7" FromRole="fichefrais" ToRole="Etat" />
+          <NavigationProperty Name="Visiteur" Relationship="Self.FK__fichefrai__idVis__693CA210" FromRole="fichefrais" ToRole="Visiteur" />
+          <NavigationProperty Name="LigneFraisForfait" Relationship="Self.FK__LigneFraisForfai__6C190EBB" FromRole="fichefrais" ToRole="LigneFraisForfait" />
+          <NavigationProperty Name="LigneFraisHorsForfait" Relationship="Self.FK__LigneFraisHorsFo__6D0D32F4" FromRole="fichefrais" ToRole="LigneFraisHorsForfait" />
         </EntityType>
         <EntityType Name="FraisForfait">
           <Key>
@@ -520,7 +655,7 @@
           <Property Name="id" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="libelle" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
           <Property Name="montant" Type="Decimal" Precision="5" Scale="2" />
-          <NavigationProperty Name="LigneFraisForfait" Relationship="Self.FK__LigneFrai__idFra__52593CB8" FromRole="FraisForfait" ToRole="LigneFraisForfait" />
+          <NavigationProperty Name="LigneFraisForfait" Relationship="Self.FK__LigneFrai__idFra__6B24EA82" FromRole="FraisForfait" ToRole="LigneFraisForfait" />
         </EntityType>
         <EntityType Name="Laboratoire">
           <Key>
@@ -528,7 +663,9 @@
           </Key>
           <Property Name="idLabo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nomLabo" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="Visiteur" Relationship="Self.FK_Laboratoire" FromRole="Laboratoire" ToRole="Visiteur" />
+          <Property Name="idDirecteur" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Visiteur" Relationship="Self.FK_IdDir_IdVis" FromRole="Laboratoire" ToRole="Visiteur" />
+          <NavigationProperty Name="Visiteur1" Relationship="Self.FK_Laboratoire" FromRole="Laboratoire" ToRole="Visiteur" />
         </EntityType>
         <EntityType Name="LigneFraisForfait">
           <Key>
@@ -540,8 +677,8 @@
           <Property Name="mois" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="idFraisForfait" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="quantite" Type="Int32" />
-          <NavigationProperty Name="fichefrais" Relationship="Self.FK__LigneFraisForfai__5165187F" FromRole="LigneFraisForfait" ToRole="fichefrais" />
-          <NavigationProperty Name="FraisForfait" Relationship="Self.FK__LigneFrai__idFra__52593CB8" FromRole="LigneFraisForfait" ToRole="FraisForfait" />
+          <NavigationProperty Name="fichefrais" Relationship="Self.FK__LigneFraisForfai__6C190EBB" FromRole="LigneFraisForfait" ToRole="fichefrais" />
+          <NavigationProperty Name="FraisForfait" Relationship="Self.FK__LigneFrai__idFra__6B24EA82" FromRole="LigneFraisForfait" ToRole="FraisForfait" />
         </EntityType>
         <EntityType Name="LigneFraisHorsForfait">
           <Key>
@@ -553,7 +690,7 @@
           <Property Name="libelle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="date" Type="DateTime" Precision="0" />
           <Property Name="montant" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="fichefrais" Relationship="Self.FK__LigneFraisHorsFo__59FA5E80" FromRole="LigneFraisHorsForfait" ToRole="fichefrais" />
+          <NavigationProperty Name="fichefrais" Relationship="Self.FK__LigneFraisHorsFo__6D0D32F4" FromRole="LigneFraisHorsForfait" ToRole="fichefrais" />
         </EntityType>
         <EntityType Name="MEDECIN">
           <Key>
@@ -646,6 +783,23 @@
           <Property Name="libSpecialite" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MEDECIN" Relationship="Self.medecin_fk" FromRole="SPECIALITE" ToRole="MEDECIN" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TYPEVISITEUR">
+          <Key>
+            <PropertyRef Name="idType" />
+          </Key>
+          <Property Name="idType" Type="Int32" Nullable="false" />
+          <Property Name="libType" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+        </EntityType>
         <EntityType Name="Visiteur">
           <Key>
             <PropertyRef Name="idVisiteur" />
@@ -660,14 +814,41 @@
           <Property Name="dateEmbauche" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="identifiant" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="fichefrais" Relationship="Self.FK__fichefrai__idVis__4BAC3F29" FromRole="Visiteur" ToRole="fichefrais" />
-          <NavigationProperty Name="Laboratoire" Relationship="Self.FK_Laboratoire" FromRole="Visiteur" ToRole="Laboratoire" />
+          <Property Name="actif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Contrat" Relationship="Self.FK__Contrat__idVisit__6754599E" FromRole="Visiteur" ToRole="Contrat" />
+          <NavigationProperty Name="fichefrais" Relationship="Self.FK__fichefrai__idVis__693CA210" FromRole="Visiteur" ToRole="fichefrais" />
+          <NavigationProperty Name="Laboratoire" Relationship="Self.FK_IdDir_IdVis" FromRole="Visiteur" ToRole="Laboratoire" />
+          <NavigationProperty Name="Laboratoire1" Relationship="Self.FK_Laboratoire" FromRole="Visiteur" ToRole="Laboratoire" />
           <NavigationProperty Name="RAPPORT" Relationship="Self.rapport_fk1" FromRole="Visiteur" ToRole="RAPPORT" />
           <NavigationProperty Name="Region" Relationship="Self.FK_VISITEUR" FromRole="Visiteur" ToRole="Region" />
           <NavigationProperty Name="Secteur" Relationship="Self.FK_VISITEURSECTEUR" FromRole="Visiteur" ToRole="Secteur" />
           <NavigationProperty Name="Region1" Relationship="Self.Travailler" FromRole="Visiteur" ToRole="Region" />
         </EntityType>
-        <Association Name="FK__fichefrai__idEta__4AB81AF0">
+        <Association Name="FK__Contrat__dateDeb__66603565">
+          <End Role="Date" Type="Self.Date" Multiplicity="1" />
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Date">
+              <PropertyRef Name="dateJour" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="dateDebut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contrat__idVisit__6754599E">
+          <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="1" />
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiteur">
+              <PropertyRef Name="idVisiteur" />
+            </Principal>
+            <Dependent Role="Contrat">
+              <PropertyRef Name="idVisiteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__fichefrai__idEta__68487DD7">
           <End Role="Etat" Type="Self.Etat" Multiplicity="0..1" />
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="*" />
           <ReferentialConstraint>
@@ -691,7 +872,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__fichefrai__idVis__4BAC3F29">
+        <Association Name="FK__fichefrai__idVis__693CA210">
           <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="1" />
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="*" />
           <ReferentialConstraint>
@@ -703,7 +884,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFraisForfai__5165187F">
+        <Association Name="FK__LigneFraisForfai__6C190EBB">
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
           <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -717,7 +898,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFraisHorsFo__59FA5E80">
+        <Association Name="FK__LigneFraisHorsFo__6D0D32F4">
           <End Role="fichefrais" Type="Self.fichefrais" Multiplicity="1" />
           <End Role="LigneFraisHorsForfait" Type="Self.LigneFraisHorsForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -731,7 +912,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LigneFrai__idFra__52593CB8">
+        <Association Name="FK__LigneFrai__idFra__6B24EA82">
           <End Role="FraisForfait" Type="Self.FraisForfait" Multiplicity="1" />
           <End Role="LigneFraisForfait" Type="Self.LigneFraisForfait" Multiplicity="*" />
           <ReferentialConstraint>
@@ -740,6 +921,18 @@
             </Principal>
             <Dependent Role="LigneFraisForfait">
               <PropertyRef Name="idFraisForfait" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdDir_IdVis">
+          <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="0..1" />
+          <End Role="Laboratoire" Type="Self.Laboratoire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Visiteur">
+              <PropertyRef Name="idVisiteur" />
+            </Principal>
+            <Dependent Role="Laboratoire">
+              <PropertyRef Name="idDirecteur" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -868,6 +1061,8 @@
           <End Role="Visiteur" Type="Self.Visiteur" Multiplicity="*" />
         </Association>
         <EntityContainer Name="PPE3_StripscrabbleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contrat" EntityType="Self.Contrat" />
+          <EntitySet Name="Date" EntityType="Self.Date" />
           <EntitySet Name="Etat" EntityType="Self.Etat" />
           <EntitySet Name="FAMILLE" EntityType="Self.FAMILLE" />
           <EntitySet Name="fichefrais" EntityType="Self.fichefrais" />
@@ -883,8 +1078,18 @@
           <EntitySet Name="Region" EntityType="Self.Region" />
           <EntitySet Name="Secteur" EntityType="Self.Secteur" />
           <EntitySet Name="SPECIALITE" EntityType="Self.SPECIALITE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TYPEVISITEUR" EntityType="Self.TYPEVISITEUR" />
           <EntitySet Name="Visiteur" EntityType="Self.Visiteur" />
-          <AssociationSet Name="FK__fichefrai__idEta__4AB81AF0" Association="Self.FK__fichefrai__idEta__4AB81AF0">
+          <AssociationSet Name="FK__Contrat__dateDeb__66603565" Association="Self.FK__Contrat__dateDeb__66603565">
+            <End Role="Date" EntitySet="Date" />
+            <End Role="Contrat" EntitySet="Contrat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contrat__idVisit__6754599E" Association="Self.FK__Contrat__idVisit__6754599E">
+            <End Role="Visiteur" EntitySet="Visiteur" />
+            <End Role="Contrat" EntitySet="Contrat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__fichefrai__idEta__68487DD7" Association="Self.FK__fichefrai__idEta__68487DD7">
             <End Role="Etat" EntitySet="Etat" />
             <End Role="fichefrais" EntitySet="fichefrais" />
           </AssociationSet>
@@ -892,21 +1097,25 @@
             <End Role="FAMILLE" EntitySet="FAMILLE" />
             <End Role="MEDICAMENT" EntitySet="MEDICAMENT" />
           </AssociationSet>
-          <AssociationSet Name="FK__fichefrai__idVis__4BAC3F29" Association="Self.FK__fichefrai__idVis__4BAC3F29">
+          <AssociationSet Name="FK__fichefrai__idVis__693CA210" Association="Self.FK__fichefrai__idVis__693CA210">
             <End Role="Visiteur" EntitySet="Visiteur" />
             <End Role="fichefrais" EntitySet="fichefrais" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisForfai__5165187F" Association="Self.FK__LigneFraisForfai__5165187F">
+          <AssociationSet Name="FK__LigneFraisForfai__6C190EBB" Association="Self.FK__LigneFraisForfai__6C190EBB">
             <End Role="fichefrais" EntitySet="fichefrais" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFraisHorsFo__59FA5E80" Association="Self.FK__LigneFraisHorsFo__59FA5E80">
+          <AssociationSet Name="FK__LigneFraisHorsFo__6D0D32F4" Association="Self.FK__LigneFraisHorsFo__6D0D32F4">
             <End Role="fichefrais" EntitySet="fichefrais" />
             <End Role="LigneFraisHorsForfait" EntitySet="LigneFraisHorsForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK__LigneFrai__idFra__52593CB8" Association="Self.FK__LigneFrai__idFra__52593CB8">
+          <AssociationSet Name="FK__LigneFrai__idFra__6B24EA82" Association="Self.FK__LigneFrai__idFra__6B24EA82">
             <End Role="FraisForfait" EntitySet="FraisForfait" />
             <End Role="LigneFraisForfait" EntitySet="LigneFraisForfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdDir_IdVis" Association="Self.FK_IdDir_IdVis">
+            <End Role="Visiteur" EntitySet="Visiteur" />
+            <End Role="Laboratoire" EntitySet="Laboratoire" />
           </AssociationSet>
           <AssociationSet Name="FK_Laboratoire" Association="Self.FK_Laboratoire">
             <End Role="Laboratoire" EntitySet="Laboratoire" />
@@ -952,13 +1161,71 @@
             <End Role="Region" EntitySet="Region" />
             <End Role="Visiteur" EntitySet="Visiteur" />
           </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PPE3_StripscrabbleModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PPE3_StripscrabbleModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PPE3_StripscrabbleModelStoreContainer" CdmEntityContainer="PPE3_StripscrabbleEntities">
+          <EntitySetMapping Name="Contrat">
+            <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Contrat">
+              <MappingFragment StoreEntitySet="Contrat">
+                <ScalarProperty Name="idContrat" ColumnName="idContrat" />
+                <ScalarProperty Name="idVisiteur" ColumnName="idVisiteur" />
+                <ScalarProperty Name="dateDebut" ColumnName="dateDebut" />
+                <ScalarProperty Name="dateFin" ColumnName="dateFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Date">
+            <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Date">
+              <MappingFragment StoreEntitySet="Date">
+                <ScalarProperty Name="dateJour" ColumnName="dateJour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Etat">
             <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Etat">
               <MappingFragment StoreEntitySet="Etat">
@@ -1001,6 +1268,7 @@
               <MappingFragment StoreEntitySet="Laboratoire">
                 <ScalarProperty Name="idLabo" ColumnName="idLabo" />
                 <ScalarProperty Name="nomLabo" ColumnName="nomLabo" />
+                <ScalarProperty Name="idDirecteur" ColumnName="idDirecteur" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1107,6 +1375,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TYPEVISITEUR">
+            <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.TYPEVISITEUR">
+              <MappingFragment StoreEntitySet="TYPEVISITEUR">
+                <ScalarProperty Name="idType" ColumnName="idType" />
+                <ScalarProperty Name="libType" ColumnName="libType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Visiteur">
             <EntityTypeMapping TypeName="PPE3_StripscrabbleModel.Visiteur">
               <MappingFragment StoreEntitySet="Visiteur">
@@ -1120,6 +1407,7 @@
                 <ScalarProperty Name="dateEmbauche" ColumnName="dateEmbauche" />
                 <ScalarProperty Name="identifiant" ColumnName="identifiant" />
                 <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="actif" ColumnName="actif" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1131,6 +1419,30 @@
               <ScalarProperty Name="idVisiteur" ColumnName="idVisiteur" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PPE3_StripscrabbleModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PPE3_StripscrabbleModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PPE3_StripscrabbleModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PPE3_StripscrabbleModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PPE3_StripscrabbleModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PPE3_StripscrabbleModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="PPE3_StripscrabbleModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PPE3_StripscrabbleModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PPE3_StripscrabbleModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

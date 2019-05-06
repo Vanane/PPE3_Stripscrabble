@@ -15,10 +15,10 @@ namespace PPE3_Stripscrabble
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class PPE3_StripscrabbleEntities1 : DbContext
+    public partial class PPE3_StripscrabbleEntities : DbContext
     {
-        public PPE3_StripscrabbleEntities1()
-            : base("name=PPE3_StripscrabbleEntities1")
+        public PPE3_StripscrabbleEntities()
+            : base("name=PPE3_StripscrabbleEntities")
         {
         }
     

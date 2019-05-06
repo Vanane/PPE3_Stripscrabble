@@ -46,105 +46,117 @@
             // lblNomRemplacant
             // 
             this.lblNomRemplacant.AutoSize = true;
-            this.lblNomRemplacant.Location = new System.Drawing.Point(12, 10);
+            this.lblNomRemplacant.Location = new System.Drawing.Point(16, 12);
+            this.lblNomRemplacant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomRemplacant.Name = "lblNomRemplacant";
-            this.lblNomRemplacant.Size = new System.Drawing.Size(38, 13);
+            this.lblNomRemplacant.Size = new System.Drawing.Size(49, 17);
             this.lblNomRemplacant.TabIndex = 0;
             this.lblNomRemplacant.Text = "Nom : ";
             // 
             // lblPrenomRemplacant
             // 
             this.lblPrenomRemplacant.AutoSize = true;
-            this.lblPrenomRemplacant.Location = new System.Drawing.Point(12, 40);
+            this.lblPrenomRemplacant.Location = new System.Drawing.Point(16, 49);
+            this.lblPrenomRemplacant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrenomRemplacant.Name = "lblPrenomRemplacant";
-            this.lblPrenomRemplacant.Size = new System.Drawing.Size(52, 13);
+            this.lblPrenomRemplacant.Size = new System.Drawing.Size(69, 17);
             this.lblPrenomRemplacant.TabIndex = 1;
             this.lblPrenomRemplacant.Text = "Prenom : ";
             // 
             // lblAdresseRemplacant
             // 
             this.lblAdresseRemplacant.AutoSize = true;
-            this.lblAdresseRemplacant.Location = new System.Drawing.Point(12, 70);
+            this.lblAdresseRemplacant.Location = new System.Drawing.Point(16, 86);
+            this.lblAdresseRemplacant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAdresseRemplacant.Name = "lblAdresseRemplacant";
-            this.lblAdresseRemplacant.Size = new System.Drawing.Size(54, 13);
+            this.lblAdresseRemplacant.Size = new System.Drawing.Size(72, 17);
             this.lblAdresseRemplacant.TabIndex = 2;
             this.lblAdresseRemplacant.Text = "Adresse : ";
             // 
             // lblTelRemplacant
             // 
             this.lblTelRemplacant.AutoSize = true;
-            this.lblTelRemplacant.Location = new System.Drawing.Point(12, 100);
+            this.lblTelRemplacant.Location = new System.Drawing.Point(16, 123);
+            this.lblTelRemplacant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTelRemplacant.Name = "lblTelRemplacant";
-            this.lblTelRemplacant.Size = new System.Drawing.Size(67, 13);
+            this.lblTelRemplacant.Size = new System.Drawing.Size(88, 17);
             this.lblTelRemplacant.TabIndex = 3;
             this.lblTelRemplacant.Text = "Téléphone : ";
             // 
             // lblSpecialiteRemplacant
             // 
             this.lblSpecialiteRemplacant.AutoSize = true;
-            this.lblSpecialiteRemplacant.Location = new System.Drawing.Point(12, 130);
+            this.lblSpecialiteRemplacant.Location = new System.Drawing.Point(16, 160);
+            this.lblSpecialiteRemplacant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSpecialiteRemplacant.Name = "lblSpecialiteRemplacant";
-            this.lblSpecialiteRemplacant.Size = new System.Drawing.Size(62, 13);
+            this.lblSpecialiteRemplacant.Size = new System.Drawing.Size(81, 17);
             this.lblSpecialiteRemplacant.TabIndex = 4;
             this.lblSpecialiteRemplacant.Text = "Spécialité : ";
             // 
             // lblDepartementRemplacant
             // 
             this.lblDepartementRemplacant.AutoSize = true;
-            this.lblDepartementRemplacant.Location = new System.Drawing.Point(12, 160);
+            this.lblDepartementRemplacant.Location = new System.Drawing.Point(16, 197);
+            this.lblDepartementRemplacant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDepartementRemplacant.Name = "lblDepartementRemplacant";
-            this.lblDepartementRemplacant.Size = new System.Drawing.Size(77, 13);
+            this.lblDepartementRemplacant.Size = new System.Drawing.Size(102, 17);
             this.lblDepartementRemplacant.TabIndex = 5;
             this.lblDepartementRemplacant.Text = "Département : ";
             // 
             // txtbxNomRemplacant
             // 
-            this.txtbxNomRemplacant.Location = new System.Drawing.Point(110, 7);
+            this.txtbxNomRemplacant.Location = new System.Drawing.Point(147, 9);
+            this.txtbxNomRemplacant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbxNomRemplacant.Name = "txtbxNomRemplacant";
-            this.txtbxNomRemplacant.Size = new System.Drawing.Size(100, 20);
+            this.txtbxNomRemplacant.Size = new System.Drawing.Size(132, 22);
             this.txtbxNomRemplacant.TabIndex = 6;
             // 
             // txtbxPrenomRemplacant
             // 
-            this.txtbxPrenomRemplacant.Location = new System.Drawing.Point(110, 37);
+            this.txtbxPrenomRemplacant.Location = new System.Drawing.Point(147, 46);
+            this.txtbxPrenomRemplacant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbxPrenomRemplacant.Name = "txtbxPrenomRemplacant";
-            this.txtbxPrenomRemplacant.Size = new System.Drawing.Size(100, 20);
+            this.txtbxPrenomRemplacant.Size = new System.Drawing.Size(132, 22);
             this.txtbxPrenomRemplacant.TabIndex = 7;
             // 
             // txtbxAdresseRemplacant
             // 
-            this.txtbxAdresseRemplacant.Location = new System.Drawing.Point(110, 67);
+            this.txtbxAdresseRemplacant.Location = new System.Drawing.Point(147, 82);
+            this.txtbxAdresseRemplacant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbxAdresseRemplacant.Name = "txtbxAdresseRemplacant";
-            this.txtbxAdresseRemplacant.Size = new System.Drawing.Size(100, 20);
+            this.txtbxAdresseRemplacant.Size = new System.Drawing.Size(132, 22);
             this.txtbxAdresseRemplacant.TabIndex = 8;
             // 
             // txtbxTelRemplacant
             // 
-            this.txtbxTelRemplacant.Location = new System.Drawing.Point(110, 97);
+            this.txtbxTelRemplacant.Location = new System.Drawing.Point(147, 119);
+            this.txtbxTelRemplacant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtbxTelRemplacant.Name = "txtbxTelRemplacant";
-            this.txtbxTelRemplacant.Size = new System.Drawing.Size(100, 20);
+            this.txtbxTelRemplacant.Size = new System.Drawing.Size(132, 22);
             this.txtbxTelRemplacant.TabIndex = 9;
             // 
             // cbSpeRemplacant
             // 
             this.cbSpeRemplacant.FormattingEnabled = true;
-            this.cbSpeRemplacant.Location = new System.Drawing.Point(110, 127);
+            this.cbSpeRemplacant.Location = new System.Drawing.Point(147, 156);
+            this.cbSpeRemplacant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbSpeRemplacant.Name = "cbSpeRemplacant";
-            this.cbSpeRemplacant.Size = new System.Drawing.Size(121, 21);
+            this.cbSpeRemplacant.Size = new System.Drawing.Size(160, 24);
             this.cbSpeRemplacant.TabIndex = 10;
             // 
             // nudDepartementRemplacant
             // 
-            this.nudDepartementRemplacant.Location = new System.Drawing.Point(111, 158);
+            this.nudDepartementRemplacant.Location = new System.Drawing.Point(148, 194);
+            this.nudDepartementRemplacant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.nudDepartementRemplacant.Name = "nudDepartementRemplacant";
-            this.nudDepartementRemplacant.Size = new System.Drawing.Size(46, 20);
+            this.nudDepartementRemplacant.Size = new System.Drawing.Size(61, 22);
             this.nudDepartementRemplacant.TabIndex = 11;
             // 
             // FAjoutRemplacant
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(432, 259);
             this.Controls.Add(this.nudDepartementRemplacant);
             this.Controls.Add(this.cbSpeRemplacant);
             this.Controls.Add(this.txtbxTelRemplacant);
@@ -157,6 +169,7 @@
             this.Controls.Add(this.lblAdresseRemplacant);
             this.Controls.Add(this.lblPrenomRemplacant);
             this.Controls.Add(this.lblNomRemplacant);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FAjoutRemplacant";
             this.Text = "FAjoutRemplacant";
             ((System.ComponentModel.ISupportInitialize)(this.nudDepartementRemplacant)).EndInit();
